@@ -4,18 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js"></script>
     <title>LandLight</title>
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li><a href="">Inicio</a></li>
+                <li><a href="">Entradas</a></li>
+                <li><a href="">Land</a></li>
+                <li><a href="">Light</a></li>
+                <li> <a href="">ES</a>
+                    <ul>
+                        <li><a href="">CAT</a></li>
+                        <li><a href="">EN</a></li>
+                    </ul>
+                </li>
+
             </ul>
         </nav>
     </header>
+    
+    <main>
+        <section>
+            <div class="slider-wrapper" style="position: relative;"> 
+            
+                <button class="prev-btn" onclick="scrollSlider(-1)">&#10094;</button>
+                <button class="next-btn" onclick="scrollSlider(1)">&#10095;</button>
+
+                <div class="slider-container" id="main-slider">  
+                    <img class="slider-item" src="https://images.unsplash.com/photo-1580501170961-bb0dbf63a6df?..." />
+                    <img class="slider-item" src="https://images.unsplash.com/photo-1580501170888-80668882ca0c?..." />
+                    <img class="slider-item" src="https://images.unsplash.com/photo-1572508589584-94d778209dd9?..." />
+                </div>
+        </section>
+        <section  id="quote1">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dolorum aperiam dolores quibusdam saepe tempore numquam voluptates quam enim veritatis. Ex possimus voluptatum nisi inventore doloribus dicta tempora? Earum, nulla.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        
+    </footer>
 </body>
 </html>
