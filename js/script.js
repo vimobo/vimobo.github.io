@@ -1,6 +1,5 @@
-function scrollSlider(direction) {
-    // This MUST match the id above
-    const slider = document.getElementById('main-slider'); 
+function scrollSlider(direction, sliderId = 'main-slider') {
+    const slider = document.getElementById(sliderId); 
     const scrollAmount = slider.clientWidth;
     
     slider.scrollBy({
@@ -21,43 +20,39 @@ function closeMenu() {
     }
 }
 
-// Close mobile menu when clicking outside or selecting an item
+function toggleLangMenu() {
+    const langList = document.getElementById('lang-list');
+    langList.classList.toggle('active');
+}
+
+function closeLangMenu() {
+    const langList = document.getElementById('lang-list');
+    if (langList.classList.contains('active')) {
+        langList.classList.remove('active');
+    }
+}
+
+// Close mobile menus when clicking outside or selecting an item
 document.addEventListener('click', (event) => {
     const navList = document.getElementById('nav-list');
+    const langList = document.getElementById('lang-list');
     const menuIcon = document.querySelector('.menu-icon');
+    const langMenuIcon = document.querySelector('.lang-menu-icon');
+    
     if (!navList.contains(event.target) && !menuIcon.contains(event.target) && navList.classList.contains('active')) {
         closeMenu();
+    }
+    
+    if (!langList.contains(event.target) && !langMenuIcon.contains(event.target) && langList.classList.contains('active')) {
+        closeLangMenu();
     }
 });
 
 const navItems = document.querySelectorAll('#nav-list > li > a');
 navItems.forEach((item) => {
     item.addEventListener('click', (event) => {
-        const parentLi = item.parentElement;
-
-        // No cerrar el menú al tocar el item con submenu (ES), para poder ver EN/CAT en móvil
-        if (parentLi.classList.contains('has-submenu')) {
-            event.preventDefault();
-            parentLi.classList.toggle('submenu-open');
-            return;
-        }
-
         closeMenu();
     });
 });
-
-// For mobile submenu open state
-const style = document.createElement('style');
-style.textContent = `
-@media screen and (max-width: 768px) {
-    #nav-list li.has-submenu.submenu-open > ul {
-        display: block !important;
-    }
-    #nav-list li.has-submenu > ul {
-        display: none;
-    }
-}
-`;
-document.head.appendChild(style);
 
 

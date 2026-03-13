@@ -12,39 +12,146 @@
             <div class="menu-icon" onclick="toggleMenu()">☰</div>
             
             <ul id="nav-list">
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Entradas</a></li>
-                <li><a href="#">Land</a></li>
-                <li><a href="#">Light</a></li>
-                <li class="has-submenu">
-                    <a href="#">ES</a>
-                    <ul>
-                        <li><a href="#">EN</a></li>
-                        <li><a href="#">CAT</a></li>
-                    </ul>
-                </li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#contacto">Entradas</a></li>
+                <li><a href="#galeria">Land</a></li>
+                <li><a href="#servicios">Light</a></li>
+            </ul>
+
+            <div class="lang-menu-icon" onclick="toggleLangMenu()">ES</div>
+            
+            <ul id="lang-list">
+                <li><a href="#" id="langActual">ES</a></li>
+                <li><a href="#">CAT</a></li>
+                <li><a href="#">EN</a></li>
             </ul>
         </nav>
     </header>
     
     <main>
-        <section id="quote1">
-            <h1>Bienvenido a LandLight</h1>
+        <!-- Sección Hero con Carrusel 1 -->
+        <section id="inicio" class="hero-section">
+            <div class="hero-content">
+                <h1>Bienvenido a LandLight</h1>
+                <p>Descubre nuestro mundo de paisajes y luz</p>
+            </div>
+
+            <section class="slider-wrapper">
+                <button class="prev-btn" onclick="scrollSlider(-1, 'main-slider')">&#10094;</button>
+                <button class="next-btn" onclick="scrollSlider(1, 'main-slider')">&#10095;</button>
+
+                <div class="slider-container" id="main-slider">  
+                    <img src="./src/000011.JPG" alt="Imagen 1" />
+                    <img src="./src/000026.JPG" alt="Imagen 2" />
+                    <img src="./src/000035 (2).JPG" alt="Imagen 3" />
+                </div>  
+            </section>
         </section>
 
-        <section class="slider-wrapper">
-            <button class="prev-btn" onclick="scrollSlider(-1)">&#10094;</button>
-            <button class="next-btn" onclick="scrollSlider(1)">&#10095;</button>
+        <!-- Sección de Contenido -->
+        <section id="contenido" class="content-section">
+            <div class="content-wrapper">
+                <h2>El Festival</h2>
+                <p>
+                    LandLight es un festival que transforma el paisaje en una experiencia artística de luz, naturaleza y creatividad.
+Durante unos días, los espacios naturales de Teruel se convierten en un recorrido nocturno de instalaciones de land art, iluminación artística y arte efímero.
+                </p>
+                <p>
+                   Un encuentro donde naturaleza, tecnología y arte dialogan para crear experiencias inmersivas bajo el cielo de Aragón.
+                </p>
+                <div class="content-image">
+                    <img src="./src/000011.JPG" alt="Proyecto destacado">
+                </div>
+            </div>
+        </section>
 
-            <div class="slider-container" id="main-slider">  
-              <img src="https://images.unsplash.com/photo-1580501170961-bb0dbf63a6df?auto=format&fit=crop&w=1200" />
-              <img src="https://images.unsplash.com/photo-1580501170888-80668882ca0c?auto=format&fit=crop&w=1200" />
-              <img src="https://images.unsplash.com/photo-1572508589584-94d778209dd9?auto=format&fit=crop&w=1200" />
-            </div>  
+        <!-- Sección Galería con Carrusel 2 -->
+        <section id="galeria" class="gallery-section">
+            <div class="section-header">
+                <h2>Talleres</h2>
+            </div>
+
+            <section class="slider-wrapper">
+                <button class="prev-btn" onclick="scrollSlider(-1, 'gallery-slider')">&#10094;</button>
+                <button class="next-btn" onclick="scrollSlider(1, 'gallery-slider')">&#10095;</button>
+
+                <div class="slider-container" id="gallery-slider">  
+                    <img src="./src/000011.JPG" alt="Galería 1" />
+                    <img src="./src/000026.JPG" alt="Galería 2" />
+                    <img src="./src/000035 (2).JPG" alt="Galería 3" />
+                </div>  
+            </section>
+        </section>
+
+        <!-- Sección de Servicios -->
+        <section id="servicios" class="services-section">
+            <div class="content-wrapper">
+                <h2>Nuestros Servicios</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="./src/000011.JPG" alt="Fotografía">
+                        <h3>Fotografía</h3>
+                        <p>Captura profesional de paisajes y momentos especiales.</p>
+                    </div>
+                     <div class="service-card">
+                        <img src="./src/000011.JPG" alt="Fotografía">
+                        <h3>Fotografía</h3>
+                        <p>Captura profesional de paisajes y momentos especiales.</p>
+                    </div>
+                     <div class="service-card">
+                        <img src="./src/000011.JPG" alt="Fotografía">
+                        <h3>Fotografía</h3>
+                        <p>Captura profesional de paisajes y momentos especiales.</p>
+                    </div>
+                     <div class="service-card">
+                        <img src="./src/000011.JPG" alt="Fotografía">
+                        <h3>Fotografía</h3>
+                        <p>Captura profesional de paisajes y momentos especiales.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="./src/000026.JPG" alt="Diseño">
+                        <h3>Diseño</h3>
+                        <p>Composición visual única combinada con la naturaleza.</p>
+                    </div>
+                    <div class="service-card">
+                        <img src="./src/000035 (2).JPG" alt="Edición">
+                        <h3>Edición</h3>
+                        <p>Retoque profesional para resaltar la belleza natural.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Contacto -->
+        <section id="contacto" class="contact-section">
+            <div class="content-wrapper">
+                <h2>Ponte en Contacto</h2>
+                <p>¿Tienes un proyecto en mente? Nos encantaría escucharte.</p>
+            </div>
         </section>
     </main>
 
-    <footer></footer>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>LandLight</h4>
+                <p>Capturando la belleza del mundo, un momento a la vez.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Redes Sociales</h4>
+                <div class="social-links">
+                    <a href="#" target="_blank" title="Instagram">📷</a>
+                    <a href="#" target="_blank" title="Facebook">👥</a>
+                    <a href="#" target="_blank" title="Twitter">𝕏</a>
+                    <a href="#" target="_blank" title="LinkedIn">💼</a>
+                </div>
+            </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 LandLight. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
     <script src="./js/script.js"></script>
 </body>
