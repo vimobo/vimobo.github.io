@@ -11,18 +11,17 @@ const video = document.getElementById("introVideo");
     }, 500);
   });
 
-
-  const items = document.querySelectorAll('.fade-in');
+const items = document.querySelectorAll('.fade-in');
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible'); // activa la animación
-      // opcional: observer.unobserve(entry.target);
+      observer.unobserve(entry.target); // opcional: dejar de observar
     }
   });
 }, {
-  threshold: 0.1 // se activa cuando el 10% del elemento está visible
+  threshold: 0.1 // cuando el 10% del elemento es visible
 });
 
 items.forEach(item => observer.observe(item));
