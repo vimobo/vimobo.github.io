@@ -1,0 +1,718 @@
+/* ==================== RESET BÁSICO ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+
+body {
+    font-size: 1.1rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==================== HEADER Y NAVEGACIÓN ==================== */
+header {
+    position: fixed; /* Fixed es mejor para evitar que se esconda con el video de intro */
+    top: 0;
+    width: 100%;
+    z-index: 40;
+}
+
+/* ==================== BARRA DE NAVEGACIÓN (CÁPSULA) ==================== */
+nav ul#nav-list {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 900px;
+    margin: 2em auto 0 auto; /* Centrado horizontal del nav */
+    padding: 0.6em 2.5em;
+    border-radius: 50px;
+    background-color: rgba(240, 248, 255, 0.1);
+    backdrop-filter: blur(15px);
+    list-style: none;
+    gap: 15px; /* Espacio entre los elementos centrales */
+}
+
+/* Estilo de las letras (Recuperado) */
+nav ul#nav-list > li > a {
+    display: block;
+    padding: 0.5em 1em;
+    color: aliceblue;
+    text-decoration: none;
+    font-weight: bold; /* Negrita recuperada */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra recuperada */
+    white-space: nowrap;
+}
+
+/* Distribución: Primero a la izquierda, último a la derecha */
+nav ul#nav-list > li:first-child { margin-right: auto; }
+nav ul#nav-list > li:last-child { margin-left: auto; }
+nav ul#nav-list > li { position: relative; list-style: none; }
+
+nav ul li a:hover{
+    transform: translateY(-2px);
+    transition: 500ms;
+
+}
+
+/* ==================== SUBMENÚ (ESTILO IDÉNTICO) ==================== */
+/* ==================== SUBMENÚ (ESTILO CÁPSULA REFINADA) ==================== */
+nav ul#nav-list li ul {
+    display: none;
+    position: absolute;
+    /* Bajamos el menú para que no se pegue al principal */
+    top: calc(100% + 15px); 
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Ajuste de forma: Menos alto, más ancho para romper el efecto 'huevo' */
+    width: max-content;
+    min-width: 100px; 
+    padding: 15px 10px; /* Más aire a los lados, menos arriba/abajo */
+    
+    list-style: none;
+    background-color: rgba(240, 248, 255, 0.1); 
+    backdrop-filter: blur(15px);
+    
+    /* Un radio más suave para que parezca cápsula y no círculo */
+    border-radius: 30px; 
+    
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil para definir la forma */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+/* Puente invisible corregido */
+nav ul#nav-list li ul::before {
+    content: "";
+    position: absolute;
+    top: -20px; /* Cubre el hueco de 15px */
+    left: 0;
+    width: 100%;
+    height: 25px;
+    background: transparent;
+}
+
+/* Mostramos el menú al hacer hover */
+nav ul#nav-list li:hover > ul {
+    display: block;
+    
+}
+
+/* Letras del Submenú */
+nav ul#nav-list li ul li a {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    color: aliceblue;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+    width: 90%;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    text-align: center;
+    border: none !important; /* Adiós a las líneas */
+}
+
+/* Efecto hover interno para los elementos del submenú */
+nav ul#nav-list li ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    transform: translateY(-2px);
+}
+/* ==================== VIDEOS DE FONDO ==================== */
+#intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 50; /* Por encima de todo durante la carga */
+    background: black;
+    transition: opacity 0.5s ease;
+}
+
+#intro.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Detrás de todo el contenido */
+    filter: brightness(0.5);
+}
+
+/* ==================== SECCIONES COMUNES ==================== */
+#section1, #section2, #faq-section {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4em 2em;
+    min-height: 40vh;
+    width: 100%;
+    text-align: center;
+}
+
+#section1 {
+    margin-top: 100vh; /* Para que el video fijo se vea primero */
+    background-color: rgb(207, 187, 172);
+}
+
+#section2, #faq-section {
+    /*background: linear-gradient(to right, rgb(219, 196, 179), rgb(255, 244, 236));*/
+    background-color: rgb(219, 196, 179);
+    border-top: 2px groove rgb(214, 195, 171);
+}
+
+#section1 h2, #section2 h2, #faq-section h2 {
+    color: rgb(126, 73, 73);
+    margin-bottom: 1em;
+}
+
+#section1 p, #section2 p, #faq-section p {
+    color: beige;
+    text-shadow: 1px 1px 2px black;
+    max-width: 800px;
+}
+
+/* Decoración (Imagen intermedia) */
+#section3 {
+    position: relative;
+    height: 20vh;
+    width: 100%;
+    z-index: 15;
+    background: linear-gradient(to bottom, rgb(219, 196, 179), rgba(255, 244, 236, 0));
+}
+
+#section3 img {
+    overflow-y: visible;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+/* ==================== CARRUSEL ==================== */
+#div-carousel {
+    position: relative;
+    z-index: 5;
+    padding: 2em 0;
+}
+
+#carousel-section {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+    width: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.carousel-btn:hover { background: rgba(0,0,0,0.8); }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+/* ==================== GALERÍA ==================== */
+#photo-gallery {
+    position: relative;
+    z-index: 5;
+    padding: 4em 2em;
+    text-align: center;
+}
+
+#photo-gallery h2 {
+    color: rgb(235, 187, 187);
+    font-size: 2.5rem;
+    margin-bottom: 1.5em;
+}
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+}
+
+.gallery-item {
+    width: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    filter: blur(1px);
+    transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+    filter: blur(0px);
+}
+
+.gallery-item img {
+    border-radius: 10px;
+    filter: invert(100%);
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.description { padding: 1.5em; }
+.description h3 { color: #e79d9d; margin-bottom: 0.5em; }
+.description p { font-size: 0.95rem; color: #ccbfa4; }
+
+/* ==================== ANIMACIONES ==================== */
+.fade-in, .fade-in2 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+.fade-in.visible, .fade-in2.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-shadow {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.95);
+    text-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    transition: opacity 1s ease, filter 1s ease, transform 1s ease;
+}
+
+.fade-in-shadow.visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+}
+/* ==================== SECCIÓN PREGUNTAS FRECUENTES (CORREGIDA) ==================== */
+
+/* 1. Contenedor General: Quitamos el flex-center que estiraba las cajas */
+#faq-section {
+    position: relative;
+    z-index: 5;
+    background-color: rgb(219, 196, 179);
+    border-top: 2px groove rgb(214, 195, 171);
+    padding: 4em 2em;
+    width: 100%;
+    display: block; /* Cambiado de flex a block */
+    text-align: center;
+}
+
+#faq-section h2 {
+    color: rgb(126, 73, 73);
+    margin-bottom: 2em;
+    font-size: 2rem;
+}
+
+/* 2. Limitador de ancho para que las preguntas no crucen toda la pantalla */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left; /* Las preguntas se leen mejor a la izquierda */
+}
+
+/* 3. Cada item de la FAQ */
+.faq-item {
+    background: rgba(255, 244, 236, 0.9);
+    border-radius: 15px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(219, 196, 179, 0.5);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    height: auto; /* Altura automática real */
+}
+
+.faq-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* 4. Botón de la pregunta */
+.faq-question {
+    width: 100%;
+    padding: 20px 25px;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: rgb(126, 73, 73);
+    text-align: left;
+}
+
+/* Icono indicador (+ / -) */
+.faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question::after {
+    content: '−';
+    transform: rotate(180deg);
+}
+
+/* 5. La Respuesta (Truco del Grid para colapso total) */
+.faq-answer {
+    display: grid;
+    grid-template-rows: 0fr; /* Totalmente cerrado */
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.faq-item.active .faq-answer {
+    grid-template-rows: 1fr; /* Abre al tamaño exacto del contenido */
+}
+
+/* 6. Contenedor interno: Evita que el padding rompa la animación */
+.faq-answer-content {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.faq-answer-content p {
+    padding: 0 25px 20px 25px;
+    margin: 0;
+    color: #5a3e3e;
+    line-height: 1.6;
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.faq-item.active .faq-answer-content p {
+    opacity: 1;
+}
+
+/* =========================================================================== */
+.map-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: transparent;
+  padding: 40px 0;
+}
+
+.map-card {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  height: 450px; /* Altura fija para el recorte */
+  border-radius: 30px;
+  overflow: hidden; /* Esto corta lo que sobresalga */
+  background: #1a1a1a;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+#googleMap {
+  width: 100%;
+  height: 110%; /* Lo hacemos más alto para que el recorte funcione */
+  margin-top: -50px; /* Empujamos la info hacia arriba, fuera del borde */
+  pointer-events: none;
+  filter: brightness(0.8);
+  transition: all 0.5s ease;
+}
+
+.map-card.active #googleMap {
+  margin-top: 0; /* Opcional: que baje cuando se active, o déjalo en -50px */
+  filter: brightness(1);
+  pointer-events: auto;
+}
+
+.map-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1px);
+  color: white;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  transition: opacity 0.4s;
+}
+
+/* Interacción */
+.map-card.active {
+  transform: scale(1.03);
+}
+
+.map-card.active #googleMap {
+  pointer-events: auto;
+  filter: brightness(1);
+}
+
+.map-card.active .map-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
+/* ==================== FOOTER ==================== */
+.footer {
+    position: relative;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 3em 2em 1em;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2em;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links ul { list-style: none; }
+.footer-links a, .footer-social a {
+    color: #ccc;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.footer-links a:hover, .footer-social a:hover {
+    color: white;
+    transform: translateX(5px);
+}
+
+.social-icons a { display: inline-block; margin-right: 15px; }
+.footer-bottom { margin-top: 3em; text-align: center; color: #777; font-size: 0.9rem; border-top: 1px solid #333; padding-top: 1em; }
+
+/* ==================== BOTÓN HAMBURGUESA (MÓVIL) ==================== */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 1.5em;
+    right: 1.5em;
+    z-index: 9999;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    transform-origin: left;
+}
+
+/* Animación de la cruz */
+.menu-toggle.active .bar:nth-child(1) { transform: rotate(45deg); }
+.menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.active .bar:nth-child(3) { transform: rotate(-45deg); }
+
+
+/* ==================== MEDIA QUERIES Y CORRECCIONES ==================== */
+
+/* 1. CORRECCIÓN PARA ESCRITORIO (Evita que el submenú se cierre al bajar el mouse) */
+@media (min-width: 901px) {
+    nav ul li ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 100%;
+        background-color: rgba(20, 20, 20, 0.95);
+        backdrop-filter: blur(15px);
+        border-radius: 10px;
+        list-style: none;
+        padding: 0;
+        /* El truco: un borde invisible que sirve de puente para el puntero */
+        border-top: 15px solid transparent; 
+        background-clip: padding-box;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    nav ul li:hover > ul {
+        display: block;
+    }
+
+    nav ul li ul li a {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+}
+
+
+/* 2. CONFIGURACIÓN PARA MÓVIL (Menú lateral y Acordeón) */
+@media (max-width: 900px) {
+    /* Mostrar botón hamburguesa */
+    .menu-toggle { display: flex; }
+
+    /* Nav lateral oculto */
+    nav ul#nav-list {
+        
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        margin-top: 0;
+        border-radius: 0;
+        background: rgba(10, 10, 10, 0.349);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 100px;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 9998;
+        overflow-y: auto;
+    }
+
+    nav ul#nav-list.active {
+        right: 0;
+    }
+
+    /* Elementos de lista en móvil */
+    nav ul#nav-list > li {
+        width: 100%;
+        flex: none; /* Importante para que no se estiren */
+        margin: 5px 0;
+    }
+
+    nav ul#nav-list > li > a {
+        font-size: 1.2rem;
+        padding: 15px;
+    }
+
+    /* SUBMENÚ MÓVIL (Efecto Acordeón) */
+    nav ul#nav-list li ul {
+        display: block; /* Necesario para que la animación de altura funcione */
+        position: static; /* Para que empuje el contenido hacia abajo */
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.4s ease-in-out;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        margin: 0;
+    }
+
+    /* Clase que se añade con JS al hacer clic */
+    nav ul#nav-list li ul.open {
+        max-height: 500px; /* Suficiente para el contenido */
+        opacity: 1;
+        margin: 10px 0;
+        padding: 5px 0;
+    }
+
+    nav ul li ul li a {
+        padding: 12px 20px;
+        color: #a8cfee;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    /* Indicador visual de que hay submenú */
+    nav ul#nav-list > li:has(ul) > a::after {
+        content: ' ▾';
+        font-size: 0.8em;
+        color: rgba(255,255,255,0.5);
+    }
+
+    /* Ajustes de secciones en móvil */
+    #section1, #section2, #faq-section { 
+        padding: 60px 20px; 
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    
+}
+
+@media (max-width: 900px) {
+    /* ... (mantén tu configuración de .menu-toggle y navList.active) ... */
+
+    nav ul#nav-list {
+        flex-direction: column;
+        justify-content: center;
+        gap: 0;
+        padding: 80px 0;
+        border-radius: 0;
+        width: 80%;
+    }
+
+    /* Reset de márgenes de escritorio para móvil */
+    nav ul#nav-list > li:first-child, 
+    nav ul#nav-list > li:last-child {
+        margin: 10px 0 !important;
+    }
+
+    nav ul#nav-list li ul {
+        position: static;
+        transform: none;
+        max-height: 0;
+        opacity: 0;
+        display: block; /* Necesario para que la animación de JS funcione */
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: none;
+        box-shadow: none;
+        width: 100%;
+        overflow: hidden;
+        transition: all 0.4s ease;
+    }
+
+    nav ul#nav-list li ul.open {
+        max-height: 300px;
+        opacity: 1;
+        margin: 10px 0;
+    }
+}
