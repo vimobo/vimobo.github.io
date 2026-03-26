@@ -11,7 +11,7 @@ const video = document.getElementById("introVideo");
     }, 500);
   });
 
-const items = document.querySelectorAll('.fade-in');
+const items = document.querySelectorAll('.fade-in, .fade-in2, .fade-in-shadow');
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -21,7 +21,53 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.1 // cuando el 10% del elemento es visible
+  threshold: 1 // cuando el 10% del elemento es visible
 });
 
 items.forEach(item => observer.observe(item));
+
+const toggle = document.getElementById("menu-toggle");
+const navList = document.getElementById("nav-list");
+
+toggle.addEventListener("click", () => {
+  navList.classList.toggle("active");
+  toggle.classList.toggle("active"); // anima icono
+});
+
+// Opcional: cerrar menú al pulsar un enlace
+document.querySelectorAll("#nav-list a").forEach(link => {
+  link.addEventListener("click", () => {
+    navList.classList.remove("active");
+    toggle.classList.remove("active");
+  });
+});
+
+const carouselSlide = document.querySelector(".carousel-slide");
+const carouselImages = document.querySelectorAll(".carousel-slide img");
+
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+
+let counter = 0;
+const size = carouselImages[0].clientWidth;
+
+function updateCarousel() {
+  carouselSlide.style.transform = `translateX(${-counter * size}px)`;
+}
+
+nextBtn.addEventListener("click", () => {
+  counter++;
+  if(counter >= carouselImages.length) counter = 0;
+  updateCarousel();
+});
+
+prevBtn.addEventListener("click", () => {
+  counter--;
+  if(counter < 0) counter = carouselImages.length - 1;
+  updateCarousel();
+});
+
+// Ajusta tamaño si cambias el tamaño de la ventana
+window.addEventListener("resize", () => {
+  updateCarousel();
+});
