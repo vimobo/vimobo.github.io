@@ -48,6 +48,8 @@ nav ul li {
     position: relative;
     margin: 1em;
     list-style: none;
+    width: 100px;
+    text-align: center;
 }
 
 nav ul li:hover{
@@ -69,30 +71,15 @@ nav ul li a {
     margin-left:3em;
 }
 
-nav ul li ul {
 
-display: none;               /* oculto por defecto */
-    position: absolute;
-    top: 100%;                   /* justo debajo del li padre */
-    left: 0;
-    min-width: 200px;            /* ancho mínimo */
-    border-radius: 5em;          /* mismo que el nav */
-    
-    /* Igual que el nav */
-    background-color: rgba(240, 248, 255, 0.3);
-    backdrop-filter: blur(20px);
-    
-    padding: 0.5em 0;
-    z-index: 20;
-}
 
 nav ul li ul {
+    display: flex;
     display: none;
-    position: absolute;
     top: 0;  /* justo debajo del li padre */
     left: 0;
-    width: 100%;
-    background-color: rgba(240, 248, 255, 0);
+    max-width: 20%;
+    background-color: rgba(240, 248, 255, 0.195);
     backdrop-filter: blur(20px);
     z-index: 20;
 }
@@ -119,8 +106,14 @@ nav ul li:hover > ul {
 
     position: absolute;
     display: block;
-        background-color: rgba(240, 248, 255, 0);
-    backdrop-filter: blur(20px);
+
+    
+}
+
+nav ul li ul li {
+
+
+
     
 }
 
