@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospedaje - LandLight</title> 
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul id="nav-list">
+                <li><a href="index.html">LandLight</a></li>
+                <li><a href="#">El Festival</a>
+                    <ul>
+                        <li><a href="historia.html">Historia</a></li>
+                        <li><a href="equipo.html">Equipo</a></li>
+                    </ul>
+                </li>
+                <li><a href="lugar.html">El Lugar</a></li>
+                <li><a href="talleres.html">Talleres</a></li>
+                <li><a href="#">Información</a>
+                    <ul>
+                        <li><a href="hospedaje.html">Hospedaje</a></li>
+                        <li><a href="#">Transparencia</a></li>
+                    </ul>
+                </li>
+                <li><a href="comoserarte.html">Cómo ser parte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="intro" class="intro">
+            <video id="introVideo" class="video-bg" autoplay muted>
+                <source src="./src/14844950_1920_1080_30fps.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <div id="space">
+            <video class="video-bg" autoplay muted loop>
+                <source src="./src/M2U00011mp4.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- Hero Section -->
+        <section id="hospedaje-hero" class="hospedaje-hero">
+            <div class="hospedaje-hero-content fade-in">
+                <h1>Dónde Descansar Entre la Magia</h1>
+                <p>Explora opciones de hospedaje cómodas y únicas para tu experiencia LandLight</p>
+            </div>
+        </section>
+
+        <!-- Filtros Interactivos -->
+        <section id="hospedaje-filters" class="hospedaje-filters fade-in">
+            <div class="filters-container">
+                <h2>Tipo de Alojamiento</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="tent">🏕️ Tienda</button>
+                    <button class="filter-btn" data-filter="van">🚐 Camper</button>
+                    <button class="filter-btn" data-filter="rural">🏡 Casa Rural</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid de Hospedajes -->
+        <section id="hospedaje-grid" class="hospedaje-grid-section">
+            <div class="hospedaje-grid">
+                <!-- Tienda de Campaña -->
+                <div class="hospedaje-card fade-in" data-type="tent">
+                    <div class="card-image">
+                        <img src="./src/000011.JPG" alt="Tienda de campaña">
+                        <div class="card-badge">🏕️ Tienda</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Tienda de Campaña</h3>
+                        <p class="card-description">Tienda de campaña cómoda en plena naturaleza. La forma más cercana de vivir LandLight bajo las estrellas.</p>
+                        <div class="card-features">
+                            <span class="feature">👥 2-4 personas</span>
+                            <span class="feature">💰 €40/noche</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Camper Van -->
+                <div class="hospedaje-card fade-in" data-type="van">
+                    <div class="card-image">
+                        <img src="./src/000026.JPG" alt="Camper Van">
+                        <div class="card-badge">🚐 Camper</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Camper Van</h3>
+                        <p class="card-description">Furgoneta camper totalmente equipada con cama, cocina y baño. ¡Tu hogar móvil para LandLight!</p>
+                        <div class="card-features">
+                            <span class="feature">👥 2-3 personas</span>
+                            <span class="feature">💰 €80/noche</span>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <!-- Casa Rural - Habitación -->
+                <div class="hospedaje-card fade-in" data-type="rural">
+                    <div class="card-image">
+                        <img src="./src/000035 (2).JPG" alt="Casa Rural">
+                        <div class="card-badge">🏡 Casa Rural</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Habitación en Casa Rural</h3>
+                        <p class="card-description">Habitación acogedora en una casa rural tradicional. Incluye desayuno y ambiente familiar.</p>
+                        <div class="card-features">
+                            <span class="feature">👥 2 personas</span>
+                            <span class="feature">💰 €60/noche</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hospedaje-card fade-in" data-type="rural">
+                    <div class="card-image">
+                        <img src="./src/000035 (2).JPG" alt="Casa Rural">
+                        <div class="card-badge">🏡 Casa Rural</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Habitación en Casa Rural</h3>
+                        <p class="card-description">Habitación acogedora en una casa rural tradicional. Incluye desayuno y ambiente familiar.</p>
+                        <div class="card-features">
+                            <span class="feature">👥 2 personas</span>
+                            <span class="feature">💰 €60/noche</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tienda Premium -->
+                <div class="hospedaje-card fade-in" data-type="tent">
+                    <div class="card-image">
+                        <img src="./src/03_N.png" alt="Tienda Glamping">
+                        <div class="card-badge">🏕️ Tienda</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Tienda Glamping</h3>
+                        <p class="card-description">Tienda con acabados premium, cama king-size y amenidades de lujo. Campismo de alta gama.</p>
+                        <div class="card-features">
+                            <span class="feature">👥 2 personas</span>
+                            <span class="feature">💰 €120/noche</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section id="hospedaje-info" class="hospedaje-info fade-in">
+            <div class="info-container">
+                <h2>ℹ️ Información Útil</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>📅 Fechas de Reserva</h3>
+                        <p>Las reservas abren el 1 de marzo. Recomendamos reservar con anticipación para obtener las mejores opciones.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🚗 Cómo Llegar</h3>
+                        <p>Todos los hospedajes están a menos de 10 minutos del evento. Contamos con parking gratuito para todos nuestros huéspedes.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎒 Qué Llevar</h3>
+                        <p>Ropa cómoda, artículos de aseo, linterna, protector solar. En invierno, abrígate bien. ¡La magia de LandLight es en cualquier estación!</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>💳 Cancelación</h3>
+                        <p>Cancelación gratuita hasta 7 días antes del evento. Después de esa fecha aplican cargos según política de cada hospedaje.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="hospedaje-cta" class="hospedaje-cta">
+            <div class="cta-content fade-in">
+                <h2>¿Listo para tu Experiencia?</h2>
+                <p>Elige tu tipo de hospedaje favorito y vive LandLight de la forma que desees</p>
+                <a href="comoserarte.html" class="cta-btn">Reservar Ahora</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>LandLight</h2>
+                <p>Experiencias únicas a través de la luz</p>
+            </div>
+            <div class="footer-links">
+                <h3>Enlaces</h3>
+                <ul>
+                    <li><a href="lugar.html">El Lugar</a></li>
+                    <li><a href="talleres.html">Talleres</a></li>
+                    <li><a href="comoserarte.html">Cómo ser parte</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Contacto</h3>
+                <div class="social-icons">
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">TikTok</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 LandLight</p>
+        </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+    <script>
+        // ==================== FILTRO DE HOSPEDAJES ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.hospedaje-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.dataset.filter;
+
+                    // Actualizar botón activo
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Filtrar cards
+                    cards.forEach(card => {
+                        if (filter === 'all' || card.dataset.type === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, 10);
+                        } else {
+                            card.classList.remove('visible');
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+
+            const ctaBtn = document.querySelector('.cta-btn');
+            if (ctaBtn) {
+                ctaBtn.addEventListener('click', () => {
+                    document.querySelector('.filter-buttons').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
