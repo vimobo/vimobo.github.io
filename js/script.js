@@ -218,3 +218,326 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// ==================== 5. FORMULARIO "CÓMO SER PARTE" - INTEGRACIÓN CON GOOGLE SHEETS ====================
+document.addEventListener('DOMContentLoaded', () => {
+    const formulario = document.getElementById('formulario-landlight');
+    
+    if (formulario) {
+        // Función de validación mejorada
+        const validarFormulario = () => {
+            let esValido = true;
+            
+            // Limpiar errores previos
+            document.querySelectorAll('.error-campo').forEach(el => el.remove());
+            document.querySelectorAll('.form-group').forEach(el => el.classList.remove('has-error'));
+            
+            // Validar nombre
+            const nombre = document.getElementById('nombre');
+            if (!nombre.value.trim()) {
+                mostrarError(nombre, 'El nombre es requerido');
+                esValido = false;
+            }
+            
+            // Validar email
+            const email = document.getElementById('email');
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim()) {
+                mostrarError(email, 'El email es requerido');
+                esValido = false;
+            } else if (!regexEmail.test(email.value)) {
+                mostrarError(email, 'Ingresa un email válido');
+                esValido = false;
+            }
+            
+            // Validar teléfono (permite: números, espacios, guiones, paréntesis, +)
+            const telefono = document.getElementById('telefono');
+            const telefonoValor = telefono.value.trim();
+            const regexTelefono = /^[\d\s\-\+\(\)]{7,}$/;
+            
+            if (telefonoValor) {
+                // Si hay valor, debe tener formato válido
+                if (!regexTelefono.test(telefonoValor)) {
+                    mostrarError(telefono, 'Ingresa un teléfono válido (mínimo 7 dígitos)');
+                    esValido = false;
+                }
+                // Validar que tenga al menos 7 dígitos
+                const soloDigitos = telefonoValor.replace(/\D/g, '');
+                if (soloDigitos.length < 7) {
+                    mostrarError(telefono, 'El teléfono debe tener al menos 7 dígitos');
+                    esValido = false;
+                }
+            }
+            
+            // Validar selects (opciones requeridas)
+            const tipoParticipacion = document.getElementById('tipo-participacion');
+            if (!tipoParticipacion.value) {
+                mostrarError(tipoParticipacion, 'Selecciona una opción de participación');
+                esValido = false;
+            }
+            
+            const disponibilidad = document.getElementById('disponibilidad');
+            if (!disponibilidad.value) {
+                mostrarError(disponibilidad, 'Selecciona tu disponibilidad');
+                esValido = false;
+            }
+            
+            const especialidad = document.getElementById('especialidad');
+            if (!especialidad.value) {
+                mostrarError(especialidad, 'Selecciona tu área de expertise');
+                esValido = false;
+            }
+            
+            // Validar experiencia (textarea requerida)
+            const experiencia = document.getElementById('experiencia');
+            if (!experiencia.value.trim()) {
+                mostrarError(experiencia, 'Cuéntanos qué te atrae de LandLight');
+                esValido = false;
+            }
+            
+            return esValido;
+        };
+        
+        // Función para mostrar errores
+        const mostrarError = (elemento, mensaje) => {
+            const formGroup = elemento.closest('.form-group');
+            if (formGroup) {
+                formGroup.classList.add('has-error');
+                const errorDiv = document.createElement('span');
+                errorDiv.className = 'error-campo';
+                errorDiv.textContent = mensaje;
+                errorDiv.style.cssText = `
+                    display: block;
+                    color: #ff6b6b;
+                    font-size: 12px;
+                    margin-top: 5px;
+                    font-weight: 500;
+                `;
+                elemento.parentNode.insertBefore(errorDiv, elemento.nextSibling);
+            }
+        };
+        
+        // Agregar estilos CSS dinámicos
+        const style = document.createElement('style');
+        style.textContent = `
+            .form-group.has-error input,
+            .form-group.has-error select,
+            .form-group.has-error textarea {
+                border-color: #ff6b6b !important;
+                background-color: #fff5f5;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        formulario.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Validar antes de enviar
+            if (!validarFormulario()) {
+                return;
+            }
+            
+            // URL del App Script de Google
+            const apiUrl = 'https://script.google.com/macros/s/AKfycbwZFGPQkZuTU-IuiQ_HUqc6_NXpJFJabcTCMAyr-nuFnGSR-_-MkyjFJf9uX_0q1R4YsQ/exec';
+            
+            // Recopilar datos del formulario
+            const formData = {
+                nombre: document.getElementById('nombre').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                telefono: document.getElementById('telefono').value.trim(),
+                tipo_participacion: document.getElementById('tipo-participacion').value,
+                experiencia: document.getElementById('experiencia').value.trim(),
+                especialidad: document.getElementById('especialidad').value,
+                disponibilidad: document.getElementById('disponibilidad').value,
+                redes_sociales: document.getElementById('redes').value.trim(),
+                mensaje: document.getElementById('mensaje').value.trim(),
+                tipo_formulario: 'inscripcion',
+                timestamp: new Date().toLocaleString('es-ES')
+            };
+            
+            try {
+                // Mostrar indicador de envío
+                const submitBtn = formulario.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Enviando...';
+                submitBtn.disabled = true;
+                
+                // Enviar datos al API
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(formData).toString()
+                });
+                
+                // Mostrar mensaje de éxito
+                formulario.innerHTML = `
+                    <div class="success-message fade-in" style="text-align: center; padding: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; color: white;">
+                        <h3 style="margin: 0 0 15px 0; font-size: 24px;">¡Gracias por tu interés!</h3>
+                        <p style="margin: 0 0 10px 0; font-size: 16px;">Hemos recibido tu solicitud correctamente.</p>
+                        <p style="margin: 0; font-size: 14px; opacity: 0.9;">Nos pondremos en contacto contigo pronto para conocer más sobre tu participación en LandLight.</p>
+                    </div>
+                `;
+                
+            } catch (error) {
+                console.error('Error al enviar formulario:', error);
+                
+                // Mostrar mensaje de error
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.style.cssText = `
+                    background-color: #ff6b6b;
+                    color: white;
+                    padding: 15px;
+                    border-radius: 5px;
+                    margin-top: 20px;
+                    text-align: center;
+                `;
+                errorDiv.textContent = 'Hubo un error al enviar tu solicitud. Por favor, intenta nuevamente.';
+                formulario.appendChild(errorDiv);
+                
+                // Restaurar botón
+                const submitBtn = formulario.querySelector('button[type="submit"]');
+                submitBtn.textContent = 'Enviar Mi Solicitud';
+                submitBtn.disabled = false;
+            }
+        });
+    }
+});
+
+// ==================== 6. FORMULARIO "TRANSPARENCIA" - INTEGRACIÓN CON GOOGLE SHEETS ====================
+document.addEventListener('DOMContentLoaded', () => {
+    const formularioTransparencia = document.querySelector('.transparency-form');
+    
+    if (formularioTransparencia) {
+        // Función de validación mejorada
+        const validarFormularioTransparencia = () => {
+            let esValido = true;
+            
+            // Limpiar errores previos
+            document.querySelectorAll('.transparency-form .error-campo').forEach(el => el.remove());
+            document.querySelectorAll('.transparency-form .form-group').forEach(el => el.classList.remove('has-error'));
+            
+            // Validar nombre
+            const nombre = document.getElementById('nombre');
+            if (!nombre || !nombre.value.trim()) {
+                mostrarErrorTransparencia(nombre, 'El nombre es requerido');
+                esValido = false;
+            }
+            
+            // Validar email
+            const email = document.getElementById('email');
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !email.value.trim()) {
+                mostrarErrorTransparencia(email, 'El email es requerido');
+                esValido = false;
+            } else if (!regexEmail.test(email.value)) {
+                mostrarErrorTransparencia(email, 'Ingresa un email válido');
+                esValido = false;
+            }
+            
+            // Validar consulta
+            const consulta = document.getElementById('consulta');
+            if (!consulta || !consulta.value.trim()) {
+                mostrarErrorTransparencia(consulta, 'Por favor, escribe tu consulta');
+                esValido = false;
+            } else if (consulta.value.trim().length < 10) {
+                mostrarErrorTransparencia(consulta, 'La consulta debe tener al menos 10 caracteres');
+                esValido = false;
+            }
+            
+            return esValido;
+        };
+        
+        // Función para mostrar errores
+        const mostrarErrorTransparencia = (elemento, mensaje) => {
+            if (!elemento) return;
+            const formGroup = elemento.closest('.form-group');
+            if (formGroup) {
+                formGroup.classList.add('has-error');
+                const errorDiv = document.createElement('span');
+                errorDiv.className = 'error-campo';
+                errorDiv.textContent = mensaje;
+                errorDiv.style.cssText = `
+                    display: block;
+                    color: #ff6b6b;
+                    font-size: 12px;
+                    margin-top: 5px;
+                    font-weight: 500;
+                `;
+                elemento.parentNode.insertBefore(errorDiv, elemento.nextSibling);
+            }
+        };
+        
+        formularioTransparencia.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Validar antes de enviar
+            if (!validarFormularioTransparencia()) {
+                return;
+            }
+            
+            // URL del App Script de Google
+            const apiUrl = 'https://script.google.com/macros/s/AKfycbwZFGPQkZuTU-IuiQ_HUqc6_NXpJFJabcTCMAyr-nuFnGSR-_-MkyjFJf9uX_0q1R4YsQ/exec';
+            
+            // Recopilar datos del formulario
+            const formData = {
+                nombre: document.getElementById('nombre').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                consulta: document.getElementById('consulta').value.trim(),
+                tipo_formulario: 'transparencia',
+                timestamp: new Date().toLocaleString('es-ES')
+            };
+            
+            try {
+                // Mostrar indicador de envío
+                const submitBtn = formularioTransparencia.querySelector('button[type="submit"]');
+                submitBtn.textContent = 'Enviando...';
+                submitBtn.disabled = true;
+                
+                // Enviar datos al API
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(formData).toString()
+                });
+                
+                // Mostrar mensaje de éxito
+                formularioTransparencia.innerHTML = `
+                    <div class="success-message fade-in" style="text-align: center; padding: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; color: white;">
+                        <h3 style="margin: 0 0 15px 0; font-size: 24px;">¡Gracias por tu consulta!</h3>
+                        <p style="margin: 0 0 10px 0; font-size: 16px;">Hemos recibido tu pregunta correctamente.</p>
+                        <p style="margin: 0; font-size: 14px; opacity: 0.9;">Te responderemos en la brevedad posible a la dirección de email proporcionada.</p>
+                    </div>
+                `;
+                
+            } catch (error) {
+                console.error('Error al enviar consulta de transparencia:', error);
+                
+                // Mostrar mensaje de error
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.style.cssText = `
+                    background-color: #ff6b6b;
+                    color: white;
+                    padding: 15px;
+                    border-radius: 5px;
+                    margin-top: 20px;
+                    text-align: center;
+                `;
+                errorDiv.textContent = 'Hubo un error al enviar tu consulta. Por favor, intenta nuevamente.';
+                formularioTransparencia.appendChild(errorDiv);
+                
+                // Restaurar botón
+                const submitBtn = formularioTransparencia.querySelector('button[type="submit"]');
+                submitBtn.textContent = 'Enviar Consulta';
+                submitBtn.disabled = false;
+            }
+        });
+    }
+});
+

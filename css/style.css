@@ -2002,7 +2002,7 @@ nav ul#nav-list li ul li a:hover {
 
 .transparency-header p {
     font-size: 1.1rem;
-    color: #5a3a3a;
+    color: #ef9c9c;
     opacity: 0.9;
 }
 
@@ -2259,13 +2259,13 @@ nav ul#nav-list li ul li a:hover {
 }
 
 .transparency-text h3 {
-    color: rgb(165, 115, 115);
+    color: rgb(255, 212, 212);
     font-size: 1.3rem;
     margin-bottom: 15px;
 }
 
 .transparency-text p {
-    color: #463030;
+    color: #632e2e;
     line-height: 1.8;
     font-size: 0.98rem;
 }
