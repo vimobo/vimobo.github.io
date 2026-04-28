@@ -81,6 +81,7 @@ nav ul#nav-list li ul {
     transform: translateX(-50%);
     
     /* Ajuste de forma: Menos alto, más ancho para romper el efecto 'huevo' */
+    width: auto;
     width: max-content;
     min-width: 100px; 
     padding: 15px 10px; /* Más aire a los lados, menos arriba/abajo */
@@ -309,10 +310,22 @@ nav ul#nav-list li ul li a:hover {
 .description p { font-size: 0.95rem; color: #ccbfa4; }
 
 /* ==================== ANIMACIONES ==================== */
-.fade-in, .fade-in2 {
+.fade-in, .fade-in2,
+.fade-up,
+.fade-left {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+    transition: all 0.8s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in {
+    opacity: 1 !important;
+    transform: none !important;
 }
 
 .fade-in.visible, .fade-in2.visible {
@@ -332,6 +345,55 @@ nav ul#nav-list li ul li a:hover {
     opacity: 1;
     filter: blur(0);
     transform: scale(1);
+}
+
+.letter-reveal {
+    overflow-wrap: anywhere;
+}
+
+.letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: letterFadeUp 0.2s ease forwards;
+}
+
+@keyframes letterFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.letter-reveal-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.85em);
+    transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.letter-reveal.letters-visible .letter-reveal-char {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#section2 p.letter-reveal .letter-reveal-char {
+    transition-duration: 0.48s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .letter-reveal-char {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }
 /* ==================== SECCIÓN PREGUNTAS FRECUENTES (CORREGIDA) ==================== */
 
@@ -442,31 +504,35 @@ nav ul#nav-list li ul li a:hover {
   align-items: center;
   width: 100%;
   background: transparent;
-  padding: 40px 0;
+  padding: 40px 20px;
+  z-index: 5;
+  position: relative;
 }
 
 .map-card {
   position: relative;
-  width: 90%;
+  width: 100%;
   max-width: 900px;
-  height: 450px; /* Altura fija para el recorte */
+  height: 550px;
   border-radius: 30px;
-  overflow: hidden; /* Esto corta lo que sobresalga */
+  overflow: visible;
   background: #1a1a1a;
   box-shadow: 0 25px 50px rgba(0,0,0,0.5);
 }
 
 #googleMap {
   width: 100%;
-  height: 110%; /* Lo hacemos más alto para que el recorte funcione */
-  margin-top: -50px; /* Empujamos la info hacia arriba, fuera del borde */
+  height: 100%;
+  margin: 0;
+  padding: 0;
   pointer-events: none;
   filter: brightness(0.8);
   transition: all 0.5s ease;
+  border-radius: 30px;
+  display: block;
 }
 
 .map-card.active #googleMap {
-  margin-top: 0; /* Opcional: que baje cuando se active, o déjalo en -50px */
   filter: brightness(1);
   pointer-events: auto;
 }
@@ -493,14 +559,27 @@ nav ul#nav-list li ul li a:hover {
   transform: scale(1.03);
 }
 
-.map-card.active #googleMap {
-  pointer-events: auto;
-  filter: brightness(1);
-}
-
 .map-card.active .map-overlay {
   opacity: 0;
   pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .map-wrapper {
+    padding: 20px 10px;
+  }
+
+  .map-card {
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
+  }
+
+  #googleMap {
+    height: 100%;
+    margin: 0;
+    margin-left: 0;
+  }
 }
 /* ==================== FOOTER ==================== */
 .footer {
@@ -564,6 +643,185 @@ nav ul#nav-list li ul li a:hover {
 .menu-toggle.active .bar:nth-child(1) { transform: rotate(45deg); }
 .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
 .menu-toggle.active .bar:nth-child(3) { transform: rotate(-45deg); }
+
+.music-toggle {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    z-index: 45;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: rgba(20, 20, 20, 0.72);
+    color: white;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.music-toggle:hover {
+    transform: translateY(-2px);
+    background: rgba(20, 20, 20, 0.9);
+}
+
+.music-toggle.playing {
+    background: rgba(126, 73, 73, 0.82);
+}
+
+.ambient-hint {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 5.6rem;
+    z-index: 44;
+    width: min(320px, calc(100vw - 2rem));
+    padding: 0.95rem 1rem;
+    border-radius: 18px;
+    background: rgba(255, 244, 236, 0.96);
+    color: rgb(90, 62, 62);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(126, 73, 73, 0.15);
+    animation: ambientHintIn 0.7s ease 0.35s both;
+}
+
+.ambient-hint p {
+    margin: 0;
+    padding-right: 1.4rem;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.ambient-hint-arrow {
+    position: absolute;
+    right: 1.7rem;
+    bottom: -12px;
+    width: 22px;
+    height: 22px;
+    background: rgba(255, 244, 236, 0.96);
+    border-right: 1px solid rgba(126, 73, 73, 0.15);
+    border-bottom: 1px solid rgba(126, 73, 73, 0.15);
+    transform: rotate(45deg);
+}
+
+.ambient-hint-close {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.55rem;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    color: rgb(126, 73, 73);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.ambient-hint.is-hidden {
+    display: none;
+}
+
+@keyframes ambientHintIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== BOCADILLO DE BIENVENIDA ==================== */
+.music-button-wrapper {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+}
+
+.ambient-popup {
+    position: fixed;
+    background: rgba(255, 216, 216, 0.447);
+    color: white;
+    padding: 0.6rem 1rem;
+    bottom: 6rem;
+    right: 3rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: normal;
+    max-width: 100px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: tooltipSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
+    pointer-events: none;
+}
+
+.ambient-popup::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid rgba(50, 50, 50, 0.95);
+}
+
+.ambient-popup.hidden {
+    display: none;
+}
+
+@keyframes tooltipSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popupSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes arrowBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
 
 
 /* ==================== MEDIA QUERIES Y CORRECCIONES ==================== */
@@ -817,6 +1075,7 @@ nav ul#nav-list li ul li a:hover {
 }
 
 .place-text {
+    margin:0px;
     padding: 1.5em 1em;
     border-radius: 30px;
     background: rgba(219,196,179,0.18);
@@ -902,7 +1161,6 @@ nav ul#nav-list li ul li a:hover {
         font-size: 0.95rem;
         text-align: left;
     }
-}
 
 /* ==================== SECCIÓN TALLERES (ACORDEONES) ==================== */
 #talleres-section {
@@ -946,11 +1204,12 @@ nav ul#nav-list li ul li a:hover {
 /* Botón del taller (encabezado del acordeón) */
 .taller-header {
     width: 100%;
-    padding: 20px 25px;
+    padding: 20px 64px 20px 25px;
     background: none;
     border: none;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 32px;
+    gap: 12px;
     align-items: center;
     cursor: pointer;
     font-size: 1.2rem;
@@ -960,11 +1219,16 @@ nav ul#nav-list li ul li a:hover {
     position: relative;
 }
 
+.taller-header span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
 .taller-header::after {
     content: '+';
     font-size: 1.5rem;
-    position: absolute;
-    right: 25px;
+    position: static;
+    justify-self: end;
     transition: transform 0.3s ease;
 }
 
@@ -1069,7 +1333,9 @@ nav ul#nav-list li ul li a:hover {
     }
     
     .taller-header {
-        padding: 15px 20px;
+        padding: 15px 14px 15px 18px;
+        grid-template-columns: minmax(0, 1fr) 28px;
+        gap: 10px;
         font-size: 1.1rem;
     }
     
@@ -1090,6 +1356,10 @@ nav ul#nav-list li ul li a:hover {
 }
 
 @media (max-width: 600px) {
+    .taller-header {
+        text-align: left;
+    }
+
     .taller-body {
         grid-template-columns: 1fr;
         gap: 1em;
@@ -1328,9 +1598,8 @@ nav ul#nav-list li ul li a:hover {
 /* Galería de fotos dispersas */
 .team-gallery {
     position: relative;
-    height: 900px;
-    margin-bottom: 3em;
-}
+min-height: 900px;
+margin-bottom: 150px;}
 
 .team-photo {
     position: absolute;
@@ -1342,6 +1611,9 @@ nav ul#nav-list li ul li a:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     animation: fallDown 0.8s ease-out forwards;
+    opacity: 0;
+    animation: fallDown 0.8s ease-out forwards;
+
 }
 
 .team-photo:hover {
@@ -1377,14 +1649,14 @@ nav ul#nav-list li ul li a:hover {
 }
 
 .team-photo-2 {
-    top: 50px;
-    left: 22%;
+    top: 70px;
+    left: 30%;
     transform: rotate(8deg);
 }
 
 .team-photo-3 {
-    top: 120px;
-    left: 39%;
+    top: 240px;
+    left: 10%;
     transform: rotate(-5deg);
 }
 
@@ -1395,13 +1667,13 @@ nav ul#nav-list li ul li a:hover {
 }
 
 .team-photo-5 {
-    top: 80px;
+    top: 60px;
     right: 8%;
     transform: rotate(-10deg);
 }
 
 .team-photo-6 {
-    top: 350px;
+    top: 600px;
     left: 8%;
     transform: rotate(10deg);
 }
@@ -1510,9 +1782,10 @@ nav ul#nav-list li ul li a:hover {
 
 /* ==================== PÁGINA DE HISTORIA ====================*/
 .history-fullscreen-carousel {
+    padding-top: 10vh;
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 110vh;
     overflow: hidden;
     background: linear-gradient(135deg, rgba(126, 73, 73, 0.2), rgba(219, 196, 179, 0.2));
 }
@@ -1797,7 +2070,7 @@ nav ul#nav-list li ul li a:hover {
 
     .inner-carousel {
         max-height: 400px;
-        overflow: hidden;
+        overflow: visible;
         border-radius: 15px;
     }
 
@@ -1840,6 +2113,7 @@ nav ul#nav-list li ul li a:hover {
     }
 
     .inner-carousel-wrapper {
+        height: 250px;
         min-height: 250px;
         gap: 10px;
         overflow: hidden;
@@ -1847,8 +2121,9 @@ nav ul#nav-list li ul li a:hover {
     }
 
     .inner-carousel {
+        height: 100%;
         max-height: 300px;
-        overflow: hidden;
+        overflow: visible;
         border-radius: 15px;
     }
 
@@ -2656,4 +2931,211 @@ nav ul#nav-list li ul li a:hover {
     .cta-content p {
         font-size: 1rem;
     }
+}
+
+/* ==================== CAPA DE COMPATIBILIDAD ==================== */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    min-width: 320px;
+}
+
+#intro,
+.hospedaje-hero,
+.team-hero {
+    min-height: -webkit-fill-available;
+}
+
+#intro,
+.video-bg {
+    height: 100%;
+    min-height: -webkit-fill-available;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+nav ul#nav-list,
+nav ul#nav-list li ul,
+.map-overlay,
+.place-content,
+.edition-description,
+.hospedaje-filters {
+    -webkit-backdrop-filter: blur(15px);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    nav ul#nav-list,
+    nav ul#nav-list li ul,
+    .map-overlay,
+    .place-content,
+    .edition-description,
+    .hospedaje-filters {
+        background-color: rgba(35, 30, 30, 0.88);
+    }
+
+    .place-text,
+    .edition-description,
+    .hospedaje-filters {
+        background-color: rgba(255, 244, 236, 0.95);
+    }
+}
+
+.faq-answer,
+.taller-content {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.active .faq-answer,
+.taller-item.active .taller-content {
+    max-height: 1400px;
+}
+
+@supports (grid-template-rows: 0fr) {
+    .faq-answer,
+    .taller-content {
+        display: grid;
+        max-height: none;
+        overflow: visible;
+        transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-item:not(.active) .faq-answer,
+    .taller-item:not(.active) .taller-content {
+        grid-template-rows: 0fr;
+    }
+
+    .faq-item.active .faq-answer,
+    .taller-item.active .taller-content {
+        grid-template-rows: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    nav ul#nav-list {
+        height: 100vh;
+        min-height: -webkit-fill-available;
+        max-width: 360px;
+        background: rgba(10, 10, 10, 0.86);
+    }
+
+    nav ul#nav-list > li.has-submenu > a::after {
+        content: ' \25BE';
+        font-size: 0.8em;
+        color: rgba(255,255,255,0.65);
+    }
+
+    nav ul#nav-list > li:has(ul) > a::after {
+        content: ' \25BE';
+        font-size: 0.8em;
+        color: rgba(255,255,255,0.65);
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul#nav-list {
+        width: 88%;
+    }
+
+    .music-toggle {
+        right: 1rem;
+        bottom: 1rem;
+        max-width: calc(100% - 2rem);
+        padding: 0.65rem 0.85rem;
+        font-size: 0.85rem;
+    }
+
+    .ambient-hint {
+        right: 1rem;
+        bottom: 4.9rem;
+        width: min(290px, calc(100vw - 2rem));
+        padding: 0.85rem 0.9rem;
+    }
+
+    .ambient-hint p {
+        font-size: 0.88rem;
+    }
+
+    .carousel-btn,
+    .history-carousel-btn {
+        padding: 0;
+        width: 42px;
+        height: 42px;
+        font-size: 1.3rem;
+    }
+
+    .map-card {
+        height: 320px;
+        border-radius: 18px;
+    }
+
+    .transparency-grid,
+    .sustainability-grid,
+    .social-stats,
+    .reports-grid,
+    .hospedaje-grid,
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@supports not (aspect-ratio: 1 / 1) {
+    .place-image {
+        height: 300px;
+    }
+
+    @media (max-width: 768px) {
+        .place-image {
+            height: 220px;
+        }
+    }
+}
+
+@supports not (object-fit: cover) {
+    .video-bg,
+    .carousel-slide img,
+    .gallery-item img,
+    .taller-image img,
+    .taller-preview img,
+    .card-image img {
+        height: auto;
+    }
+}
+
+
+.fade-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-up-strong {
+    transform: translateY(-60px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.fade-up-soft {
+    transform: translateY(-20px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
 }

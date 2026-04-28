@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="./src/landlight-music.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-button-wrapper">
+        <button id="musicToggle" class="music-toggle" type="button" aria-pressed="false">Activar ambiente</button>
+    </div>
     <header>
         <nav>
             <div class="menu-toggle" id="menu-toggle">
@@ -52,51 +58,51 @@
             <h2 class="fade-in-shadow">Conoce Nuestro Equipo</h2>
             
             <div class="team-container">
-                <div class="team-intro fade-in">
+                <div class="team-intro fade-left">
                     <p>Un equipo creativo y diverso, unido por la pasión de crear experiencias luminosas inolvidables.</p>
                 </div>
 
                 <!-- Galería de imágenes dispersas -->
                 <div class="team-gallery">
-                    <div class="team-photo team-photo-1" style="animation-delay: 0.1s;">
+                    <div class="team-photo team-photo-1" style="animation-delay: 0.5s;">
                         <img src="./src/000011.JPG" alt="Miembro del equipo 1">
                         <div class="photo-label">Miembro 1</div>
                     </div>
-                    <div class="team-photo team-photo-2" style="animation-delay: 0.2s;">
+                    <div class="team-photo team-photo-2" style="animation-delay: 3s;">
                         <img src="./src/000026.JPG" alt="Miembro del equipo 2">
                         <div class="photo-label">Miembro 2</div>
                     </div>
-                    <div class="team-photo team-photo-3" style="animation-delay: 0.3s;">
+                    <div class="team-photo team-photo-3" style="animation-delay: 1.5s;">
                         <img src="./src/000035 (2).JPG" alt="Miembro del equipo 3">
                         <div class="photo-label">Miembro 3</div>
                     </div>
-                    <div class="team-photo team-photo-4" style="animation-delay: 0.4s;">
+                    <div class="team-photo team-photo-4" style="animation-delay: 2s;">
                         <img src="./src/03_N.png" alt="Miembro del equipo 4">
                         <div class="photo-label">Miembro 4</div>
                     </div>
-                    <div class="team-photo team-photo-5" style="animation-delay: 0.5s;">
+                    <div class="team-photo team-photo-5" style="animation-delay: 4s;">
                         <img src="./src/04_N.png" alt="Miembro del equipo 5">
                         <div class="photo-label">Miembro 5</div>
                     </div>
-                    <div class="team-photo team-photo-6" style="animation-delay: 0.6s;">
+                    <div class="team-photo team-photo-6" style="animation-delay: 1s;">
                         <img src="./src/07_N.png" alt="Miembro del equipo 6">
                         <div class="photo-label">Miembro 6</div>
                     </div>
-                    <div class="team-photo team-photo-7" style="animation-delay: 0.7s;">
+                    <div class="team-photo team-photo-7" style="animation-delay: 2.5s;">
                         <img src="./src/11_N.png" alt="Miembro del equipo 7">
                         <div class="photo-label">Miembro 7</div>
                     </div>
-                    <div class="team-photo team-photo-8" style="animation-delay: 0.8s;">
+                    <div class="team-photo team-photo-8" style="animation-delay: 3.5s;">
                         <img src="./src/15_N.png" alt="Miembro del equipo 8">
                         <div class="photo-label">Miembro 8</div>
                     </div>
-                    <div class="team-photo team-photo-9" style="animation-delay: 0.9s;">
+                    <div class="team-photo team-photo-9" style="animation-delay: 4.5s;">
                         <img src="./src/patron-transparente-lineas-organicas-irregulares-color-naranja_1409-4190.avif" alt="Patrón del equipo">
                         <div class="photo-label">Patrón</div>
                     </div>
                 </div>
 
-                <div class="team-description fade-in">
+                <div class="team-description">
                     <h3>Equipo LandLight</h3>
                     <p>
                         Somos un equipo multidisciplinario apasionado por la innovación, la luz y las experiencias transformadoras. Cada miembro aporta su expertise único para crear LandLight, un evento donde el arte, la tecnología y la naturaleza convergen en perfecta armonía.
@@ -123,18 +129,21 @@
             <div class="footer-links">
                 <h3>Enlaces</h3>
                 <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="historia.html">Historia</a></li>
+                    <li><a href="equipo.html">Equipo</a></li>
                     <li><a href="lugar.html">El Lugar</a></li>
                     <li><a href="talleres.html">Talleres</a></li>
+                    <li><a href="hospedaje.html">Hospedaje</a></li>
+                    <li><a href="transparencia.html">Transparencia</a></li>
                     <li><a href="comoserarte.html">Cómo ser parte</a></li>
-                    <li><a href="#">Contacto</a></li>
                 </ul>
             </div>
             <div class="footer-social">
                 <h3>Contacto</h3>
                 <div class="social-icons">
-                    <a href="#">Instagram</a>
-                    <a href="#">Twitter</a>
-                    <a href="#">TikTok</a>
+                    <a href="https://www.instagram.com/landlight.fest/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="mailto:landlight.fest@gmail.com">landlight.fest@gmail.com</a>
                 </div>
             </div>
         </div>

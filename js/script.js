@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
+
+        if (link.nextElementSibling && link.nextElementSibling.tagName === 'UL') {
+            link.parentElement.classList.add('has-submenu');
+            link.setAttribute('aria-haspopup', 'true');
+            link.setAttribute('aria-expanded', 'false');
+        }
         
         // Comparar si el href coincide con la página actual
         if (href === currentPage || (currentPage === '' && href === 'index.html')) {
@@ -29,40 +35,131 @@ if (video && intro) {
     });
 }
 
-// ==================== 2. ANIMACIONES AL HACER SCROLL ====================
-const animItems = document.querySelectorAll('.fade-in, .fade-in2, .fade-in-shadow');
+// ==================== MÚSICA DE FONDO (INDEX) ====================
+const backgroundMusic = document.getElementById("backgroundMusic");
+const musicToggle = document.getElementById("musicToggle");
 
-const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            obs.unobserve(entry.target);
-        }
+// ==================== BOCADILLO DE BIENVENIDA (INDEX) ====================
+const ambientPopup = document.getElementById("ambientPopup");
+
+// Mostrar el bocadillo solo en la página de index, después del video intro
+if (ambientPopup && (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/'))) {
+    // Mostrar bocadillo cuando termina el video intro
+    if (video && intro) {
+        video.addEventListener("ended", () => {
+            if (!localStorage.getItem('ambientPopupDismissed')) {
+                ambientPopup.style.display = 'block';
+            }
+        });
+    } else {
+        // Fallback: mostrar después de 3 segundos si no hay video
+        setTimeout(() => {
+            if (!localStorage.getItem('ambientPopupDismissed')) {
+                ambientPopup.style.display = 'block';
+            }
+        }, 3000);
+    }
+    
+    // Cerrar bocadillo cuando se hace click en el botón de música
+    if (musicToggle) {
+    musicToggle.addEventListener('click', () => {
+        ambientPopup.classList.add('hidden');
+        localStorage.setItem('ambientPopupDismissed', 'true');
     });
-}, { threshold: 0.1 });
+}
+} else if (ambientPopup) {
+    // Ocultar bocadillo si no está en index
+    ambientPopup.style.display = 'none';
+}
 
-animItems.forEach(item => observer.observe(item));
+if (backgroundMusic && musicToggle) {
+    backgroundMusic.volume = 0.35;
+
+    const setMusicState = (isPlaying) => {
+        musicToggle.textContent = isPlaying ? "Pausar ambiente" : "Activar ambiente";
+        musicToggle.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+        musicToggle.classList.toggle("playing", isPlaying);
+    };
+
+    const playMusic = () => {
+        const playRequest = backgroundMusic.play();
+
+        if (playRequest && typeof playRequest.then === "function") {
+            playRequest
+                .then(() => setMusicState(true))
+                .catch(() => setMusicState(false));
+        } else {
+            setMusicState(true);
+        }
+    };
+
+    playMusic();
+
+    musicToggle.addEventListener("click", () => {
+    // 1. Cerrar popup SI existe
+    if (ambientPopup && !localStorage.getItem('ambientPopupDismissed')) {
+        ambientPopup.classList.add('hidden');
+        localStorage.setItem('ambientPopupDismissed', 'true');
+    }
+
+    // 2. Controlar música
+    if (backgroundMusic.paused) {
+        playMusic();
+    } else {
+        backgroundMusic.pause();
+        setMusicState(false);
+    }
+});
+}
+
+// ==================== 2. ANIMACIONES AL HACER SCROLL ====================
+// ==================== 2. ANIMACIONES AL HACER SCROLL ====================
+document.addEventListener('DOMContentLoaded', () => {
+    const animItems = document.querySelectorAll(
+        '.fade-up, .fade-left, .fade-in'
+    );
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        animItems.forEach(item => observer.observe(item));
+    } else {
+        animItems.forEach(item => item.classList.add('visible'));
+    }
+});
 
 // ==================== 3. NAVEGACIÓN Y SUBMENÚS (MÓVIL) ====================
 // Manejo del Menú Hamburguesa
 const toggle = document.getElementById("menu-toggle");
 const navList = document.getElementById("nav-list");
 
-toggle.addEventListener("click", () => {
-    navList.classList.toggle("active");
-    toggle.classList.toggle("active");
-});
+if (toggle && navList) {
+    toggle.addEventListener("click", () => {
+        navList.classList.toggle("active");
+        toggle.classList.toggle("active");
+    });
+}
 
 // Lógica de Submenús (Solo para Móvil)
 const menuLinks = document.querySelectorAll('#nav-list > li > a');
 
 menuLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-        if (window.innerWidth <= 900) {
-            const submenu = link.nextElementSibling;
-            if (submenu && submenu.tagName === 'UL') {
-                e.preventDefault(); // Evita que navegue si hay submenú
+        const submenu = link.nextElementSibling;
+
+        if (submenu && submenu.tagName === 'UL') {
+            e.preventDefault(); // Evita que navegue si hay submenú
+
+            if (window.innerWidth <= 900) {
                 submenu.classList.toggle('open');
+                link.setAttribute('aria-expanded', submenu.classList.contains('open') ? 'true' : 'false');
             }
         }
     });
@@ -84,17 +181,21 @@ if (carouselSlide && carouselImages.length > 0) {
         carouselSlide.style.transform = `translateX(${-counter * size}px)`;
     };
 
-    nextBtn.addEventListener("click", () => {
-        counter++;
-        if (counter >= carouselImages.length) counter = 0;
-        updateCarousel();
-    });
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            counter++;
+            if (counter >= carouselImages.length) counter = 0;
+            updateCarousel();
+        });
+    }
 
-    prevBtn.addEventListener("click", () => {
-        counter--;
-        if (counter < 0) counter = carouselImages.length - 1;
-        updateCarousel();
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            counter--;
+            if (counter < 0) counter = carouselImages.length - 1;
+            updateCarousel();
+        });
+    }
 
     window.addEventListener("resize", updateCarousel);
 }
@@ -104,6 +205,7 @@ const faqItems = document.querySelectorAll('.faq-item');
 
 faqItems.forEach(item => {
     const questionBtn = item.querySelector('.faq-question');
+    if (!questionBtn) return;
     
     questionBtn.addEventListener('click', () => {
         // Saber si el elemento al que dimos clic ya estaba abierto
@@ -127,6 +229,7 @@ const tallerItems = document.querySelectorAll('.taller-item');
 tallerItems.forEach(item => {
     const headerBtn = item.querySelector('.taller-header');
     const previewBtn = item.querySelector('.taller-preview');
+    if (!headerBtn || !previewBtn) return;
     
     const toggleTaller = () => {
         const isItemOpen = item.classList.contains('active');
@@ -153,20 +256,56 @@ tallerItems.forEach(item => {
 });
 
 // ==================== ANIMACIÓN DE TYPING (ESCRITURA) ====================
-function typeWriter(element, speed = 30) {
-    const text = element.innerHTML;
+function typeWriter(element, speed = 5) {
+    const text = element.textContent;
     element.innerHTML = '';
     let index = 0;
 
     function type() {
         if (index < text.length) {
-            element.innerHTML += text.charAt(index);
+            const span = document.createElement('span');
+            span.textContent = text.charAt(index);
+            span.classList.add('letter');
+            span.style.animationDelay = `${index * 0.01}s`;
+
+            element.appendChild(span);
+
             index++;
-            setTimeout(type, speed);
+            setTimeout(type, speed + Math.random() * 10);
         }
     }
 
     type();
+}
+
+function observeOrRun(element, callback) {
+    if (!element) return;
+
+    if (!('IntersectionObserver' in window)) {
+        callback(element);
+        return;
+    }
+
+    const typingObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('typed')) {
+                callback(entry.target);
+                typingObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    typingObserver.observe(element);
+}
+
+function encodeFormData(data) {
+    if ('URLSearchParams' in window) {
+        return new URLSearchParams(data).toString();
+    }
+
+    return Object.keys(data).map(key => (
+        encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+    )).join('&');
 }
 
 // Aplicar typing animation cuando el elemento sea visible
@@ -175,47 +314,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const section2H2 = document.querySelector('#section2 h2');
     const section2P = document.querySelector('#section2 p');
 
-    if (section1H2) {
-        const observerSection1 = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('typed')) {
-                    entry.target.classList.add('typed');
-                    typeWriter(entry.target, 25);
-                    observerSection1.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
+    observeOrRun(section1H2, (element) => {
+        element.classList.add('typed');
+        typeWriter(element, 25);
+    });
 
-        observerSection1.observe(section1H2);
-    }
+    observeOrRun(section2H2, (element) => {
+        element.classList.add('typed');
+        typeWriter(element, 25);
+    });
 
-    if (section2H2) {
-        const observerSection2 = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('typed')) {
-                    entry.target.classList.add('typed');
-                    typeWriter(entry.target, 25);
-                    observerSection2.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        observerSection2.observe(section2H2);
-    }
-
-    if (section2P) {
-        const observerSection2P = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('typed')) {
-                    entry.target.classList.add('typed');
-                    typeWriter(entry.target, 20);
-                    observerSection2P.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        observerSection2P.observe(section2P);
-    }
+    observeOrRun(section2P, (element) => {
+        element.classList.add('typed');
+        typeWriter(element, 20);
+    });
 });
 
 // ==================== 5. FORMULARIO "CÓMO SER PARTE" - INTEGRACIÓN CON GOOGLE SHEETS ====================
@@ -368,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: new URLSearchParams(formData).toString()
+                    body: encodeFormData(formData)
                 });
                 
                 // Mostrar mensaje de éxito
@@ -503,7 +615,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: new URLSearchParams(formData).toString()
+                    body: encodeFormData(formData)
                 });
                 
                 // Mostrar mensaje de éxito
@@ -537,6 +649,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.textContent = 'Enviar Consulta';
                 submitBtn.disabled = false;
             }
+        });
+    }
+});
+
+// ==================== MAPA - EVENT LISTENER ====================
+document.addEventListener('DOMContentLoaded', () => {
+    const mapCard = document.getElementById('mapCard');
+    if (mapCard) {
+        mapCard.addEventListener('click', () => {
+            mapCard.classList.add('active');
         });
     }
 });
