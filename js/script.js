@@ -256,27 +256,6 @@ tallerItems.forEach(item => {
 });
 
 // ==================== ANIMACIÓN DE TYPING (ESCRITURA) ====================
-function typeWriter(element, speed = 5) {
-    const text = element.textContent;
-    element.innerHTML = '';
-    let index = 0;
-
-    function type() {
-        if (index < text.length) {
-            const span = document.createElement('span');
-            span.textContent = text.charAt(index);
-            span.classList.add('letter');
-            span.style.animationDelay = `${index * 0.01}s`;
-
-            element.appendChild(span);
-
-            index++;
-            setTimeout(type, speed + Math.random() * 10);
-        }
-    }
-
-    type();
-}
 
 function observeOrRun(element, callback) {
     if (!element) return;

@@ -3,15 +3,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+    font-family: 'MiFuente', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
     font-size: 1.1rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'MiFuente','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+}
+
+@font-face {
+  font-family: 'MiFuente';
+  src: url('../src/Guggeli2020-Regular.woff2') format('woff2');
+  
+    font-weight: normal;
+  font-style: normal;
 }
 
 /* ==================== HEADER Y NAVEGACIÓN ==================== */
@@ -161,7 +169,7 @@ nav ul#nav-list li ul li a:hover {
     height: 100%;
     object-fit: cover;
     z-index: -1; /* Detrás de todo el contenido */
-    filter: brightness(0.5);
+    filter: brightness(0.7);
 }
 
 /* ==================== SECCIONES COMUNES ==================== */
@@ -180,22 +188,35 @@ nav ul#nav-list li ul li a:hover {
 
 #section1 {
     margin-top: 100vh; /* Para que el video fijo se vea primero */
-    background-color: rgb(207, 187, 172);
+    background-color: #a2c64e;
 }
 
 #section2, #faq-section {
     /*background: linear-gradient(to right, rgb(219, 196, 179), rgb(255, 244, 236));*/
-    background-color: rgb(219, 196, 179);
-    border-top: 2px groove rgb(214, 195, 171);
+    background-color: #cf87f3;
+    //*border-top: 2px groove rgb(214, 195, 171); borde*/ 
 }
 
-#section1 h2, #section2 h2, #faq-section h2 {
-    color: rgb(126, 73, 73);
+#section1 h2, #section1 h2 span, #faq-section h2 {
+    color: #5d6532;
     margin-bottom: 1em;
+    font-size: 3rem;
+}
+ #section2 h2 {
+    color: #5c3265;
+    margin-bottom: 1em;
+    font-size: 2.5rem;
+ }
+
+
+
+#section1 h2{
+    padding-left:5% ;
+    padding-right:5%;
 }
 
 #section1 p, #section2 p, #faq-section p {
-    color: beige;
+    color: #ffffff;
     text-shadow: 1px 1px 2px black;
     max-width: 800px;
 }
@@ -203,24 +224,27 @@ nav ul#nav-list li ul li a:hover {
 /* Decoración (Imagen intermedia) */
 #section3 {
     position: relative;
-    height: 20vh;
+    height: 40vh;
     width: 100%;
     z-index: 15;
-    background: linear-gradient(to bottom, rgb(219, 196, 179), rgba(255, 244, 236, 0));
+    background: linear-gradient(to bottom, #cf87f3, rgba(255, 226, 226, 0));
 }
 
-#section3 img {
+
+
+#section3.1 img {
     overflow-y: visible;
     object-fit: cover;
     height: 100%;
+    background-color: ;
     width: 100%;
 }
-
 /* ==================== CARRUSEL ==================== */
 #div-carousel {
     position: relative;
     z-index: 5;
     padding: 2em 0;
+    background-color: rgba(255, 226, 226, 0);
 }
 
 #carousel-section {
@@ -263,16 +287,34 @@ nav ul#nav-list li ul li a:hover {
 .carousel-btn.prev { left: 10px; }
 .carousel-btn.next { right: 10px; }
 
+#section3 img {
+    overflow-y: visible;
+    object-fit: cover;
+    height: 100%;
+    background-color: ;
+    width: 100%;
+}
+
+#section3_1 {
+    position: relative;
+    min-height: 40vh;
+    width: 100%;
+    z-index: 15;
+    background: linear-gradient(to top, #cf87f3, rgba(255, 226, 226, 0));
+}
+
 /* ==================== GALERÍA ==================== */
 #photo-gallery {
     position: relative;
     z-index: 5;
     padding: 4em 2em;
     text-align: center;
+   /*background: linear-gradient(to right, rgb(219, 196, 179), rgb(255, 244, 236));*/
+   background-color: #cf87f3;
 }
 
 #photo-gallery h2 {
-    color: rgb(235, 187, 187);
+    color: #5c3265;
     font-size: 2.5rem;
     margin-bottom: 1.5em;
 }
@@ -288,7 +330,7 @@ nav ul#nav-list li ul li a:hover {
     width: 300px;
     border-radius: 20px;
     overflow: hidden;
-    filter: blur(1px);
+    filter: blur(0.1px);
     transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -306,8 +348,8 @@ nav ul#nav-list li ul li a:hover {
 }
 
 .description { padding: 1.5em; }
-.description h3 { color: #e79d9d; margin-bottom: 0.5em; }
-.description p { font-size: 0.95rem; color: #ccbfa4; }
+.description h3 { color: #5c3265; margin-bottom: 0.5em; }
+.description p { font-size: 0.95rem; color: #ffffff; }
 
 /* ==================== ANIMACIONES ==================== */
 .fade-in, .fade-in2,
@@ -828,6 +870,10 @@ nav ul#nav-list li ul li a:hover {
 
 /* 1. CORRECCIÓN PARA ESCRITORIO (Evita que el submenú se cierre al bajar el mouse) */
 @media (min-width: 901px) {
+
+
+    
+
     nav ul li ul {
         display: none;
         position: absolute;
@@ -859,6 +905,18 @@ nav ul#nav-list li ul li a:hover {
 
 /* 2. CONFIGURACIÓN PARA MÓVIL (Menú lateral y Acordeón) */
 @media (max-width: 900px) {
+
+        /*MediaQuery para que el texto en movil se vea bien*/
+    #section1 h2 {
+    color: #5d6532;
+    margin-bottom: 1em;
+    font-size: 2rem;
+    }
+    #section2 h2 {
+    color: #5c3265;
+    margin-bottom: 1em;
+    font-size: 2rem;
+    }
     /* Mostrar botón hamburguesa */
     .menu-toggle { display: flex; }
 
@@ -909,6 +967,7 @@ nav ul#nav-list li ul li a:hover {
         border-radius: 0;
         box-shadow: none;
         border: none;
+        
         margin: 0;
     }
 
