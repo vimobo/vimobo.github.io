@@ -443,7 +443,7 @@ nav ul#nav-list li ul li a:hover {
 #faq-section {
     position: relative;
     z-index: 5;
-    background-color: rgb(219, 196, 179);
+    background-color: #a2c64e;
     border-top: 2px groove rgb(214, 195, 171);
     padding: 4em 2em;
     width: 100%;
@@ -452,7 +452,7 @@ nav ul#nav-list li ul li a:hover {
 }
 
 #faq-section h2 {
-    color: rgb(126, 73, 73);
+    color: #5d6532;
     margin-bottom: 2em;
     font-size: 2rem;
 }
@@ -491,7 +491,7 @@ nav ul#nav-list li ul li a:hover {
     cursor: pointer;
     font-size: 1.1rem;
     font-weight: bold;
-    color: rgb(126, 73, 73);
+    color: #5d6532;
     text-align: left;
 }
 
@@ -528,7 +528,7 @@ nav ul#nav-list li ul li a:hover {
 .faq-answer-content p {
     padding: 0 25px 20px 25px;
     margin: 0;
-    color: #5a3e3e;
+    color: #000000;
     line-height: 1.6;
     font-size: 1rem;
     opacity: 0;
@@ -710,7 +710,7 @@ nav ul#nav-list li ul li a:hover {
 }
 
 .music-toggle.playing {
-    background: rgba(126, 73, 73, 0.82);
+    background: rgba(126, 73, 73, 0);
 }
 
 .ambient-hint {
@@ -2728,7 +2728,7 @@ margin-bottom: 150px;}
 }
 
 .filter-btn.active {
-    background: rgb(126, 73, 73);
+    background: rgb(255, 255, 255);
     color: white;
     border-color: rgb(126, 73, 73);
     box-shadow: 0 5px 15px rgba(126, 73, 73, 0.3);
