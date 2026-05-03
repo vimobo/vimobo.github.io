@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comida - LandLight</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="./src/landlight-music.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-button-wrapper">
+        <button id="musicToggle" class="music-toggle" type="button" aria-pressed="false">Activar ambiente</button>
+    </div>
+    <header>
+        <nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul id="nav-list">
+                <li><a href="index.html">LandLight</a></li>
+                <li><a href="#">Info Práctica</a>
+                    <ul>
+                        <li><a href="hospedaje.html">Hospedaje</a></li>
+                        <li><a href="comida.html">Comida</a></li>
+                        <li><a href="materiales.html">Materiales</a></li>
+                        <li><a href="convivencia.html">Convivencia</a></li>
+                        <li><a href="transparencia.html">Transparencia</a></li>
+                        <li><a href="preguntas.html">Preguntas Frecuentes</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">El Festival</a>
+                    <ul>
+                        <li><a href="historia.html">Historia</a></li>
+                        <li><a href="equipo.html">Equipo</a></li>
+                    </ul>
+                </li>
+                <li><a href="talleres.html">Programa</a></li>
+                <li><a href="lugar.html">El Lugar</a></li>
+                <li><a href="comoserarte.html">Cómo ser parte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="space">
+            <video class="video-bg" autoplay muted loop>
+                <source src="./src/video web.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- Hero -->
+        <section class="transparency-hero" style="margin-top: 100px;">
+            <div class="transparency-hero-content">
+                <h1>Comida</h1>
+                <p>Comer juntos también es parte del ritual.</p>
+            </div>
+        </section>
+
+        <!-- Filosofía -->
+        <section class="comida-filosofia">
+            <div class="comida-filosofia-inner">
+                <p class="comida-tag">Nuestra cocina</p>
+                <p class="comida-filosofia-texto">
+                    En LandLight la comida no es un trámite, es un encuentro. Cada comida es una pausa en la que el festival respira, la gente conversa y el sabor tiene espacio. Cocinamos con productos de temporada, con cariño y sin prisa.
+                </p>
+            </div>
+        </section>
+
+        <!-- Menú: alternating image + text -->
+        <section class="comida-menu">
+
+            <div class="comida-item comida-item--green">
+                <div class="comida-item-img">
+                    <img src="./src/000011.JPG" alt="Desayuno en LandLight">
+                </div>
+                <div class="comida-item-text">
+                    <span class="comida-item-label">Mañana</span>
+                    <h2>Desayuno</h2>
+                    <p>Pan de masa madre, fruta de temporada, huevos y café de verdad. Un comienzo lento para un día intenso. Servimos desde las 8h hasta las 10h en el espacio común.</p>
+                </div>
+            </div>
+
+            <div class="comida-item comida-item--purple">
+                <div class="comida-item-img">
+                    <img src="./src/000026.JPG" alt="Almuerzo en LandLight">
+                </div>
+                <div class="comida-item-text">
+                    <span class="comida-item-label">Mediodía</span>
+                    <h2>Almuerzo</h2>
+                    <p>El plato más completo del día. Cocinamos en olla grande: guisos, arroces, legumbres y ensaladas del huerto cercano. Con opciones vegetarianas y veganas siempre disponibles.</p>
+                </div>
+            </div>
+
+            <div class="comida-item comida-item--green">
+                <div class="comida-item-img">
+                    <img src="./src/000035 (2).JPG" alt="Cena en LandLight">
+                </div>
+                <div class="comida-item-text">
+                    <span class="comida-item-label">Noche</span>
+                    <h2>Cena</h2>
+                    <p>Más ligera, más larga. La cena es el momento de bajar el ritmo antes de que suba de nuevo. Sopas, ensaladas templadas y algo dulce para cerrar. Desde las 20h30.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Info práctica -->
+        <section class="comida-info">
+            <div class="comida-info-inner">
+                <h2>Lo que necesitas saber</h2>
+                <div class="comida-info-grid">
+                    <div class="comida-info-card">
+                        <div class="comida-info-icon">◎</div>
+                        <h3>Incluida en el hospedaje</h3>
+                        <p>Las tres comidas están incluidas en el precio del festival. No hay nada extra que gestionar.</p>
+                    </div>
+                    <div class="comida-info-card">
+                        <div class="comida-info-icon">◎</div>
+                        <h3>Alergias e intolerancias</h3>
+                        <p>Cuéntanos tu situación al inscribirte y nos adaptamos. Lo hacemos con gusto, no como excepción.</p>
+                    </div>
+                    <div class="comida-info-card">
+                        <div class="comida-info-icon">◎</div>
+                        <h3>Cocina comunitaria</h3>
+                        <p>Si quieres participar en la preparación de alguna comida, hay espacio para eso. El fogón es de todos.</p>
+                    </div>
+                    <div class="comida-info-card">
+                        <div class="comida-info-icon">◎</div>
+                        <h3>Sin desperdicios</h3>
+                        <p>Cocinamos la cantidad justa. Las sobras se gestionan entre el equipo y los participantes. Nada se tira.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="hospedaje-cta">
+            <div class="cta-content fade-in">
+                <h2>Únete a la mesa</h2>
+                <p>Rellena el formulario para reservar tu lugar en LandLight.</p>
+                <a href="comoserarte.html" class="cta-btn">Inscribirse</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>LandLight</h2>
+                <p>Experiencias únicas a través de la luz</p>
+            </div>
+            <div class="footer-links">
+                <h3>Enlaces</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="historia.html">Historia</a></li>
+                    <li><a href="equipo.html">Equipo</a></li>
+                    <li><a href="lugar.html">El Lugar</a></li>
+                    <li><a href="talleres.html">Talleres</a></li>
+                    <li><a href="hospedaje.html">Hospedaje</a></li>
+                    <li><a href="transparencia.html">Transparencia</a></li>
+                    <li><a href="comoserarte.html">Cómo ser parte</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Contacto</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/landlight.fest/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="mailto:landlight.fest@gmail.com">landlight.fest@gmail.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 LandLight</p>
+        </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>

@@ -255,27 +255,42 @@ tallerItems.forEach(item => {
     });
 });
 
-// ==================== ANIMACIÓN DE TYPING (ESCRITURA) ====================
+// ==================== ANIMACIÓN PALABRA A PALABRA ====================
 
-function observeOrRun(element, callback) {
-    if (!element) return;
+function initWordReveal(el, staggerMs = 55) {
+    if (!el) return;
+
+    const words = el.textContent.trim().split(/\s+/);
+
+    el.innerHTML = words
+        .map((word, i) =>
+            `<span class="word-anim" style="transition-delay:${i * staggerMs}ms">${word}</span>`
+        )
+        .join(' ');
+
+    const trigger = () =>
+        el.querySelectorAll('.word-anim').forEach(s => s.classList.add('in'));
 
     if (!('IntersectionObserver' in window)) {
-        callback(element);
+        trigger();
         return;
     }
 
-    const typingObserver = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.classList.contains('typed')) {
-                callback(entry.target);
-                typingObserver.unobserve(entry.target);
+            if (entry.isIntersecting) {
+                trigger();
+                obs.unobserve(el);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
 
-    typingObserver.observe(element);
+    observer.observe(el);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('#section1 h2').forEach(h2 => initWordReveal(h2));
+});
 
 function encodeFormData(data) {
     if ('URLSearchParams' in window) {
