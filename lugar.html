@@ -22,27 +22,40 @@
             </div>
             <ul id="nav-list">
                 <li><a href="index.html">LandLight</a></li>
+                <li><a href="#">Info Práctica</a>
+                    <ul>
+                        <li><a href="hospedaje.html">Hospedaje</a></li>
+                        <li><a href="comida.html">Comida</a></li>
+                        <li><a href="materiales.html">Materiales</a></li>
+                        <li><a href="convivencia.html">Convivencia</a></li>
+                        <li><a href="transparencia.html">Transparencia</a></li>
+                        <li><a href="preguntas.html">Preguntas Frecuentes</a></li>
+                        
+                    </ul>
+                </li>
                 <li><a href="#">El Festival</a>
                     <ul>
                         <li><a href="historia.html">Historia</a></li>
                         <li><a href="equipo.html">Equipo</a></li>
                     </ul>
                 </li>
+                <li><a href="talleres.html">Programa</a></li>
                 <li><a href="lugar.html">El Lugar</a></li>
-                <li><a href="talleres.html">Talleres</a></li>
-                <li><a href="#">Información</a>
-                    <ul>
-                        <li><a href="hospedaje.html">Hospedaje</a></li>
-                        <li><a href="transparencia.html">Transparencia</a></li>
-                    </ul>
-                </li>
                 <li><a href="comoserarte.html">Cómo ser parte</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-   
+    <main id="main_place">
+        
+        <div class="bg-image">
+            <img src="./src/4059 - 2025.10.03 - María Sol Barcadoro Ciaffaldano - Fujicolor Proplus 200 -16.jpg" alt="">
+        </div>
+        <div id="intro" class="intro">
+            <video id="introVideo" class="video-bg" autoplay muted>
+                <source src="./src/14844950_1920_1080_30fps.mp4" type="video/mp4">
+            </video>
+        </div>
         
         <div id="space">
             <video class="video-bg" autoplay muted loop>
@@ -51,74 +64,32 @@
         </div>
 
         <!-- Sección Intro -->
-        <section class="place-section place-left" style="margin-top: 140px;">
-            <div class="place-content">
-                <div class="place-image">
-                    <img src="./src/_DSC3773.JPG" alt="Vista general del territorio">
-                </div>
-                <div class="place-text">
-                    <h2>El Territorio Sagrado</h2>
-                    <p>En el corazón de los valles, donde la tierra se encuentra con el cielo, descubre el territorio que alberga la magia de LandLight. Este espacio fue elegido cuidadosamente para que la naturaleza y la luz dialoguen en perfecta armonía. Cada rincón del lugar ha sido diseñado para permitir que la experiencia inmersiva fluya de manera orgánica, respetando los ritmos naturales del entorno.</p>
-                    <span class="desc">Ecosistema protegido, patrimonio natural, acceso controlado.</span>
-                </div>
-            </div>
-        </section>
+        <div id="section2-place">
+            <h2 class="fade-left">
+                Miau miau
+            </h2>
+            <p class="">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit...
+            </p>
+        </div>
 
-        <!-- Sección Característica 1 -->
-        <section class="place-section place-right">
-            <div class="place-content">
-                <div class="place-image">
-                    <img src="./src/000011.JPG" alt="Instalación de luz en el paisaje">
-                </div>
-                <div class="place-text">
-                    <h2>Instalaciones de Luz Integradas</h2>
-                    <p>Nuestras instalaciones de luz están estratégicamente ubicadas para crear una experiencia inmersiva sin impactar el ecosistema. Cada punto de luz ha sido pensado para complementar la belleza natural del paisaje, generando un diálogo único entre lo artificial y lo orgánico. Durante el festival, estas instalaciones se activan transformando el territorio en un lienzo luminoso donde los asistentes pueden explorar nuevas formas de percibir el espacio.</p>
-                    <span class="desc2">Iluminación ambiental, integración paisajística, bajo consumo energético.</span>
-                </div>
-            </div>
-        </section>
+        <div class="white-space"><p></p></div>
 
-        <!-- Sección Característica 2 -->
-        <section class="place-section place-left">
-            <div class="place-content">
-                <div class="place-image">
-                    <img src="./src/000026.JPG" alt="Zona de descanso y contemplación">
+        <div id="div-carousel">
+            <section id="carousel-section">
+                <div class="carousel-container">
+                    <button class="carousel-btn prev">&#10094;</button>
+                    <div class="carousel-slide">
+                        <img src="./src/000011.JPG" alt="Imagen 1">
+                        <img src="./src/000026.JPG" alt="Imagen 2">
+                        <img src="./src/000035 (2).JPG" alt="Imagen 3">
+                    </div>
+                    <button class="carousel-btn next">&#10095;</button>
                 </div>
-                <div class="place-text">
-                    <h2>Espacios de Contemplación</h2>
-                    <p>Diseñados para permitir momentos de conexión personal, los espacios de contemplación son refugios donde los visitantes pueden pausar y reflexionar. Rodeados de vegetación nativa y con vistas al horizonte, estos espacios invitan a la introspección. La arquitectura minimalista de las estructuras complementa la belleza natural, creando ambientes que potencian la experiencia meditativa.</p>
-                    <span class="desc">Áreas de descanso, bancos de madera, vistas panorámicas.</span>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <!-- Sección Característica 3 -->
-        <section class="place-section place-right">
-            <div class="place-content">
-                <div class="place-image">
-                    <img src="./src/000035 (2).JPG" alt="Senderos naturales del territorio">
-                </div>
-                <div class="place-text">
-                    <h2>Senderos de Descubrimiento</h2>
-                    <p>Los senderos que atraviesan el territorio fueron diseñados para guiar a los visitantes a través de una narrativa visual progresiva. Cada tramo del camino revela nuevas perspectivas del paisaje y de las instalaciones de luz. Los materiales utilizados son sostenibles y respetan el suelo nativo, permitiendo que la naturaleza continúe su ciclo vital mientras las personas disfrutan de la experiencia.</p>
-                    <span class="desc2">Rutas señalizadas, integración con la naturaleza, accesibilidad.</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sección Características Sostenibles -->
-        <section class="place-section place-left">
-            <div class="place-content">
-                <div class="place-image">
-                    <img src="./src/patron-transparente-lineas-organicas-irregulares-color-naranja_1409-4190.avif" alt="Patrón sostenible del territorio">
-                </div>
-                <div class="place-text">
-                    <h2>Compromiso con la Sostenibilidad</h2>
-                    <p>Cada decisión en el diseño y construcción del territorio refleja nuestro compromiso con el medioambiente. Utilizamos energías renovables para todas las instalaciones, sistemas de gestión de residuos inteligentes, y trabajamos en estrecha colaboración con biólogos y expertos en conservación. El objetivo es que LandLight deje un legado positivo en el territorio, fortaleciendo la biodiversidad y la salud del ecosistema.</p>
-                    <span class="desc">Energía renovable, gestión de residuos, conservación ambiental.</span>
-                </div>
-            </div>
-        </section>
+        
 
         <!-- Sección Final -->
    
