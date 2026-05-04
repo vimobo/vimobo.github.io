@@ -1937,8 +1937,8 @@ margin-bottom: 150px;}
 
 /* Posiciones aleatorias para cada foto */
 .team-photo-1 {
-    top: 0;
-    left: 5%;
+    top: 50px;
+    left: 30%;
     transform: rotate(-12deg);
 }
 
@@ -1967,8 +1967,8 @@ margin-bottom: 150px;}
 }
 
 .team-photo-6 {
-    top: 600px;
-    left: 8%;
+    top: 0px;
+    left: 10%;
     transform: rotate(10deg);
 }
 
