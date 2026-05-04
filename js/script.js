@@ -260,28 +260,38 @@ tallerItems.forEach(item => {
 function initWordReveal(el, staggerMs = 55) {
     if (!el) return;
 
-    const words = el.textContent.trim().split(/\s+/);
+    let wordIndex = 0;
+    const parts = [];
 
-    el.innerHTML = words
-        .map((word, i) =>
-            `<span class="word-anim" style="transition-delay:${i * staggerMs}ms">${word}</span>`
-        )
-        .join(' ');
+    el.childNodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            node.textContent.split(/(\s+)/).forEach(token => {
+                if (/\S/.test(token)) {
+                    parts.push(`<span class="word-anim" style="transition-delay:${wordIndex * staggerMs}ms">${token}</span>`);
+                    wordIndex++;
+                } else if (token) {
+                    parts.push(token);
+                }
+            });
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            const tag = node.tagName.toLowerCase();
+            const cls = node.getAttribute('class') || '';
+            const sty = node.getAttribute('style') || '';
+            parts.push(`<${tag} class="${cls} word-anim" style="${sty}transition-delay:${wordIndex * staggerMs}ms">${node.innerHTML}</${tag}>`);
+            wordIndex++;
+        }
+    });
+
+    el.innerHTML = parts.join('');
 
     const trigger = () =>
         el.querySelectorAll('.word-anim').forEach(s => s.classList.add('in'));
 
-    if (!('IntersectionObserver' in window)) {
-        trigger();
-        return;
-    }
+    if (!('IntersectionObserver' in window)) { trigger(); return; }
 
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                trigger();
-                obs.unobserve(el);
-            }
+            if (entry.isIntersecting) { trigger(); obs.unobserve(el); }
         });
     }, { threshold: 0.15 });
 

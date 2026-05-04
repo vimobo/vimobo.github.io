@@ -79,14 +79,16 @@ body {
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @font-face {
   font-family: 'MiFuente';
   src: url('../src/Guggeli2020-Regular.woff2') format('woff2');
-  
-    font-weight: normal;
+  font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 /* ==================== HEADER Y NAVEGACIÓN ==================== */
@@ -280,11 +282,25 @@ nav ul#nav-list > li > a.nav-active {
     //*border-top: 2px groove rgb(214, 195, 171); borde*/ 
 }
 
-#section1 h2, #section1 h2 span, #faq-section h2 {
+#section1 h2, #faq-section h2 {
     color: var(--color-home-green-text);
     margin-bottom: 1em;
     font-size: 2.5rem;
+    line-height: 1.1;
 }
+
+.highlight {
+    font-size: 2.7rem;
+    color: var(--color-highlight-pink);
+}
+
+.fecha-highlight {
+    font-size: 1.25em;
+    color: #fff;
+    display: inline;
+    line-height: inherit;
+}
+
  #section2 h2 {
      margin-bottom: 1em;
      font-size: 2.5rem;
@@ -954,7 +970,7 @@ nav ul#nav-list > li > a.nav-active {
     #section1 h2 {
         color: #5d6532;
         margin-bottom: 1em;
-        font-size: 2rem;
+        font-size: 1.4rem;
     }
     #section2 h2 {
         color: #5c3265;
@@ -1056,13 +1072,20 @@ nav ul#nav-list > li > a.nav-active {
 /* ==================== SECCIONES ALTERNADAS (LUGAR) ==================== */
 
 .bg-image {
-    position:fixed;
-    z-index: 0;
-    margin-top: 0;
-    object-fit: contain;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    width: auto;
-    
+    z-index: -2;
+}
+
+.bg-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .white-space {
@@ -1568,24 +1591,23 @@ nav ul#nav-list > li > a.nav-active {
 /*Precio en el formulario*/
 
 .formulario-intro-precio {
-    background: var(--color-bg-green-soft);
+    background: var(--color-bg-pink-soft);
     border-radius: 15px;
     padding: 30px;
-
     margin-bottom: 30px;
-    border: 2px solid var(--color-text-black);
+    border: 2px solid var(--color-text-pink-strong);
     text-align: center;
 }
 
 .formulario-intro-precio h3 {
-    color: var(--color-text-green-strong);
+    color: #fff;
     font-size: 2em;
     padding: 0.5em;
     text-align: center;
 }
 
 .formulario-intro-precio p {
-    color: var(--color-text-brown);
+    color: var(--color-surface-pink);
     font-size: 1rem;
     line-height: 1.8;
     margin-bottom: 15px;
@@ -1603,31 +1625,33 @@ nav ul#nav-list > li > a.nav-active {
     margin-bottom: 2em;
     min-height: 10vh;
     border-radius: 10px;
-    background: var(--color-surface-green);
+    background: var(--color-surface-pink);
     padding: 1em;
     max-width: 90vw;
-    border: 1px solid var(--color-text-green-strong);
-
+    border: 1px solid var(--color-text-pink-strong);
 }
 
 .formulario-intro-precio-item p {
-    color: var(--color-bg-green-soft);
-}
-
-.formulario-intro-precio-item h4 {
-    color: var(--color-text-black);
-}
-
-.formulario-intro-precio div a {
-    text-decoration: none;
     color: var(--color-text-pink-strong);
 }
 
-.formulario-intro-precio div:hover {
-    transition: 200ms;
-    transform: translateY(-3px);
-    color: var(--color-bg-pink-soft);
+.formulario-intro-precio-item h4 {
+    color: var(--color-text-pink-strong);
 }
+
+.formulario-intro-precio div a {
+    color: var(--color-bg-pink-soft);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: bold;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.formulario-intro-precio div a:hover {
+    opacity: 0.75;
+}
+
+
 
 .formulario-intro-precio p:last-child {
     margin-bottom: 0;
@@ -1857,6 +1881,8 @@ margin-bottom: 150px;}
     width: 180px;
     height: 220px;
     border-radius: 12px;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
@@ -1873,22 +1899,40 @@ margin-bottom: 150px;}
 
 .team-photo img {
     width: 100%;
-    height: 85%;
+    flex: 1;
+    min-height: 0;
     object-fit: cover;
     display: block;
 }
 
 .photo-label {
     width: 100%;
-    height: 15%;
+    flex-shrink: 0;
+    padding: 5px 6px;
     background: var(--color-transparent);
     color: var(--color-text-white);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
-    font-weight: bold;
     text-align: center;
+    gap: 1px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.photo-name {
+    font-size: 0.8rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.photo-role {
+    font-size: 0.68rem;
+    font-weight: normal;
+    opacity: 0.85;
+    font-style: italic;
+    line-height: 1.2;
 }
 
 /* Posiciones aleatorias para cada foto */
@@ -2094,7 +2138,7 @@ margin-bottom: 150px;}
     align-items: center;
     justify-content: center;
     gap: 20px;
-    height: 350px;
+    height: 480px;
     width: 100%;
     overflow: hidden;
     border-radius: 15px;
@@ -2105,7 +2149,7 @@ margin-bottom: 150px;}
     width: 100%;
     height: 100%;
     transition: transform 0.5s ease;
-    max-height: 500px;
+    max-height: 600px;
 }
 
 .inner-slide {
@@ -2230,16 +2274,24 @@ margin-bottom: 150px;}
 
 }
 
+.edition-2024 {
+    background: var(--color-bg-pink-soft);
+    padding-top: 6em;
+
+}
+
 .edition-2024 .edition-header {
-    color: var(--color-home-purple-text);
+    color: var(--color-brand-rose);
+    
 }
 
 .edition-2024 .edition-header h2 {
-    color: var(--color-home-purple-text);
+    color: var(--color-brand-rose);
+    
 }
 
 .edition-2025 {
-    background: var(--color-surface-green);
+    background: var(--color-bg-green-soft);
     padding-top: 6em;
 
 }
@@ -2252,17 +2304,7 @@ margin-bottom: 150px;}
     color: var(--color-home-green-text);
 }
 
-.edition-2026 {
-    padding-top: 6em;
-}
 
-.edition-2026 .edition-header {
-    color: var(--color-home-purple-text);
-}
-
-.edition-2026 .edition-header h2 {
-    color: var(--color-home-purple-text);
-}
 
 .edition-2021 {
     background: var(--color-bg-green-soft);
@@ -2356,13 +2398,13 @@ margin-bottom: 150px;}
     }
 
     .inner-carousel-wrapper {
-        min-height: 350px;
+        min-height: 420px;
         overflow: hidden;
         border-radius: 15px;
     }
 
     .inner-carousel {
-        max-height: 400px;
+        max-height: 480px;
         overflow: visible;
         border-radius: 15px;
     }
@@ -2406,8 +2448,8 @@ margin-bottom: 150px;}
     }
 
     .inner-carousel-wrapper {
-        height: 250px;
-        min-height: 250px;
+        height: 320px;
+        min-height: 320px;
         gap: 10px;
         overflow: hidden;
         border-radius: 15px;
@@ -2415,7 +2457,7 @@ margin-bottom: 150px;}
 
     .inner-carousel {
         height: 100%;
-        max-height: 300px;
+        max-height: 370px;
         overflow: visible;
         border-radius: 15px;
     }
@@ -3277,11 +3319,23 @@ textarea {
     font: inherit;
 }
 
+button,
+a,
+[role="button"] {
+    touch-action: manipulation;
+}
+
 nav ul#nav-list,
-nav ul#nav-list li ul,
-.map-overlay,
-.edition-description {
+nav ul#nav-list li ul {
     -webkit-backdrop-filter: blur(15px);
+}
+
+.map-overlay {
+    -webkit-backdrop-filter: blur(1px);
+}
+
+.edition-description {
+    -webkit-backdrop-filter: blur(10px);
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -3421,7 +3475,7 @@ nav ul#nav-list li ul,
 }
 
 .mat-intro p {
-    font-size: clamp(2rem, 2vw, 1.25rem);
+    font-size: clamp(1rem, 2vw, 2rem);
     
     color: var(--color-text-green-strong);
     max-width: 80vw;
@@ -3859,24 +3913,6 @@ nav ul#nav-list li ul,
     background: var(--color-surface-pink);
 }
 
-.conv-num {
-    font-size: clamp(5rem, 14vw, 11rem);
-    line-height: 1;
-    font-weight: bold;
-    flex-shrink: 0;
-    opacity: 0.13;
-    user-select: none;
-    pointer-events: none;
-    letter-spacing: -0.03em;
-}
-
-.conv-principio--green .conv-num {
-    color: var(--color-text-green-strong);
-}
-
-.conv-principio--purple .conv-num {
-    color: var(--color-text-pink-strong);
-}
 
 .conv-texto {
     flex: 1;
@@ -3975,11 +4011,6 @@ nav ul#nav-list li ul,
         padding: 3rem 6vw;
     }
 
-    .conv-num {
-        font-size: clamp(3.5rem, 18vw, 6rem);
-        opacity: 0.1;
-        margin-bottom: -0.5rem;
-    }
 
     .conv-frase {
         padding: 4rem 6vw;
