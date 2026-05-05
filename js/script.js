@@ -93,8 +93,6 @@ if (backgroundMusic && musicToggle) {
         }
     };
 
-    playMusic();
-
     musicToggle.addEventListener("click", () => {
     // 1. Cerrar popup SI existe
     if (ambientPopup && !localStorage.getItem('ambientPopupDismissed')) {

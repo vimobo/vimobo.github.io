@@ -103,21 +103,25 @@ header {
 nav ul#nav-list {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 90%;
     max-width: 900px;
     margin: 2em auto 0 auto; /* Centrado horizontal del nav */
-    padding: 0.6em 2.5em;
+    padding: 0.8em 2.5em;
     border-radius: 50px;
     background-color: rgba(240, 248, 255, 0.1);
     backdrop-filter: blur(15px);
     list-style: none;
     gap: 15px; /* Espacio entre los elementos centrales */
+    min-height: 40px;
 }
 
 /* Estilo de las letras (Recuperado) */
 nav ul#nav-list > li > a {
-    display: block;
-    padding: 0.5em 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6em 1em;
     color: aliceblue;
     text-decoration: none;
     font-weight: bold; /* Negrita recuperada */
@@ -184,7 +188,7 @@ nav ul#nav-list li ul::before {
     top: -20px; /* Cubre el hueco de 15px */
     left: 0;
     width: 100%;
-    height: 25px;
+    height: 15px;
     background: transparent;
 }
 
@@ -804,6 +808,12 @@ nav ul#nav-list > li > a.nav-active {
     transform-origin: left;
 }
 
+@media (max-width: 900px) {
+    .menu-toggle .bar {
+        border-radius: 0;
+    }
+}
+
 /* Animación de la cruz */
 .menu-toggle.active .bar:nth-child(1) { transform: rotate(45deg); }
 .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
@@ -1007,27 +1017,38 @@ nav ul#nav-list > li > a.nav-active {
     nav ul#nav-list > li {
         width: 100%;
         flex: none;
-        margin: 5px 0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
     }
 
     nav ul#nav-list > li:first-child,
     nav ul#nav-list > li:last-child {
-        margin: 10px 0 !important;
+        margin: 0 !important;
     }
 
     nav ul#nav-list > li > a {
         font-size: 1.2rem;
         padding: 15px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     nav ul#nav-list li ul {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         position: static;
         transform: none;
         max-height: 0;
         opacity: 0;
         overflow: hidden;
-        transition: all 0.4s ease;
+        transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
         border-radius: 0;
         box-shadow: none;
         border: none;
@@ -1036,13 +1057,16 @@ nav ul#nav-list > li > a.nav-active {
         backdrop-filter: none;
         width: 100%;
         margin: 0;
+        padding: 0;
+        pointer-events: none;
     }
 
     nav ul#nav-list li ul.open {
-        max-height: 500px;
+        max-height: 800px;
         opacity: 1;
-        margin: 10px 0;
-        padding: 5px 0;
+        margin: 0;
+        padding: 10px 0;
+        pointer-events: auto;
     }
 
     nav ul li ul li a {
@@ -1050,12 +1074,28 @@ nav ul#nav-list > li > a.nav-active {
         color: #a8cfee;
         font-size: 1rem;
         text-align: center;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     nav ul#nav-list > li:has(ul) > a::after {
         content: ' ▾';
         font-size: 0.8em;
         color: rgba(255,255,255,0.5);
+    }
+
+    nav ul#nav-list > li > a.nav-active {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-radius: 0;
+        width: 100%;
+        padding: 15px;
+        box-shadow: none;
+    }
+
+    nav ul#nav-list > li > a.nav-active:hover {
+        background-color: rgba(255, 255, 255, 0.2);
     }
 
     #section1, #section2, #faq-section {
