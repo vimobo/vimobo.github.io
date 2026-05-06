@@ -261,6 +261,28 @@ nav ul#nav-list > li > a.nav-active {
     filter: brightness(0.7);
 }
 
+.intro-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 85vw;
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    z-index: 10;
+    padding-top: 60px;
+}
+
+@media (max-width: 768px) {
+    .intro-logo {
+        max-width: 90vw;
+        max-height: 65vh;
+        padding-top: 40px;
+    }
+}
+
 /* ==================== SECCIONES COMUNES ==================== */
 #section1, #section2, #faq-section {
     position: relative;

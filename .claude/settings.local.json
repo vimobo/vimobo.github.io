@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(Get-ChildItem -Path \"C:\\\\vimobo.github.io\" -Filter \"*.html\" -File)",
-      "Bash(Select-Object Name)"
+      "Bash(Select-Object Name)",
+      "Bash(python *)"
     ]
   }
 }
