@@ -2766,6 +2766,10 @@ margin-bottom: 150px;}
     color: var(--color-text-green-strong);
 }
 
+.revenue-item span:first-child {
+    padding-right: 1rem;
+}
+
 .revenue-item.total {
     border-bottom: 2px solid var(--color-brand-rose);
     font-weight: bold;
@@ -2945,6 +2949,7 @@ margin-bottom: 150px;}
 .transparency-text {
     background: var(--color-surface-soft);
     padding: 30px;
+    margin-bottom: 1em;
     border-radius: 15px;
     border-left: 5px solid var(--color-bg-pink-soft);
 }
@@ -2959,6 +2964,7 @@ margin-bottom: 150px;}
     color: var(--color-text-green-strong);
     line-height: 1.8;
     font-size: 0.98rem;
+    margin-bottom: 0.3em;
 }
 
 /* Transparency Form */
@@ -3193,7 +3199,6 @@ margin-bottom: 150px;}
 }
 
 .feature a {
-text-decoration: none;
 color: var(--color-bg-green-soft);
 }
 
@@ -3885,9 +3890,7 @@ nav ul#nav-list li ul {
     margin-bottom: 0.8rem;
 }
 
-.comida-info-card:nth-child(even) .comida-info-icon {
-    color: var(--color-bg-pink-soft);
-}
+
 
 .comida-info-card h3 {
     font-size: 1.05rem;
@@ -3895,12 +3898,9 @@ nav ul#nav-list li ul {
     margin-bottom: 0.6rem;
 }
 
-.comida-info-card:nth-child(even) h3 {
-    color: var(--color-text-pink-strong);
-}
 
 .comida-info-card p {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     line-height: 1.7;
     color: var(--color-text-green-strong);
 }
@@ -3938,7 +3938,7 @@ nav ul#nav-list li ul {
     }
 }
 
-/* ==================== PÁGINA CONVIVENCIA ==================== */
+/* ==================== PÁGINA Responsabilidades.html ==================== */
 
 /* Frase de apertura */
 .conv-frase {
