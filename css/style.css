@@ -266,8 +266,8 @@ nav ul#nav-list > li > a.nav-active {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 85vw;
-    max-height: 70vh;
+    max-width: 95vw;
+    max-height: 90vh;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -338,6 +338,9 @@ nav ul#nav-list > li > a.nav-active {
      color: var(--color-home-purple-text);
     text-shadow: 1px 1px 2px var(--color-bg-pink-soft);
     width: 100%;
+    margin-bottom: 0.5em;
+    padding-left: 10vw;
+    padding-right: 10vw;
  }
 
 #section1 h2{
@@ -1002,12 +1005,18 @@ nav ul#nav-list > li > a.nav-active {
     #section1 h2 {
         color: #5d6532;
         margin-bottom: 1em;
-        font-size: 1.4rem;
+        font-size: 1.7rem;
     }
     #section2 h2 {
         color: #5c3265;
         margin-bottom: 1em;
         font-size: 2rem;
+    }
+
+    #section2 p {
+        color: #5c3265;
+        margin-bottom: 1em;
+        font-size: 1.5rem;
     }
 
     .menu-toggle { display: flex; }
