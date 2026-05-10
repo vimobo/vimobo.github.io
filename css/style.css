@@ -84,8 +84,16 @@ body {
 }
 
 @font-face {
+  src: url('../fonts/Sneaky-Times.woff2') format('woff2');
   font-family: 'MiFuente';
-  src: url('../src/Guggeli2020-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  src: url('../fonts/xxQueen-basic.woff2') format('woff2');
+  font-family: 'MiFuente2';
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -1332,6 +1340,7 @@ nav ul#nav-list > li > a.nav-active {
 }
 
 .talleres-hero h1 {
+    font-family: 'MiFuente2';
     color: var(--color-text-white);
     font-size: clamp(3.5rem, 10vw, 7rem);
     line-height: 0.95;
@@ -2609,6 +2618,7 @@ margin-bottom: 150px;}
 }
 
 .hospedaje-hero-content h1 {
+    font-family: 'MiFuente2';
     font-size: clamp(3rem, 10vw, 7rem);
     color: var(--color-text-white);
     line-height: 0.95;
@@ -2647,6 +2657,7 @@ margin-bottom: 150px;}
 }
 
 .transparency-hero-content h1 {
+    font-family: 'MiFuente2';
     font-size: clamp(2.8rem, 10vw, 7rem);
     color: var(--color-text-white);
     line-height: 0.95;
@@ -3941,6 +3952,9 @@ nav ul#nav-list li ul {
 /* ==================== PÁGINA Responsabilidades.html ==================== */
 
 /* Frase de apertura */
+
+
+
 .conv-frase {
     position: relative;
     z-index: 5;
@@ -4072,7 +4086,10 @@ nav ul#nav-list li ul {
     transform: translateY(-3px) scale(1.03);
     box-shadow: 0 12px 32px var(--color-overlay-brand-30);
 }
-
+#responsabilidades-h1 {
+    font-size: 4.3vw;
+    text-align: center;
+}
 /* Responsive */
 @media (max-width: 768px) {
     .conv-principio {
@@ -4090,4 +4107,9 @@ nav ul#nav-list li ul {
     .conv-acuerdo-card {
         padding: 2.5rem 1.8rem;
     }
+
+    #responsabilidades-h1 {
+    font-size: 7vw;
+    }
 }
+
