@@ -166,36 +166,32 @@ nav ul#nav-list > li > a.nav-active:hover {
 nav ul#nav-list li ul {
     display: none;
     position: absolute;
-    /* Bajamos el menú para que no se pegue al principal */
-    top: calc(100% + 15px); 
+    top: calc(100% + 15px);
     left: 50%;
     transform: translateX(-50%);
-    
-    /* Ajuste de forma: Menos alto, más ancho para romper el efecto 'huevo' */
+
     width: auto;
     width: max-content;
-    min-width: 100px; 
-    padding: 15px 10px; /* Más aire a los lados, menos arriba/abajo */
-    
+    min-width: 100px;
+    padding: 15px 10px;
+
     list-style: none;
-    background-color: rgba(240, 248, 255, 0.1); 
+    background-color: rgba(240, 248, 255, 0.1);
     backdrop-filter: blur(15px);
-    
-    /* Un radio más suave para que parezca cápsula y no círculo */
-    border-radius: 30px; 
-    
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil para definir la forma */
+
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     z-index: 100;
 }
 
-/* Puente invisible corregido */
+/* Puente invisible para mantener hover sin que desaparezca */
 nav ul#nav-list li ul::before {
     content: "";
     position: absolute;
-    top: -20px; /* Cubre el hueco de 15px */
-    left: 0;
-    width: 100%;
+    top: -15px;
+    left: -10%;
+    width: 120%;
     height: 15px;
     background: transparent;
 }
@@ -336,8 +332,9 @@ nav ul#nav-list > li > a.nav-active {
 }
 
  #section2 h2 {
+    font-family: 'MiFuente2';
      margin-bottom: 1em;
-     font-size: 2.5rem;
+     font-size: 4rem;
      color: var(--color-home-purple-text);
  }
 
@@ -360,6 +357,47 @@ nav ul#nav-list > li > a.nav-active {
     color: var(--color-text-green-strong);
     text-shadow: 1px 1px 2px rgb(255, 255, 255);
     max-width: 800px;
+}
+
+/* Botón de Tickets */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    padding: 0 10vw;
+}
+
+.cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    min-height: 120px;
+    background-color: var(--color-text-green-strong);
+    color: var(--color-text-white);
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(93, 101, 50, 0.4);
+    font-family: 'MiFuente2', sans-serif;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(93, 101, 50, 0.6);
+    background-color: var(--color-bg-green-soft);
+}
+
+.cta-button:active {
+    transform: translateY(-2px);
 }
 
 /* Decoración (Imagen intermedia) */
@@ -453,8 +491,10 @@ nav ul#nav-list > li > a.nav-active {
 }
 
 #photo-gallery h2 {
+    font-family: 'MiFuente2';
+
     color: var(--color-home-purple-text);
-    font-size: 2.5rem;
+    font-size: 4rem;
     margin-bottom: 1.5em;
 }
 
@@ -611,9 +651,11 @@ nav ul#nav-list > li > a.nav-active {
 }
 
 #faq-section h2 {
+    font-family: 'MiFuente2';
+
     color: var(--color-home-green-text);
     margin-bottom: 2em;
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 /* 2. Limitador de ancho para que las preguntas no crucen toda la pantalla */
@@ -1025,6 +1067,17 @@ nav ul#nav-list > li > a.nav-active {
         color: #5c3265;
         margin-bottom: 1em;
         font-size: 1.5rem;
+    }
+
+    .button-container {
+        padding: 0 5vw;
+    }
+
+    .cta-button {
+        font-size: 1.8rem;
+        min-height: 100px;
+        padding: 1.5rem;
+        letter-spacing: 0.12em;
     }
 
     .menu-toggle { display: flex; }
@@ -1619,10 +1672,17 @@ nav ul#nav-list > li > a.nav-active {
         grid-template-columns: 1fr;
         gap: 1em;
     }
-    
+
     .taller-image {
         width: 100%;
         height: 200px;
+    }
+
+    .cta-button {
+        font-size: 1.3rem;
+        min-height: 80px;
+        padding: 1rem;
+        letter-spacing: 0.1em;
     }
 }
 
@@ -1638,6 +1698,7 @@ nav ul#nav-list > li > a.nav-active {
 }
 
 #formulario-section h2 {
+    font-family: 'MiFuente2';
     color: var(--color-text-white);
     margin-bottom: 2em;
     font-size: 5rem;
@@ -1701,14 +1762,28 @@ nav ul#nav-list > li > a.nav-active {
 }
 
 .formulario-intro-precio-item{
+    position: relative;
     justify-content: space-around;
     margin-bottom: 2em;
     min-height: 10vh;
     border-radius: 10px;
     background: var(--color-surface-pink);
-    padding: 1em;
+    padding: 1em 1em 1em 1em;
     max-width: 90vw;
     border: 1px solid var(--color-text-pink-strong);
+}
+
+.precio-popup-item {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--color-text-pink-strong);
+    color: var(--color-text-white);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 12px rgba(92, 50, 101, 0.3);
 }
 
 .formulario-intro-precio-item p {
@@ -1731,7 +1806,30 @@ nav ul#nav-list > li > a.nav-active {
     opacity: 0.75;
 }
 
+.btn-info-hospedaje {
+    display: inline-block;
+    background-color: #d4b8f5;
+    color: var(--color-text-pink-strong);
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    border: 2px solid #b89ce0;
+    cursor: pointer;
+}
 
+.btn-info-hospedaje:hover {
+    background-color: #c9a3ed;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+}
+
+.btn-info-hospedaje:active {
+    transform: translateY(-1px);
+}
 
 .formulario-intro-precio p:last-child {
     margin-bottom: 0;
@@ -1746,6 +1844,19 @@ nav ul#nav-list > li > a.nav-active {
     }
     .formulario-intro-precio-item{
         min-width: 200px ;
+        padding: 4em 1em 1em 1em;
+    }
+
+    .precio-popup-item {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+        top: 10px;
+        right: 10px;
+    }
+
+    .btn-info-hospedaje {
+        padding: 12px 25px;
+        font-size: 1rem;
     }
 }
 
@@ -1928,6 +2039,8 @@ nav ul#nav-list > li > a.nav-active {
 }
 
 #team-section h2 {
+    font-family: 'MiFuente2';
+
     text-align: center;
     color: var(--color-text-white);
     font-size: 4rem;
@@ -2204,6 +2317,15 @@ margin-bottom: 150px;}
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.edition-year-image {
+    height: 3rem;
+    width: auto;
+    margin-bottom: 0.5em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .edition-year {
     font-size: 1.2rem;
     color: var(--color-text-green-strong);
@@ -2467,6 +2589,31 @@ margin-bottom: 150px;}
     border-color: var(--color-brand-rose);
 }
 
+/* Indicadores del Carrusel Interior */
+.inner-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.inner-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-overlay-black-20);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1.5px solid var(--color-overlay-brand-30);
+}
+
+.inner-indicator.active {
+    background: var(--color-overlay-black-40);
+    width: 24px;
+    border-radius: 5px;
+    border-color: var(--color-brand-rose);
+}
+
 /* Responsive para Historia */
 @media (max-width: 1024px) {
     .history-carousel-slide {
@@ -2475,6 +2622,10 @@ margin-bottom: 150px;}
 
     .edition-header h2 {
         font-size: 2.2rem;
+    }
+
+    .edition-year-image {
+        height: 2.2rem;
     }
 
     .inner-carousel-wrapper {
@@ -2521,6 +2672,10 @@ margin-bottom: 150px;}
 
     .edition-header h2 {
         font-size: 1.8rem;
+    }
+
+    .edition-year-image {
+        height: 1.8rem;
     }
 
     .edition-year {
@@ -3097,7 +3252,7 @@ margin-bottom: 150px;}
     border: 1px solid var(--color-overlay-beige-30);
 }
 
-.hospedaje-card:nth-child(even) {
+.hospedaje-card:nth-child(1) {
     background: var(--color-surface-pink);
     border-color: var(--color-overlay-brand-15);
 }
@@ -3144,7 +3299,7 @@ margin-bottom: 150px;}
     position: absolute;
     top: 10px;
     right: 10px;
-    background: var(--color-overlay-brand-90);
+    background: var(--color-bg-pink-soft);
     color: var(--color-text-white);
     padding: 8px 15px;
     border-radius: 20px;
@@ -3162,6 +3317,31 @@ margin-bottom: 150px;}
     border-radius: 20px;
     font-weight: bold;
     font-size: 0.9rem;
+}
+
+.card-badge-purple {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--color-bg-pink-soft);
+    color: var(--color-text-white);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.price-popup {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--color-text-green-strong);
+    color: var(--color-text-white);
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(93, 101, 50, 0.4);
 }
 
 
