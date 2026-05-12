@@ -81,11 +81,10 @@ body {
     flex-direction: column;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    cursor: url('../src/Leaf_-Normal-Select.png') 0 0, auto;
 }
 
 @font-face {
-  src: url('../fonts/Guggeli2020-Regular.woff2') format('woff2');
+  src: url('../fonts/Sneaky-Times.woff2') format('woff2');
   font-family: 'MiFuente';
   font-weight: normal;
   font-style: normal;
@@ -98,21 +97,6 @@ body {
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
-
-/* Cursor personalizado para elementos interactivos */
-button, a, [role="button"], input[type="submit"], input[type="button"], select, textarea {
-    cursor: url('../src/Leaf_-Normal-Select.png') 0 0, pointer;
-}
-
-button:hover,
-a:hover,
-[role="button"]:hover,
-input[type="submit"]:hover,
-input[type="button"]:hover,
-select:hover,
-textarea:hover {
-    cursor: url('../src/Leaf_-Normal-Select-big.png') 0 0, pointer;
 }
 
 /* ==================== HEADER Y NAVEGACIÓN ==================== */
@@ -136,7 +120,7 @@ nav ul#nav-list {
     background-color: rgba(240, 248, 255, 0.1);
     backdrop-filter: blur(15px);
     list-style: none;
-    gap: 15px; /* Espacio entre los elementos centrales */
+    gap: 15px; 
     min-height: 40px;
 }
 
@@ -400,14 +384,14 @@ nav ul#nav-list > li > a.nav-active {
     border: none;
     border-radius: 15px;
     text-decoration: none;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 10px 25px rgba(93, 101, 50, 0.4);
     font-family: 'MiFuente2', sans-serif;
 }
 
 .cta-button:hover {
-    transform: translateY(-5px) scale(1.05);
+    transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(93, 101, 50, 0.6);
     background-color: var(--color-bg-green-soft);
 }
@@ -433,6 +417,7 @@ nav ul#nav-list > li > a.nav-active {
     height: 100%;
     width: 100%;
 }
+
 /* ==================== CARRUSEL ==================== */
 #div-carousel {
     position: relative;
@@ -471,7 +456,7 @@ nav ul#nav-list > li > a.nav-active {
     color: var(--color-text-white);
     font-size: 2rem;
     padding: 0.5em 1em;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     z-index: 10;
     border-radius: 5px;
     transition: background 0.3s;
@@ -705,7 +690,7 @@ nav ul#nav-list > li > a.nav-active {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     font-size: 1.1rem;
     font-weight: bold;
     color: var(--color-home-green-text);
@@ -885,7 +870,7 @@ nav ul#nav-list > li > a.nav-active {
     z-index: 9999;
     width: 30px;
     height: 24px;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -920,7 +905,7 @@ nav ul#nav-list > li > a.nav-active {
     background: rgba(20, 20, 20, 0.72);
     color: white;
     padding: 0.75rem 1rem;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     font-size: 0.95rem;
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
@@ -1492,7 +1477,7 @@ nav ul#nav-list > li > a.nav-active {
     grid-template-columns: 1fr 32px;
     gap: 12px;
     align-items: center;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--color-brand-rose);
@@ -1612,7 +1597,7 @@ nav ul#nav-list > li > a.nav-active {
     height: 300px;
     border-radius: 24px 24px 0 0;
     overflow: hidden;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
@@ -1778,9 +1763,8 @@ nav ul#nav-list > li > a.nav-active {
 }
 
 .formulario-intro-precio-item{
-    display: grid;
-    grid-template-columns: minmax(70px, auto) 1fr minmax(70px, auto);
-    gap: 15px;
+    position: relative;
+    justify-content: space-around;
     margin-bottom: 2em;
     min-height: 10vh;
     border-radius: 10px;
@@ -1791,8 +1775,9 @@ nav ul#nav-list > li > a.nav-active {
 }
 
 .precio-popup-item {
-    grid-column: 3;
-    grid-row: 1;
+    position: absolute;
+    top: 15px;
+    right: 15px;
     background-color: var(--color-text-pink-strong);
     color: var(--color-text-white);
     padding: 10px 18px;
@@ -1800,25 +1785,14 @@ nav ul#nav-list > li > a.nav-active {
     font-weight: bold;
     font-size: 0.95rem;
     box-shadow: 0 4px 12px rgba(92, 50, 101, 0.3);
-    height: fit-content;
-    white-space: nowrap;
-}
-
-.formulario-intro-precio-item h4 {
-    grid-column: 2;
-    grid-row: 1 / -1;
-    color: var(--color-text-pink-strong);
-    margin: 0;
-    align-self: center;
-    justify-self: center;
-    text-align: center;
 }
 
 .formulario-intro-precio-item p {
-    grid-column: 1 / -1;
-    grid-row: 2;
     color: var(--color-text-pink-strong);
-    margin: 0;
+}
+
+.formulario-intro-precio-item h4 {
+    color: var(--color-text-pink-strong);
 }
 
 .formulario-intro-precio div a {
@@ -1845,12 +1819,12 @@ nav ul#nav-list > li > a.nav-active {
     margin-top: 20px;
     transition: all 0.3s ease;
     border: 2px solid #b89ce0;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
 }
 
 .btn-info-hospedaje:hover {
     background-color: #c9a3ed;
-    transform: translateY(-3px) scale(1.05);
+    transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
 }
 
@@ -1870,31 +1844,15 @@ nav ul#nav-list > li > a.nav-active {
         align-items: center;
     }
     .formulario-intro-precio-item{
-        display: grid;
-        grid-template-columns: 1fr;
-        min-width: 200px;
-        padding: 1em 1em 1em 1em;
-        gap: 15px;
+        min-width: 200px ;
+        padding: 4em 1em 1em 1em;
     }
 
     .precio-popup-item {
         padding: 8px 14px;
         font-size: 0.85rem;
-        grid-column: 1;
-        grid-row: 3;
-        justify-self: center;
-        height: fit-content;
-        margin-top: 10px;
-    }
-
-    .formulario-intro-precio-item h4 {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    .formulario-intro-precio-item p {
-        grid-column: 1;
-        grid-row: 2;
+        top: 10px;
+        right: 10px;
     }
 
     .btn-info-hospedaje {
@@ -1965,7 +1923,7 @@ nav ul#nav-list > li > a.nav-active {
 
 
 .form-group select {
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235c3265' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -1988,7 +1946,7 @@ nav ul#nav-list > li > a.nav-active {
     border-radius: 25px;
     font-size: 1.1rem;
     font-weight: bold;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
@@ -2000,7 +1958,7 @@ nav ul#nav-list > li > a.nav-active {
 }
 
 .form-btn-submit:hover {
-    transform: translateY(-3px) scale(1.05);
+    transform: translateY(-3px);
     background-color: var(--color-surface-green);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
@@ -2012,7 +1970,7 @@ nav ul#nav-list > li > a.nav-active {
 }
 
 .form-btn-reset:hover {
-    transform: translateY(-3px) scale(1.05);
+    transform: translateY(-3px);
 }
 
 /* Responsive para formulario */
@@ -2432,7 +2390,7 @@ margin-bottom: 150px;}
     height: 50px;
     border-radius: 50%;
     font-size: 1.5rem;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     transition: all 0.3s ease;
     z-index: 10;
 }
@@ -2586,7 +2544,7 @@ margin-bottom: 150px;}
     height: 60px;
     border-radius: 50%;
     font-size: 2rem;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     transition: all 0.3s ease;
     z-index: 20;
 }
@@ -2620,7 +2578,7 @@ margin-bottom: 150px;}
     height: 12px;
     border-radius: 50%;
     background: var(--color-overlay-black-10);
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     transition: all 0.3s ease;
     border: 2px solid var(--color-overlay-brand-30);
 }
@@ -2645,7 +2603,7 @@ margin-bottom: 150px;}
     height: 10px;
     border-radius: 50%;
     background: var(--color-overlay-black-20);
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     transition: all 0.3s ease;
     border: 1.5px solid var(--color-overlay-brand-30);
 }
@@ -3226,7 +3184,7 @@ margin-bottom: 150px;}
     border-radius: 25px;
     font-size: 1rem;
     font-weight: bold;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     transition: all 0.3s ease;
     width: 100%;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
@@ -3448,7 +3406,7 @@ color: var(--color-bg-green-soft);
     padding: 12px;
     border-radius: 8px;
     font-weight: bold;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     transition: all 0.3s ease;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
@@ -3545,7 +3503,7 @@ color: var(--color-bg-green-soft);
     border-radius: 30px;
     font-size: 1.1rem;
     font-weight: bold;
-    cursor: url('../src/see-through-leaf.cur'),pointer;
+    cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }

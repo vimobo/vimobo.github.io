@@ -3,7 +3,14 @@
     "allow": [
       "Bash(Get-ChildItem -Path \"C:\\\\vimobo.github.io\" -Filter \"*.html\" -File)",
       "Bash(Select-Object Name)",
-      "Bash(python *)"
+      "Bash(python *)",
+      "Bash(sed 's/^\\\\.//')",
+      "Bash(cp css/style.css css/style.css.backup)",
+      "Bash(cat)",
+      "Bash(chmod +x /tmp/cleanup.sh)",
+      "Bash(/tmp/cleanup.sh)",
+      "Bash(python3 *)",
+      "Bash(ffmpeg -i \"C:\\\\vimobo.github.io\\\\src\\\\Leaf_-Normal-Select.png\" -vf scale=64:64 \"C:\\\\vimobo.github.io\\\\src\\\\Leaf_-Normal-Select-large.png\" -y)"
     ]
   }
 }
