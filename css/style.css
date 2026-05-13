@@ -1573,6 +1573,7 @@ nav ul#nav-list > li > a.nav-active {
     margin-left: auto;
     margin-right: auto;
     border-radius: 20px;
+    text-align: center;
     padding: 2em;
     background: var(--color-bg-pink-soft);
     max-width: 80vw;
@@ -1580,6 +1581,7 @@ nav ul#nav-list > li > a.nav-active {
 }
 
 .itinerary-coming-soon {
+    
     color: var(--color-surface-green);
 }
 
