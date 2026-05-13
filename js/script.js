@@ -173,27 +173,59 @@ const nextBtn = document.querySelector(".next");
 
 if (carouselSlide && carouselImages.length > 0) {
     let counter = 0;
+    let autoplayInterval;
+    let userInteracted = false;
+    let resumeAutoplayTimeout;
 
     const updateCarousel = () => {
-        const size = carouselImages[0].clientWidth; 
+        const size = carouselImages[0].clientWidth;
         carouselSlide.style.transform = `translateX(${-counter * size}px)`;
+    };
+
+    const startAutoplay = () => {
+        autoplayInterval = setInterval(() => {
+            counter++;
+            if (counter >= carouselImages.length) counter = 0;
+            updateCarousel();
+        }, 4000); // Cambiar imagen cada 4 segundos
+    };
+
+    const stopAutoplay = () => {
+        clearInterval(autoplayInterval);
+    };
+
+    const resumeAutoplayAfterDelay = () => {
+        clearTimeout(resumeAutoplayTimeout);
+        resumeAutoplayTimeout = setTimeout(() => {
+            userInteracted = false;
+            startAutoplay();
+        }, 10000); // Reanudar autoplay después de 10 segundos sin interacción
     };
 
     if (nextBtn) {
         nextBtn.addEventListener("click", () => {
+            userInteracted = true;
+            stopAutoplay();
             counter++;
             if (counter >= carouselImages.length) counter = 0;
             updateCarousel();
+            resumeAutoplayAfterDelay();
         });
     }
 
     if (prevBtn) {
         prevBtn.addEventListener("click", () => {
+            userInteracted = true;
+            stopAutoplay();
             counter--;
             if (counter < 0) counter = carouselImages.length - 1;
             updateCarousel();
+            resumeAutoplayAfterDelay();
         });
     }
+
+    // Iniciar autoplay al cargar
+    startAutoplay();
 
     window.addEventListener("resize", updateCarousel);
 }
@@ -296,9 +328,6 @@ function initWordReveal(el, staggerMs = 55) {
     observer.observe(el);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('#section1 h2').forEach(h2 => initWordReveal(h2));
-});
 
 function encodeFormData(data) {
     if ('URLSearchParams' in window) {
@@ -312,19 +341,7 @@ function encodeFormData(data) {
 
 // Aplicar typing animation cuando el elemento sea visible
 document.addEventListener('DOMContentLoaded', () => {
-    const section1H2 = document.querySelector('#section1 h2');
-    const section2H2 = document.querySelector('#section2 h2');
     const section2P = document.querySelector('#section2 p');
-
-    observeOrRun(section1H2, (element) => {
-        element.classList.add('typed');
-        typeWriter(element, 25);
-    });
-
-    observeOrRun(section2H2, (element) => {
-        element.classList.add('typed');
-        typeWriter(element, 25);
-    });
 
     observeOrRun(section2P, (element) => {
         element.classList.add('typed');
@@ -665,85 +682,120 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ==================== EQUIPO - EFECTO LINTERNA ====================
+// ==================== AUTOPLAY PARA CARRUSELES DE HISTORIA ====================
 document.addEventListener('DOMContentLoaded', () => {
-    const teamGallery = document.querySelector('.team-gallery');
-    const spotlightOverlay = document.getElementById('team-spotlight-overlay');
-    const spotlightHint = document.getElementById('team-spotlight-hint');
-    const counterValue = document.getElementById('counter-value');
-    const teamPhotos = document.querySelectorAll('.team-photo');
+    // Esperar a que HistoryCarousel se instancie
+    setTimeout(() => {
+        const innerCarousels = document.querySelectorAll('.inner-carousel');
 
-    let hintDismissed = false;
-    let counter = 0;
-    const discoveredPhotos = new Set();
+        innerCarousels.forEach((carousel) => {
+            const edition = carousel.dataset.edition;
+            const slides = carousel.querySelectorAll('.inner-slide');
+            let autoplayInterval = null;
+            let resumeTimeout = null;
+            let isVisible = false;
 
-    if (teamGallery && spotlightOverlay) {
-        let mouseX = '50%';
-        let mouseY = '50%';
+            const getNextSlide = () => {
+                // Obtener el índice actual del transform
+                const transform = carousel.style.transform || 'translateX(0%)';
+                const match = transform.match(/translateX\((-?\d+)%\)/);
+                let currentSlide = 0;
 
-        const updateSpotlight = (e) => {
-            const galleryRect = teamGallery.getBoundingClientRect();
-            const x = e.clientX - galleryRect.left;
-            const y = e.clientY - galleryRect.top;
+                if (match) {
+                    const percentage = parseInt(match[1]);
+                    currentSlide = Math.abs(percentage) / 100;
+                }
 
-            mouseX = x + 'px';
-            mouseY = y + 'px';
+                currentSlide++;
+                if (currentSlide >= slides.length) {
+                    currentSlide = 0;
+                }
+                return currentSlide;
+            };
 
-            const root = document.documentElement;
-            root.style.setProperty('--mouse-x', mouseX);
-            root.style.setProperty('--mouse-y', mouseY);
+            const updateCarouselToSlide = (slideIndex) => {
+                const offset = -slideIndex * 100;
+                carousel.style.transform = `translateX(${offset}%)`;
 
-            // Ocultar el hint cuando el usuario mueve el ratón
-            if (spotlightHint && !hintDismissed) {
-                spotlightHint.style.opacity = '0';
-                spotlightHint.style.transition = 'opacity 0.3s ease';
-                hintDismissed = true;
-            }
+                // Actualizar indicadores
+                const indicators = document.querySelectorAll(`.inner-carousel-indicators[data-edition="${edition}"] .inner-indicator`);
+                indicators.forEach((ind, index) => {
+                    ind.classList.toggle('active', index === slideIndex);
+                });
+            };
 
-            // Detectar hover sobre fotos del equipo
-            teamPhotos.forEach((photo, index) => {
-                const photoRect = photo.getBoundingClientRect();
-                const distance = Math.sqrt(
-                    Math.pow(e.clientX - (photoRect.left + photoRect.width / 2), 2) +
-                    Math.pow(e.clientY - (photoRect.top + photoRect.height / 2), 2)
-                );
+            const startAutoplay = () => {
+                if (!isVisible) return;
+                if (autoplayInterval) clearInterval(autoplayInterval);
 
-                if (distance < 200 && !discoveredPhotos.has(index)) {
-                    discoveredPhotos.add(index);
-                    counter++;
-                    if (counterValue) {
-                        counterValue.textContent = counter;
-                        counterValue.style.animation = 'none';
-                        setTimeout(() => {
-                            counterValue.style.animation = 'pulse 0.4s ease';
-                        }, 10);
+                autoplayInterval = setInterval(() => {
+                    if (isVisible) {
+                        const nextSlide = getNextSlide();
+                        updateCarouselToSlide(nextSlide);
                     }
-                }
+                }, 4000);
+            };
+
+            const stopAutoplay = () => {
+                if (autoplayInterval) clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            };
+
+            const resumeAutoplayAfterDelay = () => {
+                clearTimeout(resumeTimeout);
+                resumeTimeout = setTimeout(() => {
+                    if (isVisible) {
+                        startAutoplay();
+                    }
+                }, 10000);
+            };
+
+            // Agregar eventos a botones
+            const prevBtn = document.querySelector(`.inner-prev[data-edition="${edition}"]`);
+            const nextBtn = document.querySelector(`.inner-next[data-edition="${edition}"]`);
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    stopAutoplay();
+                    resumeAutoplayAfterDelay();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    stopAutoplay();
+                    resumeAutoplayAfterDelay();
+                });
+            }
+
+            // Agregar eventos a indicadores
+            const indicators = document.querySelectorAll(`.inner-carousel-indicators[data-edition="${edition}"] .inner-indicator`);
+            indicators.forEach((indicator) => {
+                indicator.addEventListener('click', () => {
+                    stopAutoplay();
+                    resumeAutoplayAfterDelay();
+                });
             });
-        };
 
-        document.addEventListener('mousemove', (e) => {
-            const galleryRect = teamGallery.getBoundingClientRect();
-            // Solo aplicar si estamos sobre la galería
-            if (galleryRect.top <= e.clientY &&
-                galleryRect.bottom >= e.clientY &&
-                galleryRect.left <= e.clientX &&
-                galleryRect.right >= e.clientX) {
-                updateSpotlight(e);
-            }
-        });
+            // IntersectionObserver para detectar visibilidad
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !isVisible) {
+                        isVisible = true;
+                        carousel.style.transform = `translateX(0%)`;
+                        updateCarouselToSlide(0);
+                        startAutoplay();
+                    } else if (!entry.isIntersecting && isVisible) {
+                        isVisible = false;
+                        stopAutoplay();
+                    }
+                });
+            }, { threshold: 0.1 });
 
-        // También ocultar hint cuando hay click
-        document.addEventListener('click', (e) => {
-            if (spotlightHint && !hintDismissed) {
-                const galleryRect = teamGallery.getBoundingClientRect();
-                if (galleryRect.top <= e.clientY && galleryRect.bottom >= e.clientY) {
-                    spotlightHint.style.opacity = '0';
-                    spotlightHint.style.transition = 'opacity 0.3s ease';
-                    hintDismissed = true;
-                }
-            }
+            observer.observe(carousel);
         });
-    }
+    }, 100);
 });
+
+
 

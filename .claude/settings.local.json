@@ -12,7 +12,8 @@
       "Bash(python3 *)",
       "Bash(ffmpeg -i \"C:\\\\vimobo.github.io\\\\src\\\\Leaf_-Normal-Select.png\" -vf scale=64:64 \"C:\\\\vimobo.github.io\\\\src\\\\Leaf_-Normal-Select-large.png\" -y)",
       "Bash(npx http-server *)",
-      "Bash(start *)"
+      "Bash(start *)",
+      "WebFetch(domain:observatoriofestival.com)"
     ]
   }
 }
