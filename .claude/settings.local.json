@@ -10,7 +10,9 @@
       "Bash(chmod +x /tmp/cleanup.sh)",
       "Bash(/tmp/cleanup.sh)",
       "Bash(python3 *)",
-      "Bash(ffmpeg -i \"C:\\\\vimobo.github.io\\\\src\\\\Leaf_-Normal-Select.png\" -vf scale=64:64 \"C:\\\\vimobo.github.io\\\\src\\\\Leaf_-Normal-Select-large.png\" -y)"
+      "Bash(ffmpeg -i \"C:\\\\vimobo.github.io\\\\src\\\\Leaf_-Normal-Select.png\" -vf scale=64:64 \"C:\\\\vimobo.github.io\\\\src\\\\Leaf_-Normal-Select-large.png\" -y)",
+      "Bash(npx http-server *)",
+      "Bash(start *)"
     ]
   }
 }

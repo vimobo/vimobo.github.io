@@ -665,3 +665,85 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// ==================== EQUIPO - EFECTO LINTERNA ====================
+document.addEventListener('DOMContentLoaded', () => {
+    const teamGallery = document.querySelector('.team-gallery');
+    const spotlightOverlay = document.getElementById('team-spotlight-overlay');
+    const spotlightHint = document.getElementById('team-spotlight-hint');
+    const counterValue = document.getElementById('counter-value');
+    const teamPhotos = document.querySelectorAll('.team-photo');
+
+    let hintDismissed = false;
+    let counter = 0;
+    const discoveredPhotos = new Set();
+
+    if (teamGallery && spotlightOverlay) {
+        let mouseX = '50%';
+        let mouseY = '50%';
+
+        const updateSpotlight = (e) => {
+            const galleryRect = teamGallery.getBoundingClientRect();
+            const x = e.clientX - galleryRect.left;
+            const y = e.clientY - galleryRect.top;
+
+            mouseX = x + 'px';
+            mouseY = y + 'px';
+
+            const root = document.documentElement;
+            root.style.setProperty('--mouse-x', mouseX);
+            root.style.setProperty('--mouse-y', mouseY);
+
+            // Ocultar el hint cuando el usuario mueve el ratón
+            if (spotlightHint && !hintDismissed) {
+                spotlightHint.style.opacity = '0';
+                spotlightHint.style.transition = 'opacity 0.3s ease';
+                hintDismissed = true;
+            }
+
+            // Detectar hover sobre fotos del equipo
+            teamPhotos.forEach((photo, index) => {
+                const photoRect = photo.getBoundingClientRect();
+                const distance = Math.sqrt(
+                    Math.pow(e.clientX - (photoRect.left + photoRect.width / 2), 2) +
+                    Math.pow(e.clientY - (photoRect.top + photoRect.height / 2), 2)
+                );
+
+                if (distance < 200 && !discoveredPhotos.has(index)) {
+                    discoveredPhotos.add(index);
+                    counter++;
+                    if (counterValue) {
+                        counterValue.textContent = counter;
+                        counterValue.style.animation = 'none';
+                        setTimeout(() => {
+                            counterValue.style.animation = 'pulse 0.4s ease';
+                        }, 10);
+                    }
+                }
+            });
+        };
+
+        document.addEventListener('mousemove', (e) => {
+            const galleryRect = teamGallery.getBoundingClientRect();
+            // Solo aplicar si estamos sobre la galería
+            if (galleryRect.top <= e.clientY &&
+                galleryRect.bottom >= e.clientY &&
+                galleryRect.left <= e.clientX &&
+                galleryRect.right >= e.clientX) {
+                updateSpotlight(e);
+            }
+        });
+
+        // También ocultar hint cuando hay click
+        document.addEventListener('click', (e) => {
+            if (spotlightHint && !hintDismissed) {
+                const galleryRect = teamGallery.getBoundingClientRect();
+                if (galleryRect.top <= e.clientY && galleryRect.bottom >= e.clientY) {
+                    spotlightHint.style.opacity = '0';
+                    spotlightHint.style.transition = 'opacity 0.3s ease';
+                    hintDismissed = true;
+                }
+            }
+        });
+    }
+});
+
