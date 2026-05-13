@@ -289,6 +289,10 @@ nav ul#nav-list > li > a.nav-active {
     filter: brightness(0.7);
 }
 
+#intro .video-bg {
+    filter: brightness(0.8) hue-rotate(30deg) saturate(0.8) contrast(1.1);
+}
+
 .intro-logo {
     position: absolute;
     top: 50%;
