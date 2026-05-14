@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="src/LOGO-L-NEGRO.png">
     <title>Únete a LandLight - Inscripción al Festival</title>
-    <meta name="description" content="¡Únete a LandLight! Completa tu inscripción para participar como visitante, artista, tallerista o voluntario en nuestro festival de luz.">
+    <meta name="description"
+        content="¡Únete a LandLight! Completa tu inscripción para participar como visitante, artista, tallerista o voluntario en nuestro festival de luz.">
     <meta name="keywords" content="inscripción, participación, formulario, tallerista, artista, voluntario, LandLight">
     <link rel="canonical" href="https://landlight.es/comoserparte.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Únete a LandLight - Inscripción">
-    <meta property="og:description" content="Completa tu solicitud para ser parte de LandLight. Múltiples formas de participación disponibles.">
+    <meta property="og:description"
+        content="Completa tu solicitud para ser parte de LandLight. Múltiples formas de participación disponibles.">
     <meta property="og:url" content="https://landlight.es/comoserparte.html">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-<audio id="backgroundMusic" loop preload="auto">
+    <audio id="backgroundMusic" loop preload="auto">
         <source src="./src/landlight-music.mp3" type="audio/mpeg">
     </audio>
     <div class="music-button-wrapper">
@@ -34,7 +39,7 @@
                         <li><a href="hospedaje.html">Hospedaje</a></li>
                         <li><a href="comida.html">Comida</a></li>
                         <li><a href="materiales.html">Materiales</a></li>
-                        <li><a href="Responsabilidades.html">Responsabilidades</a></li>
+                        <li><a href="responsabilidades.html">Responsabilidades</a></li>
                         <li><a href="transparencia.html">Transparencia</a></li>
                         <li><a href="preguntas.html">Preguntas Frecuentes</a></li>
 
@@ -71,8 +76,12 @@
 
             <div class="formulario-container">
                 <div class="formulario-intro fade-in">
-                    <p>LandLight es más que un festival: es una comunidad de creadores, soñadores e innovadores apasionados por la luz, el arte y las experiencias transformadoras. Te invitamos a ser parte de esta aventura.</p>
-                    <p>Ya seas un visitante curioso, un artista con una visión, un tallerista con experiencia para compartir, o alguien que quiere colaborar, hay un lugar para ti. Completa el formulario a continuación y cuéntanos cómo imaginas tu participación en LandLight.</p>
+                    <p>LandLight es más que un festival: es una comunidad de creadores, soñadores e innovadores
+                        apasionados por la luz, el arte y las experiencias transformadoras. Te invitamos a ser parte de
+                        esta aventura.</p>
+                    <p>Ya seas un visitante curioso, un artista con una visión, un tallerista con experiencia para
+                        compartir, o alguien que quiere colaborar, hay un lugar para ti. Completa el formulario a
+                        continuación y cuéntanos cómo imaginas tu participación en LandLight.</p>
                 </div>
 
                 <div class="formulario-intro-precio">
@@ -82,22 +91,25 @@
                         <DIV class="formulario-intro-precio-item">
                             <div class="precio-popup-item">290€</div>
                             <h4>Participación general - Casa rural</h4>
-                            <p>Atiende al fest como publico. Consultar las condiciones en <a href="./hospedaje.html">hospedaeje</a> </p>
+                            <p>Atiende al fest como publico. Consultar las condiciones en <a
+                                    href="./hospedaje.html">hospedaeje</a> </p>
                         </DIV>
                         <DIV class="formulario-intro-precio-item">
                             <div class="precio-popup-item">230€</div>
                             <h4>Participación general - Acampada</h4>
-                            <p>Atiende al fest como publico. Consultar las condiciones en <a href="./hospedaje.html">hospedaeje</a> </p>
+                            <p>Atiende al fest como publico. Consultar las condiciones en <a
+                                    href="./hospedaje.html">hospedaeje</a> </p>
 
-                            </DIV>
+                        </DIV>
                         <DIV class="formulario-intro-precio-item">
                             <div class="precio-popup-item">230€</div>
                             <h4>Participación general - Camper</h4>
-                            <p>Atiende al fest como publico. Consultar las condiciones en <a href="./hospedaje.html">hospedaeje</a> </p>
+                            <p>Atiende al fest como publico. Consultar las condiciones en <a
+                                    href="./hospedaje.html">hospedaeje</a> </p>
 
-                            </DIV>
+                        </DIV>
 
-                        </div>
+                    </div>
 
                     <a href="hospedaje.html" class="btn-info-hospedaje">Más información en hospedaje</a>
 
@@ -114,7 +126,7 @@
                     <!-- Campo: Nombre -->
                     <div class="form-group fade-in">
                         <label for="nombre">¿Cuál es tu nombre?</label>
-                        <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre completo" required>
+                        <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre completo" required minlength="3" maxlength="100">
                     </div>
 
                     <!-- Campo: Email -->
@@ -126,7 +138,7 @@
                     <!-- Campo: Teléfono -->
                     <div class="form-group fade-in">
                         <label for="telefono">¿Cuál es tu teléfono?</label>
-                        <input type="tel" id="telefono" name="telefono" placeholder="+34 XXX XXX XXX">
+                        <input type="tel" id="telefono" name="telefono" placeholder="+34 XXX XXX XXX" minlength="7">
                     </div>
 
                     <!-- Campo: Tipo de participación (Desplegable) -->
@@ -146,13 +158,14 @@
                     <!-- Campo: Experiencia / Interés -->
                     <div class="form-group fade-in">
                         <label for="experiencia">¿Qué te atrae de LandLight?</label>
-                        <textarea id="experiencia" name="experiencia" placeholder="Cuéntanos qué te atrae del festival y cómo imaginas tu participación..."></textarea>
+                        <textarea id="experiencia" name="experiencia" required minlength="10" maxlength="1000"
+                            placeholder="Cuéntanos qué te atrae del festival y cómo imaginas tu participación..."></textarea>
                     </div>
 
                     <!-- Campo: Rol o especialidad (Desplegable) -->
                     <div class="form-group fade-in">
                         <label for="especialidad">¿Cuál es tu área de expertise o interés?</label>
-                        <select id="especialidad" name="especialidad">
+                        <select id="especialidad" name="especialidad" required>
                             <option value="">-- Selecciona una opción --</option>
                             <option value="fotografia">Fotografía</option>
                             <option value="iluminacion">Iluminación / Técnica</option>
@@ -170,7 +183,7 @@
                     <!-- Campo: Disponibilidad (Desplegable) -->
                     <div class="form-group fade-in">
                         <label for="disponibilidad">¿Cuándo estarías disponible?</label>
-                        <select id="disponibilidad" name="disponibilidad">
+                        <select id="disponibilidad" name="disponibilidad" required>
                             <option value="">-- Selecciona una opción --</option>
                             <option value="durante-festival">Durante todo el festival</option>
                             <option value="dias-especificos">Solo algunos días</option>
@@ -183,13 +196,14 @@
                     <!-- Campo: Redes Sociales -->
                     <div class="form-group fade-in">
                         <label for="redes">¿Cuál es tu usuario de Instagram o red social?</label>
-                        <input type="text" id="redes" name="redes" placeholder="@tu_usuario" >
+                        <input type="text" id="redes" name="redes" placeholder="@tu_usuario" maxlength="100">
                     </div>
 
                     <!-- Campo: Mensaje adicional -->
                     <div class="form-group fade-in">
                         <label for="mensaje">¿Hay algo más que quieras decirnos?</label>
-                        <textarea id="mensaje" name="mensaje" placeholder="Comparte cualquier idea, pregunta o sugerencia..."></textarea>
+                        <textarea id="mensaje" name="mensaje" maxlength="500"
+                            placeholder="Comparte cualquier idea, pregunta o sugerencia..."></textarea>
                     </div>
 
                     <!-- Botones -->
@@ -225,7 +239,8 @@
             <div class="footer-social">
                 <h3>Contacto</h3>
                 <div class="social-icons">
-                    <a href="https://www.instagram.com/landlight.fest/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.instagram.com/landlight.fest/" target="_blank"
+                        rel="noopener noreferrer">Instagram</a>
                     <a href="mailto:landlight.fest@gmail.com">landlight.fest@gmail.com</a>
                 </div>
             </div>
@@ -237,4 +252,5 @@
 
     <script src="./js/script.js"></script>
 </body>
+
 </html>

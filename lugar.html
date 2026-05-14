@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="src/LOGO-L-NEGRO.png">
     <title>El Lugar de LandLight - Masía en Teruel</title>
-    <meta name="description" content="Descubre el lugar donde ocurre la magia: una masía aislada en el corazón de Teruel entre Villarluengo y Tronchón, rodeada de naturaleza.">
+    <meta name="description"
+        content="Descubre el lugar donde ocurre la magia: una masía aislada en el corazón de Teruel entre Villarluengo y Tronchón, rodeada de naturaleza.">
     <meta name="keywords" content="ubicación festival, masía Teruel, lugar LandLight, villarluengo, naturaleza">
     <link rel="canonical" href="https://landlight.es/lugar.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="El Lugar de LandLight - Masía en Teruel">
-    <meta property="og:description" content="La masía aislada en Teruel donde se crea la magia de LandLight. Naturaleza, luz y arte se encuentran.">
+    <meta property="og:description"
+        content="La masía aislada en Teruel donde se crea la magia de LandLight. Naturaleza, luz y arte se encuentran.">
     <meta property="og:url" content="https://landlight.es/lugar.html">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <audio id="backgroundMusic" loop preload="auto">
         <source src="./src/landlight-music.mp3" type="audio/mpeg">
@@ -34,10 +39,10 @@
                         <li><a href="hospedaje.html">Hospedaje</a></li>
                         <li><a href="comida.html">Comida</a></li>
                         <li><a href="materiales.html">Materiales</a></li>
-                        <li><a href="Responsabilidades.html">Responsabilidades</a></li>
+                        <li><a href="responsabilidades.html">Responsabilidades</a></li>
                         <li><a href="transparencia.html">Transparencia</a></li>
                         <li><a href="preguntas.html">Preguntas Frecuentes</a></li>
-                        
+
                     </ul>
                 </li>
                 <li><a href="#">El Festival</a>
@@ -54,7 +59,7 @@
     </header>
 
     <main id="main_place">
-        
+
         <div class="bg-image">
             <img src="./src/lugar_fondo.jpg" alt="">
         </div>
@@ -63,8 +68,8 @@
                 <source src="./src/14844950_1920_1080_30fps.mp4" type="video/mp4">
             </video>
         </div>
-        
-        
+
+
 
         <!-- Hero -->
         <section class="transparency-hero">
@@ -80,14 +85,20 @@
                 Casa Castel
             </h2>
             <p class="">
-                Land Light se sitúa en Casa Castel, una antigua masía de piedra situada en un paraje aislado de Teruel, rodeada por más de 600 hectáreas de valle, bosque y barranco. El acceso es posible únicamente en coche.
+                Land Light se sitúa en Casa Castel, una antigua masía de piedra situada en un paraje aislado de Teruel,
+                rodeada por más de 600 hectáreas de valle, bosque y barranco. El acceso es posible únicamente en coche.
             </p>
             <p>
-                La masía dispone de un gran salón comedor, cocina, biblioteca, distintos espacios de encuentro y descanso, dos jardines y 11 habitaciones con baño privado. A unos 30 minutos caminando de la casa se encuentra una pequeña poza donde poder bañarse.
+                La masía dispone de un gran salón comedor, cocina, biblioteca, distintos espacios de encuentro y
+                descanso, dos jardines y 11 habitaciones con baño privado. A unos 30 minutos caminando de la casa se
+                encuentra una pequeña poza donde poder bañarse.
 
             </p>
             <p>
-                La finca funciona fuera de red: no hay conexión eléctrica convencional, agua corriente, cobertura ni wifi. La electricidad se gestiona mediante un generador que se enciende en momentos concretos del día, apoyado por baterías, y el agua proviene de un pozo que debemos gestionar colectivamente de forma consciente.
+                La finca funciona fuera de red: no hay conexión eléctrica convencional, agua corriente, cobertura ni
+                wifi. La electricidad se gestiona mediante un generador que se enciende en momentos concretos del día,
+                apoyado por baterías, y el agua proviene de un pozo que debemos gestionar colectivamente de forma
+                consciente.
 
             </p>
         </div>
@@ -113,79 +124,86 @@
         <!-- Sección Intro - Segunda Parte -->
         <div id="section2-place-second">
             <p>
-                El entorno está formado principalmente por un bosque de encinas, pinos, sabinas y plantas aromáticas como romero, tomillo y lavanda. La zona también alberga fauna en libertad, incluyendo cabras montesas, zorros, jabalíes y una manada de más de 30 caballos que habitan la finca.
+                El entorno está formado principalmente por un bosque de encinas, pinos, sabinas y plantas aromáticas
+                como romero, tomillo y lavanda. La zona también alberga fauna en libertad, incluyendo cabras montesas,
+                zorros, jabalíes y una manada de más de 30 caballos que habitan la finca.
 
             </p>
             <p>
-                A pocos minutos caminando se encuentra un yacimiento natural de arcilla verde, utilizado tradicionalmente en procesos cosméticos y artísticos.
+                A pocos minutos caminando se encuentra un yacimiento natural de arcilla verde, utilizado
+                tradicionalmente en procesos cosméticos y artísticos.
 
             </p>
             <p>
-                Además, la nula contaminación lumínica convierte el cielo nocturno en uno de los grandes protagonistas del festival, especialmente durante las noches de agosto, coincidiendo con la lluvia de estrellas de las Perseidas.
+                Además, la nula contaminación lumínica convierte el cielo nocturno en uno de los grandes protagonistas
+                del festival, especialmente durante las noches de agosto, coincidiendo con la lluvia de estrellas de las
+                Perseidas.
 
             </p>
         </div>
 
         <!-- Sección Final -->
-   
 
-    <script>
-        // Scroll animations para lugar.html
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
-        };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // Agregar visible a los elementos fade-in dentro de la sección
-                    const fadeIns = entry.target.querySelectorAll('.fade-in');
-                    fadeIns.forEach(fadeIn => {
-                        fadeIn.classList.add('visible');
-                    });
-                }
+        <script>
+            // Scroll animations para lugar.html
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Agregar visible a los elementos fade-in dentro de la sección
+                        const fadeIns = entry.target.querySelectorAll('.fade-in');
+                        fadeIns.forEach(fadeIn => {
+                            fadeIn.classList.add('visible');
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.place-section').forEach(section => {
+                observer.observe(section);
             });
-        }, observerOptions);
+        </script>
 
-        document.querySelectorAll('.place-section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <h2>LandLight</h2>
-                <p>Experiencias únicas a través de la luz</p>
-            </div>
-            <div class="footer-links">
-                <h3>Enlaces</h3>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="historia.html">Historia</a></li>
-                    <li><a href="equipo.html">Equipo</a></li>
-                    <li><a href="lugar.html">El Lugar</a></li>
-                    <li><a href="programa.html">Talleres</a></li>
-                    <li><a href="hospedaje.html">Hospedaje</a></li>
-                    <li><a href="transparencia.html">Transparencia</a></li>
-                    <li><a href="comoserparte.html">Cómo ser parte</a></li>
-                </ul>
-            </div>
-            <div class="footer-social">
-                <h3>Contacto</h3>
-                <div class="social-icons">
-                    <a href="https://www.instagram.com/landlight.fest/" target="_blank" rel="noopener noreferrer">Instagram</a>
-                    <a href="mailto:landlight.fest@gmail.com">landlight.fest@gmail.com</a>
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <h2>LandLight</h2>
+                    <p>Experiencias únicas a través de la luz</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="historia.html">Historia</a></li>
+                        <li><a href="equipo.html">Equipo</a></li>
+                        <li><a href="lugar.html">El Lugar</a></li>
+                        <li><a href="programa.html">Talleres</a></li>
+                        <li><a href="hospedaje.html">Hospedaje</a></li>
+                        <li><a href="transparencia.html">Transparencia</a></li>
+                        <li><a href="comoserparte.html">Cómo ser parte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Contacto</h3>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/landlight.fest/" target="_blank"
+                            rel="noopener noreferrer">Instagram</a>
+                        <a href="mailto:landlight.fest@gmail.com">landlight.fest@gmail.com</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 LandLight</p>
-        </div>
-    </footer>
+            <div class="footer-bottom">
+                <p>© 2026 LandLight</p>
+            </div>
+        </footer>
 
-    <script src="./js/script.js"></script>
+        <script src="./js/script.js"></script>
 </body>
+
 </html>
