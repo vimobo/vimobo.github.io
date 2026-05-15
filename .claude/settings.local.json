@@ -14,7 +14,10 @@
       "Bash(npx http-server *)",
       "Bash(start *)",
       "WebFetch(domain:observatoriofestival.com)",
-      "Bash(Get-ChildItem *)"
+      "Bash(Get-ChildItem *)",
+      "Bash(ffmpeg -i landlight-music.mp3 -af \"volume=1.5\" landlight-music-temp.mp3 -y)",
+      "Bash(mv landlight-music-temp.mp3 landlight-music.mp3)",
+      "Bash(ffmpeg -i /c/vimobo.github.io/src/landlight-music.mp3 -af \"volume=1.5\" /c/vimobo.github.io/src/landlight-music-temp.mp3 -y)"
     ]
   }
 }

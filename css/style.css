@@ -1120,7 +1120,7 @@ nav ul#nav-list li ul li a:hover {
     border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 999px;
     background: rgba(20, 20, 20, 0.72);
-    color: #ced8a8;
+    color: #ffffff;
     padding: 0.75rem 1rem;
     cursor: url('../src/see-through-leaf.cur'), pointer;
     font-size: 0.95rem;
@@ -1155,7 +1155,7 @@ nav ul#nav-list li ul li a:hover {
 .ambient-popup {
     position: fixed;
     background: var(--color-transparent);
-    color: #ced8a8;
+    color: white;
     padding: 0.6rem 1rem;
     bottom: 6rem;
     right: 3rem;
@@ -1284,7 +1284,7 @@ nav ul#nav-list li ul li a:hover {
 
     #section2 h2 {
         color: #5c3265;
-        margin-bottom: 1.5em;
+        margin-bottom: 0.6em;
         font-size: 4rem;
     }
 
@@ -3923,6 +3923,21 @@ nav ul#nav-list li ul li a:hover {
     margin: 0 auto;
 }
 
+.hospedaje-info-box {
+    background-color: var(--color-bg-green-soft);
+    color: var(--color-text-green-strong);
+    padding: 20px 25px;
+    border-radius: 15px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: fit-content;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
 .hospedaje-card {
     flex: 1 1 300px;
     max-width: 420px;
@@ -3932,6 +3947,9 @@ nav ul#nav-list li ul li a:hover {
     box-shadow: 0 18px 40px var(--color-shadow-beige);
     transition: all 0.4s ease;
     border: 1px solid var(--color-overlay-beige-30);
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
 }
 
 .hospedaje-card:nth-child(1) {
@@ -4042,6 +4060,9 @@ nav ul#nav-list li ul li a:hover {
 
 .card-content {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .card-content h3 {
@@ -4061,6 +4082,7 @@ nav ul#nav-list li ul li a:hover {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-top: auto;
     margin-bottom: 15px;
 }
 
@@ -4070,6 +4092,7 @@ nav ul#nav-list li ul li a:hover {
     font-size: 0.9rem;
     align-items: center;
     gap: 5px;
+    text-align: justify;
 }
 
 .feature a {
@@ -4157,7 +4180,7 @@ nav ul#nav-list li ul li a:hover {
 .hospedaje-cta {
     position: relative;
     z-index: 5;
-    background: linear-gradient(135deg, var(--color-surface-cream) 0%, var(--color-surface-green) 100%);
+    background: linear-gradient(135deg, rgba(242, 230, 215, 0.8) 0%, rgba(200, 235, 215, 0.8) 100%);
     padding: 80px 20px;
     text-align: center;
     color: var(--color-text-pink-strong);

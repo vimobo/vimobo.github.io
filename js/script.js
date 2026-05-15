@@ -73,7 +73,7 @@ if (ambientPopup && (window.location.pathname.includes('index.html') || window.l
 }
 
 if (backgroundMusic && musicToggle) {
-    backgroundMusic.volume = 0.35;
+    backgroundMusic.volume = 1;
 
     const setMusicState = (isPlaying) => {
         musicToggle.textContent = isPlaying ? "Pausar ambiente" : "Activar ambiente";
@@ -176,6 +176,8 @@ if (carouselSlide && carouselImages.length > 0) {
     let autoplayInterval;
     let userInteracted = false;
     let resumeAutoplayTimeout;
+    let carouselVisible = false;
+    let isFirstImage = true;
 
     const updateCarousel = () => {
         const size = carouselImages[0].clientWidth;
@@ -183,15 +185,23 @@ if (carouselSlide && carouselImages.length > 0) {
     };
 
     const startAutoplay = () => {
-        autoplayInterval = setInterval(() => {
+        stopAutoplay();
+
+        const firstImageDuration = isFirstImage ? 7000 : 4000;
+
+        autoplayInterval = setTimeout(() => {
             counter++;
             if (counter >= carouselImages.length) counter = 0;
+            isFirstImage = false;
             updateCarousel();
-        }, 4000); // Cambiar imagen cada 4 segundos
+            startAutoplay();
+        }, firstImageDuration);
     };
 
     const stopAutoplay = () => {
-        clearInterval(autoplayInterval);
+        if (autoplayInterval) {
+            clearTimeout(autoplayInterval);
+        }
     };
 
     const resumeAutoplayAfterDelay = () => {
@@ -199,7 +209,7 @@ if (carouselSlide && carouselImages.length > 0) {
         resumeAutoplayTimeout = setTimeout(() => {
             userInteracted = false;
             startAutoplay();
-        }, 10000); // Reanudar autoplay después de 10 segundos sin interacción
+        }, 10000);
     };
 
     if (nextBtn) {
@@ -208,6 +218,7 @@ if (carouselSlide && carouselImages.length > 0) {
             stopAutoplay();
             counter++;
             if (counter >= carouselImages.length) counter = 0;
+            isFirstImage = false;
             updateCarousel();
             resumeAutoplayAfterDelay();
         });
@@ -219,13 +230,36 @@ if (carouselSlide && carouselImages.length > 0) {
             stopAutoplay();
             counter--;
             if (counter < 0) counter = carouselImages.length - 1;
+            isFirstImage = false;
             updateCarousel();
             resumeAutoplayAfterDelay();
         });
     }
 
-    // Iniciar autoplay al cargar
-    startAutoplay();
+    // Intersection Observer para iniciar cuando es visible
+    const carouselContainer = document.querySelector(".carousel-container");
+    if (carouselContainer) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !carouselVisible) {
+                    carouselVisible = true;
+                    isFirstImage = true;
+                    counter = 0;
+                    updateCarousel();
+                    startAutoplay();
+                } else if (!entry.isIntersecting && carouselVisible) {
+                    carouselVisible = false;
+                    stopAutoplay();
+                }
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(carouselContainer);
+    } else {
+        // Fallback si no encuentra el contenedor
+        carouselVisible = true;
+        startAutoplay();
+    }
 
     window.addEventListener("resize", updateCarousel);
 }
