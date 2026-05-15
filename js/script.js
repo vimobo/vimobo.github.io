@@ -114,7 +114,7 @@ if (backgroundMusic && musicToggle) {
 // ==================== 2. ANIMACIONES AL HACER SCROLL ====================
 document.addEventListener('DOMContentLoaded', () => {
     const animItems = document.querySelectorAll(
-        '.fade-up, .fade-left, .fade-in'
+        '.fade-up, .fade-left, .fade-in, .fade-in-shadow'
     );
 
     if ('IntersectionObserver' in window) {
@@ -433,29 +433,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Validar selects (opciones requeridas)
-            const tipoParticipacion = document.getElementById('tipo-participacion');
-            if (!tipoParticipacion.value) {
-                mostrarError(tipoParticipacion, 'Selecciona una opción de participación');
+            // Validar "¿Cómo nos has conocido?"
+            const comoConociste = document.getElementById('como-conociste');
+            if (!comoConociste.value.trim()) {
+                mostrarError(comoConociste, 'Por favor, cuéntanos cómo nos conociste');
                 esValido = false;
             }
 
-            const disponibilidad = document.getElementById('disponibilidad');
-            if (!disponibilidad.value) {
-                mostrarError(disponibilidad, 'Selecciona tu disponibilidad');
+            // Validar práctica e intereses
+            const practica = document.getElementById('practica');
+            if (!practica.value.trim()) {
+                mostrarError(practica, 'Por favor, explica brevemente tu práctica e intereses');
                 esValido = false;
             }
 
-            const especialidad = document.getElementById('especialidad');
-            if (!especialidad.value) {
-                mostrarError(especialidad, 'Selecciona tu área de expertise');
+            // Validar motivación
+            const motivacion = document.getElementById('motivacion');
+            if (!motivacion.value.trim()) {
+                mostrarError(motivacion, 'Por favor, cuéntanos qué te motiva a participar');
                 esValido = false;
             }
 
-            // Validar experiencia (textarea requerida)
-            const experiencia = document.getElementById('experiencia');
-            if (!experiencia.value.trim()) {
-                mostrarError(experiencia, 'Cuéntanos qué te atrae de LandLight');
+            // Validar hospedaje (radio buttons)
+            const hospedajeRadios = document.querySelectorAll('input[name="hospedaje"]');
+            const hospedajeSeleccionado = Array.from(hospedajeRadios).some(r => r.checked);
+            if (!hospedajeSeleccionado) {
+                const hospedajeGroup = document.querySelector('input[name="hospedaje"]').closest('.form-group');
+                mostrarError(hospedajeGroup, 'Selecciona un tipo de hospedaje');
+                esValido = false;
+            }
+
+            // Validar llegada
+            const llegada = document.getElementById('llegada');
+            if (!llegada.value) {
+                mostrarError(llegada, 'Selecciona cuándo llegarás al encuentro');
+                esValido = false;
+            }
+
+            // Validar vehículo (radio buttons)
+            const vehiculoRadios = document.querySelectorAll('input[name="vehiculo"]');
+            const vehiculoSeleccionado = Array.from(vehiculoRadios).some(r => r.checked);
+            if (!vehiculoSeleccionado) {
+                const vehiculoGroup = document.querySelector('input[name="vehiculo"]').closest('.form-group');
+                mostrarError(vehiculoGroup, 'Selecciona si dispones de vehículo');
                 esValido = false;
             }
 
@@ -537,21 +557,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // URL del App Script de Google
-            const apiUrl = 'https://script.google.com/macros/s/AKfycbwZFGPQkZuTU-IuiQ_HUqc6_NXpJFJabcTCMAyr-nuFnGSR-_-MkyjFJf9uX_0q1R4YsQ/exec';
+            const apiUrl = 'https://script.google.com/macros/s/AKfycbwvr-jym-BFY63inD4V5so_n8ijhMKxAWTZwe_v871soOxbMEvEpU_LIxLVsDIi2mcW9Q/exec';
 
             // Recopilar datos del formulario
+            const hospedajeSeleccionado = document.querySelector('input[name="hospedaje"]:checked');
+            const vehiculoSeleccionado = document.querySelector('input[name="vehiculo"]:checked');
+
+            const llegadaValue = document.getElementById('llegada').value;
+            const llegadaFinal = llegadaValue === 'otro'
+                ? document.getElementById('otro-llegada-texto').value.trim()
+                : llegadaValue;
+
             const formData = {
+                timestamp: new Date().toLocaleString('es-ES'),
                 nombre: document.getElementById('nombre').value.trim(),
                 email: document.getElementById('email').value.trim(),
                 telefono: document.getElementById('telefono').value.trim(),
-                tipo_participacion: document.getElementById('tipo-participacion').value,
-                experiencia: document.getElementById('experiencia').value.trim(),
-                especialidad: document.getElementById('especialidad').value,
-                disponibilidad: document.getElementById('disponibilidad').value,
-                redes_sociales: document.getElementById('redes').value.trim(),
-                mensaje: document.getElementById('mensaje').value.trim(),
-                tipo_formulario: 'inscripcion',
-                timestamp: new Date().toLocaleString('es-ES')
+                como_conociste: document.getElementById('como-conociste').value.trim(),
+                practica_intereses: document.getElementById('practica').value.trim(),
+                hospedaje: hospedajeSeleccionado ? hospedajeSeleccionado.value : '',
+                llegada: llegadaFinal,
+                compania: document.getElementById('compania').value.trim(),
+                procedencia: document.getElementById('procedencia').value.trim(),
+                vehiculo: vehiculoSeleccionado ? vehiculoSeleccionado.value : '',
+                plazas_disponibles: vehiculoSeleccionado && vehiculoSeleccionado.value === 'si' && document.getElementById('plazas').value ? document.getElementById('plazas').value : '',
+                enlace: document.getElementById('enlace').value.trim(),
+                comentarios_adicionales: document.getElementById('comentarios').value.trim(),
+                tipo_formulario: 'inscripcion'
             };
 
             try {
@@ -603,6 +635,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.disabled = false;
             }
         });
+
+        // Manejar campo condicional para llegada "Otro"
+        const llegadaSelect = document.getElementById('llegada');
+        const otroLlegadaGrupo = document.getElementById('otro-llegada');
+
+        if (llegadaSelect && otroLlegadaGrupo) {
+            llegadaSelect.addEventListener('change', () => {
+                if (llegadaSelect.value === 'otro') {
+                    otroLlegadaGrupo.style.display = 'block';
+                    document.getElementById('otro-llegada-texto').required = true;
+                } else {
+                    otroLlegadaGrupo.style.display = 'none';
+                    document.getElementById('otro-llegada-texto').required = false;
+                }
+            });
+        }
+
+        // Manejar campo condicional para vehículo
+        const vehiculoRadios = document.querySelectorAll('input[name="vehiculo"]');
+        const plazasGrupo = document.getElementById('plazas-grupo');
+
+        if (vehiculoRadios.length > 0 && plazasGrupo) {
+            vehiculoRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (radio.value === 'si' && radio.checked) {
+                        plazasGrupo.style.display = 'block';
+                    } else if (radio.value === 'no' && radio.checked) {
+                        plazasGrupo.style.display = 'none';
+                        document.getElementById('plazas').value = '';
+                    }
+                });
+            });
+        }
     }
 });
 

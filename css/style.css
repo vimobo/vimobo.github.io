@@ -1042,6 +1042,11 @@ nav ul#nav-list li ul li a:hover {
     list-style: none;
 }
 
+.footer-brand h2,
+.footer-social h3 {
+    margin-bottom: 1.5em;
+}
+
 .footer-links a,
 .footer-social a {
     color: #ccc;
@@ -1471,7 +1476,7 @@ nav ul#nav-list li ul li a:hover {
     margin-top: 0;
     justify-content: center;
     align-items: center;
-    padding: 4em 4em;
+    padding: 2em;
     min-height: 40vh;
     width: 100%;
     text-align: center;
@@ -1527,7 +1532,7 @@ nav ul#nav-list li ul li a:hover {
 .itinerary-container {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px;
+    margin-bottom: 1em;
     border-radius: 10px;
     max-width: 90vw;
     background: var(--color-surface-pink);
@@ -1537,6 +1542,7 @@ nav ul#nav-list li ul li a:hover {
     align-items: center;
     gap: 2rem;
     padding: 2rem;
+    padding-top:1rem;
 }
 
 .itinerary-left {
@@ -1643,29 +1649,80 @@ nav ul#nav-list li ul li a:hover {
     display: flex;
     justify-content: space-around;
     text-align: center;
+    margin-bottom: 1em;
 }
 
 
 .itinerary-double-container .itinerary-item-green {
     border-radius: 20px;
-    margin-bottom: 2em;
+    margin-bottom: 0em;
     background: var(--color-text-green-strong);
     max-width: 40vw;
+    padding: 0.5em;
 }
 
 .itinerary-double-container .itinerary-item-pink {
     border-radius: 20px;
-    margin-bottom: 2em;
+    margin-bottom: 0em;
     background: var(--color-bg-pink-soft);
     max-width: 40vw;
+    padding: 0.5em;
 }
 
 .itinerary-double-container div p {
     color: var(--color-text-white);
+    margin: 0;
+    padding: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .itinerary-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.5rem;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+    .itinerary-left,
+    .itinerary-center,
+    .itinerary-right {
+        text-align: center;
+    }
+
+    .itinerary-center {
+        width: 100%;
+        align-items: center;
+    }
+
+    .itinerary-title {
+        text-align: center !important;
+    }
+
+    .itinerary-description {
+        text-align: center !important;
+        margin-right: 0;
+    }
+
+    .itinerary-double-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .itinerary-double-container .itinerary-item-green,
+    .itinerary-double-container .itinerary-item-pink {
+        max-width: 100%;
+        margin-bottom: 0.5rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .itinerary-double-container div h3 {
     color: var(--color-text-white);
+    margin-bottom: 0.3em;
+    padding: 0 !important;
 }
 
 .itinerary-coming-soon {
@@ -1698,7 +1755,7 @@ nav ul#nav-list li ul li a:hover {
 
     .itinerary-double-container .itinerary-item-green {
         border-radius: 20px;
-        margin-bottom: 2em;
+        margin-bottom: 1em;
         background: var(--color-text-green-strong);
         min-width: 75vw;
     }
@@ -1706,7 +1763,7 @@ nav ul#nav-list li ul li a:hover {
     .itinerary-double-container .itinerary-item-pink {
 
         border-radius: 20px;
-        margin-bottom: 2em;
+        margin-bottom: 1em;
         background: var(--color-bg-pink-soft);
         min-width: 75vw;
     }
@@ -1736,6 +1793,13 @@ nav ul#nav-list li ul li a:hover {
     letter-spacing: 0.03em;
     text-transform: uppercase;
     text-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
+    opacity: 1;
+}
+
+.talleres-hero p {
+    color: var(--color-text-white);
+    font-size: 1.2rem;
+    margin-top: 1rem;
     opacity: 1;
     filter: blur(0);
     transform: none;
@@ -1767,6 +1831,7 @@ nav ul#nav-list li ul li a:hover {
     color: var(--color-brand-rose);
     margin-bottom: 2em;
     font-size: 4rem;
+    font-family: 'MiFuente2';
 }
 
 /* Contenedor de talleres */
@@ -2255,6 +2320,142 @@ nav ul#nav-list li ul li a:hover {
     }
 }
 
+/* ==================== FORMAS DE PARTICIPACIÓN ==================== */
+.formas-participacion {
+    margin-bottom: 30px;
+}
+
+.formas-participacion > h2 {
+    color: var(--color-text-pink-strong);
+    font-size: 2.5rem;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.forma-participacion {
+    background: var(--color-surface-green);
+    border: 2px solid var(--color-text-green-strong);
+    border-radius: 15px;
+    padding: 2em;
+    margin-bottom: 2em;
+    text-align: left;
+}
+
+.forma-participacion h3 {
+    color: var(--color-text-green-strong);
+    font-size: 1.8rem;
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+
+.forma-participacion p {
+    color: var(--color-text-green-strong);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1em;
+}
+
+.forma-participacion a {
+    color: var(--color-bg-green-soft);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: bold;
+    transition: opacity 0.2s ease;
+}
+
+.forma-participacion a:hover {
+    opacity: 0.75;
+}
+
+.participacion-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    margin-bottom: 1.5em;
+}
+
+.participacion-opcion {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 1em;
+    align-items: center;
+    padding: 0.1em 0.8em;
+    background: var(--color-bg-green-soft);
+    border-radius: 10px;
+    border: 1px solid var(--color-text-green-strong);
+}
+
+.opcion-nombre {
+    color: var(--color-text-green-strong);
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    line-height: 1;
+}
+
+.opcion-fecha {
+    color: var(--color-text-green-strong);
+    font-size: 0.7rem;
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+    line-height: 1;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.opcion-precio {
+    color: var(--color-text-green-strong);
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    line-height: 1;
+}
+
+.participacion-nota {
+    font-size: 0.95rem !important;
+    margin-top: 1em !important;
+    text-align: center !important;
+}
+
+@media (max-width: 768px) {
+    .formas-participacion > h2 {
+        font-size: 1.8rem;
+    }
+
+    .forma-participacion {
+        padding: 1.5em;
+    }
+
+    .forma-participacion h3 {
+        font-size: 1.4rem;
+    }
+
+    .participacion-opcion {
+        grid-template-columns: 1fr;
+        gap: 0.3em;
+        padding: 0.05em 0.4em;
+    }
+
+    .opcion-nombre {
+        text-align: center;
+    }
+
+    .opcion-fecha {
+        text-align: center;
+    }
+
+    .opcion-precio {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
 .form-group {
     background: var(--color-surface-pink);
     border-radius: 30px;
@@ -2272,7 +2473,7 @@ nav ul#nav-list li ul li a:hover {
 
 .form-group label {
     display: block;
-    color: var(--color-brand-rose);
+    color: var(--color-text-pink-strong);
     font-weight: bold;
     font-size: 1.1rem;
     margin-bottom: 12px;
@@ -2282,6 +2483,8 @@ nav ul#nav-list li ul li a:hover {
 .form-group input[type="email"],
 .form-group input[type="tel"],
 .form-group input[type="date"],
+.form-group input[type="url"],
+.form-group input[type="number"],
 .form-group textarea,
 .form-group select {
     width: 100%;
@@ -2300,6 +2503,8 @@ nav ul#nav-list li ul li a:hover {
 .form-group input[type="email"]:focus,
 .form-group input[type="tel"]:focus,
 .form-group input[type="date"]:focus,
+.form-group input[type="url"]:focus,
+.form-group input[type="number"]:focus,
 .form-group textarea:focus,
 .form-group select:focus {
     outline: none;
@@ -2365,6 +2570,56 @@ nav ul#nav-list li ul li a:hover {
 
 .form-btn-reset:hover {
     transform: translateY(-3px) scale(1.05);
+}
+
+.form-note {
+    font-size: 0.95rem;
+    color: var(--color-text-pink-strong);
+    margin: 0.8em 0 0.8em 0;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.form-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    margin-top: 0.8em;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    cursor: pointer;
+    color: var(--color-text-pink-strong);
+    font-weight: 500;
+}
+
+.radio-label input[type="radio"] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    font-size: 1.2rem;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.input-with-prefix {
+    padding-left: 45px !important;
+    width: 100%;
 }
 
 /* Responsive para formulario */
@@ -2451,8 +2706,8 @@ nav ul#nav-list li ul li a:hover {
 .team-intro {
     text-align: center;
     border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 3em;
+    padding: 0;
+    margin-bottom: 1.5em;
     color: var(--color-text-white);
     font-size: 1.2rem;
 
@@ -2717,7 +2972,7 @@ nav ul#nav-list li ul li a:hover {
 .team-description {
     background: var(--color-surface-green);
     border-radius: 15px;
-    padding: 35px;
+    padding: 0;
     border: 1px solid var(--color-overlay-beige-50);
     animation: fadeInUp 0.8s ease;
 }
@@ -2725,8 +2980,9 @@ nav ul#nav-list li ul li a:hover {
 .team-description h3 {
     color: var(--color-text-green-strong);
     font-size: 2rem;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     text-align: center;
+    padding: 1rem 1rem 0 1rem;
 }
 
 .team-description p {
@@ -2734,7 +2990,8 @@ nav ul#nav-list li ul li a:hover {
     line-height: 1.8;
     font-size: 1rem;
     text-align: justify;
-    margin-bottom: 1em;
+    margin-bottom: 0;
+    padding: 0 1rem 1rem 1rem;
 }
 
 .team-counter {
@@ -2975,7 +3232,7 @@ nav ul#nav-list li ul li a:hover {
 .history-carousel-slide {
     flex: 0 0 100%;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -3100,7 +3357,7 @@ nav ul#nav-list li ul li a:hover {
     background: var(--color-surface-cream);
     border-radius: 15px;
     padding: 25px;
-    border: 1px solid var(--color-overlay-beige-50);
+    border: none;
     text-align: center;
     backdrop-filter: blur(10px);
 }
@@ -3632,6 +3889,18 @@ nav ul#nav-list li ul li a:hover {
     border-bottom: 2px solid var(--color-brand-rose);
     font-weight: bold;
     color: var(--color-brand-rose);
+}
+
+@media (max-width: 768px) {
+    .revenue-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .revenue-item span:first-child {
+        padding-right: 0;
+    }
+}
     margin-top: 10px;
 }
 
@@ -4474,6 +4743,7 @@ nav ul#nav-list li ul {
     position: relative;
     z-index: 5;
     align-items: stretch;
+    gap: 0;
 }
 
 .mat-cat {
@@ -4497,6 +4767,7 @@ nav ul#nav-list li ul {
     text-transform: uppercase;
     letter-spacing: 0.06em;
     margin-bottom: 0.5rem;
+    flex-shrink: 0;
 }
 
 .mat-cat--land h2 {
@@ -4509,6 +4780,7 @@ nav ul#nav-list li ul {
 
 .mat-cat-desc {
     font-size: 0.95rem;
+    flex-shrink: 0;
     text-align: center;
     margin-bottom: 2rem;
     line-height: 1.6;
@@ -4527,6 +4799,8 @@ nav ul#nav-list li ul {
     flex-direction: column;
     gap: 1.5rem;
     flex: 1;
+    align-items: stretch;
+    justify-content: flex-end;
 }
 
 .mat-card {
@@ -4535,6 +4809,9 @@ nav ul#nav-list li ul {
     box-shadow: 0 8px 24px var(--color-overlay-black-12);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
 }
 
 .mat-cat--land .mat-card {
@@ -4549,8 +4826,11 @@ nav ul#nav-list li ul {
 
 .mat-card-img {
     width: 100%;
-    height: 300px;
+    height: 100%;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mat-card-img img {
@@ -4859,14 +5139,14 @@ nav ul#nav-list li ul {
     position: relative;
     z-index: 5;
     background: var(--color-text-pink-strong);
-    padding: 5rem 8vw;
+    padding: 1.8rem 8vw;
     text-align: center;
 }
 
 .conv-frase blockquote {
-    font-size: clamp(1.2rem, 2.8vw, 2rem);
+    font-size: clamp(0.9rem, 1.8vw, 1.3rem);
     color: var(--color-surface-pink);
-    line-height: 1.65;
+    line-height: 1.6;
     max-width: 760px;
     margin: 0 auto;
     font-style: italic;
@@ -4933,6 +5213,21 @@ nav ul#nav-list li ul {
     color: var(--color-text-pink-strong);
 }
 
+.conv-principios > .conv-principio--purple:nth-of-type(1) {
+    padding: 2rem 8vw;
+    min-height: auto;
+}
+
+.conv-principios > .conv-principio--purple:nth-of-type(1) .conv-texto h2 {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    margin-bottom: 0.6rem;
+}
+
+.conv-principios > .conv-principio--purple:nth-of-type(1) .conv-texto p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
 /* Acuerdo final */
 .conv-acuerdo {
     position: relative;
@@ -4988,7 +5283,7 @@ nav ul#nav-list li ul {
 }
 
 #responsabilidades-h1 {
-    font-size: 4.3vw;
+    font-size: clamp(3rem, 10vw, 7rem);
     text-align: center;
 }
 
@@ -5003,7 +5298,7 @@ nav ul#nav-list li ul {
 
 
     .conv-frase {
-        padding: 4rem 6vw;
+        padding: 0.7rem 5vw;
     }
 
     .conv-acuerdo-card {
@@ -5011,6 +5306,6 @@ nav ul#nav-list li ul {
     }
 
     #responsabilidades-h1 {
-        font-size: 7vw;
+        font-size: clamp(1.5rem, 8vw, 3rem);
     }
 }
