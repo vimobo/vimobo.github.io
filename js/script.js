@@ -752,6 +752,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// ==================== POPUPS DE HERRAMIENTAS EN EQUIPO ====================
+document.addEventListener('DOMContentLoaded', () => {
+    const teamPhotos = document.querySelectorAll('.team-photo');
+    const hintPopup = document.getElementById('team-hint-popup');
+    let hintDismissed = false;
+
+    teamPhotos.forEach(photo => {
+        const popup = photo.querySelector('.tool-popup');
+        if (!popup) return;
+
+        const updatePopupPosition = () => {
+            popup.classList.remove('left', 'right', 'top', 'bottom');
+
+            setTimeout(() => {
+                const photoRect = photo.getBoundingClientRect();
+                const viewport = window.innerWidth;
+
+                // En móvil (viewport <= 768px): siempre abajo
+                if (viewport <= 768) {
+                    popup.classList.add('bottom');
+                } else {
+                    // En desktop: derecha o izquierda según espacio
+                    const spaceRight = viewport - photoRect.right;
+                    const spaceLeft = photoRect.left;
+
+                    if (spaceRight >= 160) {
+                        popup.classList.add('right');
+                    } else if (spaceLeft >= 160) {
+                        popup.classList.add('left');
+                    } else {
+                        popup.classList.add('right');
+                    }
+                }
+            }, 0);
+        };
+
+        // Desktop: mouseenter
+        photo.addEventListener('mouseenter', updatePopupPosition);
+
+        // Móvil: click para mostrar/ocultar
+        if (window.innerWidth <= 768) {
+            photo.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                // Ocultar hint popup al primer click
+                if (hintPopup && !hintDismissed) {
+                    hintPopup.classList.add('hidden');
+                    hintDismissed = true;
+                }
+
+                popup.style.opacity = popup.style.opacity === '1' ? '0' : '1';
+                popup.style.pointerEvents = popup.style.opacity === '1' ? 'auto' : 'none';
+                updatePopupPosition();
+            });
+
+            // Cerrar al hacer click fuera
+            document.addEventListener('click', () => {
+                popup.style.opacity = '0';
+                popup.style.pointerEvents = 'none';
+            });
+        } else {
+            // Desktop: ocultar hint popup al hacer hover
+            photo.addEventListener('mouseenter', () => {
+                if (hintPopup && !hintDismissed) {
+                    hintPopup.classList.add('hidden');
+                    hintDismissed = true;
+                }
+            });
+        }
+    });
+
+    // Ocultar hint popup después de 5 segundos automáticamente
+    if (hintPopup) {
+        setTimeout(() => {
+            if (!hintDismissed) {
+                hintPopup.classList.add('hidden');
+                hintDismissed = true;
+            }
+        }, 5000);
+    }
+});
+
 // ==================== AUTOPLAY PARA CARRUSELES DE HISTORIA ====================
 document.addEventListener('DOMContentLoaded', () => {
     // Esperar a que HistoryCarousel se instancie

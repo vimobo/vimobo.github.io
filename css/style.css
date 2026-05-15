@@ -290,7 +290,7 @@ nav ul#nav-list li ul li a:hover {
 }
 
 #intro .video-bg {
-    filter: brightness(0.8) hue-rotate(30deg) saturate(0.8) contrast(1.1);
+    filter: none;
 }
 
 .intro-logo {
@@ -366,10 +366,9 @@ nav ul#nav-list li ul li a:hover {
 
 #section2 h2 {
     font-family: 'MiFuente2';
-    margin-bottom: 1em;
-    font-size: 6.5rem;
-    color: transparent;
-    -webkit-text-stroke: 0.2px white;
+    margin-bottom: 1.5em;
+    font-size: 4rem;
+    color: var(--color-home-purple-text);
     text-stroke: 0.2px white;
 }
 
@@ -404,6 +403,7 @@ nav ul#nav-list li ul li a:hover {
 }
 
 .section2-column p {
+
     font-size: 2rem;
     color: var(--color-home-purple-text);
     text-shadow: 1px 1px 2px var(--color-bg-pink-soft);
@@ -531,7 +531,7 @@ nav ul#nav-list li ul li a:hover {
 .cta-button:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 15px 35px rgba(93, 101, 50, 0.6);
-    background-color: var(--color-bg-green-soft);
+    background-color: var(--color-bg-pink-soft);
 }
 
 .cta-button:active {
@@ -669,7 +669,7 @@ nav ul#nav-list li ul li a:hover {
 
     color: var(--color-home-purple-text);
     font-size: 4rem;
-    margin-bottom: 1.5em;
+    margin-bottom: 0.8em;
 }
 
 .gallery-container {
@@ -694,10 +694,11 @@ nav ul#nav-list li ul li a:hover {
 
 .gallery-item img {
     border-radius: 10px;
-    filter: invert(100%);
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    width: 90%;
+    height: 180px;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
 }
 
 .description {
@@ -1119,7 +1120,7 @@ nav ul#nav-list li ul li a:hover {
     border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 999px;
     background: rgba(20, 20, 20, 0.72);
-    color: white;
+    color: #ced8a8;
     padding: 0.75rem 1rem;
     cursor: url('../src/see-through-leaf.cur'), pointer;
     font-size: 0.95rem;
@@ -1154,7 +1155,7 @@ nav ul#nav-list li ul li a:hover {
 .ambient-popup {
     position: fixed;
     background: var(--color-transparent);
-    color: var(--color-text-white);
+    color: #ced8a8;
     padding: 0.6rem 1rem;
     bottom: 6rem;
     right: 3rem;
@@ -1283,7 +1284,7 @@ nav ul#nav-list li ul li a:hover {
 
     #section2 h2 {
         color: #5c3265;
-        margin-bottom: 1em;
+        margin-bottom: 1.5em;
         font-size: 4rem;
     }
 
@@ -2035,13 +2036,44 @@ nav ul#nav-list li ul li a:hover {
     font-size: 5rem;
 }
 
+#section2-comoserparte {
+    position: relative;
+    z-index: 5;
+    padding: 2em;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#section2-comoserparte h2 {
+    font-family: 'MiFuente2';
+    margin-bottom: 1.5em;
+    font-size: 2.5rem;
+    color: var(--color-text-white);
+}
+
+#section2-comoserparte p {
+    font-size: 1.1rem;
+    color: var(--color-text-white);
+    width: 100%;
+    margin-bottom: 1em;
+    line-height: 1.6;
+}
+
+.highlight-key {
+    color: #ced8a8 !important;
+    font-weight: bold;
+    padding: 0 4px;
+    border-radius: 3px;
+}
+
 .formulario-container {
     max-width: 800px;
     margin: 0 auto;
 }
 
 .formulario-intro {
-    background: var(--color-surface-cream);
+    background: var(--color-surface-pink);
     border-radius: 15px;
     padding: 30px;
     margin-bottom: 30px;
@@ -2050,7 +2082,7 @@ nav ul#nav-list li ul li a:hover {
 }
 
 .formulario-intro p {
-    color: var(--color-text-brown);
+    color: var(--color-text-pink-strong);
     font-size: 1rem;
     line-height: 1.8;
     margin-bottom: 15px;
@@ -2220,7 +2252,7 @@ nav ul#nav-list li ul li a:hover {
 }
 
 .form-group {
-    background: var(--color-surface-cream);
+    background: var(--color-surface-pink);
     border-radius: 30px;
     padding: 25px;
     margin-bottom: 20px;
@@ -2309,7 +2341,7 @@ nav ul#nav-list li ul li a:hover {
 }
 
 .form-btn-submit {
-    background: linear-gradient(135deg, var(--color-brand-beige), var(--color-surface-green));
+    background: var(--color-bg-green-soft);
     color: var(--color-text-white);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
@@ -2439,7 +2471,7 @@ nav ul#nav-list li ul li a:hover {
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     opacity: 1;
@@ -2456,6 +2488,7 @@ nav ul#nav-list li ul li a:hover {
     min-height: 0;
     object-fit: cover;
     display: block;
+    border-radius: 12px 12px 0 0;
 }
 
 .photo-label {
@@ -2488,11 +2521,132 @@ nav ul#nav-list li ul li a:hover {
     line-height: 1.2;
 }
 
+.tool-popup {
+    position: absolute;
+    background: var(--color-bg-green-soft);
+    color: var(--color-text-green-strong);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    line-height: 1.4;
+    max-width: 140px;
+    text-align: center;
+}
+
+.tool-popup.right {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+}
+
+.tool-popup.left {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-10px);
+}
+
+.tool-popup.top {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    margin-bottom: 5px;
+}
+
+.tool-popup.bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    margin-top: 5px;
+}
+
+.team-photo:hover .tool-popup {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.team-hint-popup {
+    display: none;
+}
+
+.team-hint-popup p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.team-hint-popup.hidden {
+    animation: slideDown2 0.5s ease forwards;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .team-hint-popup {
+        display: block;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        padding: 15px 20px;
+        background: var(--color-bg-green-soft);
+        color: var(--color-text-green-strong);
+        border-radius: 10px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        animation: slideUp2 0.5s ease;
+        max-width: calc(100% - 40px);
+        z-index: 1000;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .team-hint-popup.hidden {
+        animation: slideDown2 0.5s ease forwards;
+    }
+}
+
+@keyframes slideUp2 {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes slideDown2 {
+    from {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-50%) translateY(50px);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Posiciones aleatorias para cada foto */
 .team-photo-1 {
     top: 10%;
-    left: 8%;
-    transform: rotate(-12deg);
+    left: 50%;
+    transform: translateX(-50%) rotate(-12deg);
 }
 
 .team-photo-2 {
@@ -2508,20 +2662,20 @@ nav ul#nav-list li ul li a:hover {
 }
 
 .team-photo-4 {
-    top: 20%;
+    top: 10%;
     right: 8%;
     transform: rotate(14deg);
 }
 
 .team-photo-5 {
-    top: 60%;
-    right: 10%;
+    top: 55%;
+    right: 12%;
     transform: rotate(-8deg);
 }
 
 .team-photo-6 {
-    top: 50%;
-    left: 65%;
+    top: 10%;
+    left: 5%;
     transform: rotate(6deg);
 }
 
@@ -2656,7 +2810,8 @@ nav ul#nav-list li ul li a:hover {
 
     .team-photo-1 {
         top: 15%;
-        left: 10%;
+        left: 50%;
+        transform: translateX(-50%) rotate(-12deg);
     }
 
     .team-photo-2 {
@@ -2665,23 +2820,23 @@ nav ul#nav-list li ul li a:hover {
     }
 
     .team-photo-3 {
-        top: 60%;
+        top: 55%;
         left: 15%;
     }
 
     .team-photo-4 {
-        top: 25%;
+        top: 15%;
         right: 10%;
     }
 
     .team-photo-5 {
-        top: 65%;
-        right: 12%;
+        top: 55%;
+        right: 15%;
     }
 
     .team-photo-6 {
-        top: 50%;
-        left: 62%;
+        top: 15%;
+        left: 8%;
     }
 }
 
@@ -2705,8 +2860,8 @@ nav ul#nav-list li ul li a:hover {
     }
 
     .team-photo-1 {
-        top: 10%;
-        left: 5%;
+        top: 48%;
+        left: 60%;
     }
 
     .team-photo-2 {
@@ -2730,8 +2885,9 @@ nav ul#nav-list li ul li a:hover {
     }
 
     .team-photo-6 {
-        top: 48%;
-        left: 60%;
+        top: 10%;
+        left: 5%;
+
     }
 
     .team-description {
