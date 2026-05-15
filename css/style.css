@@ -2096,6 +2096,7 @@ nav ul#nav-list li ul li a:hover {
     width: 100%;
     display: block;
     text-align: center;
+    padding-top:10em
 }
 
 #formulario-section h2 {
@@ -2626,6 +2627,7 @@ nav ul#nav-list li ul li a:hover {
 @media (max-width: 768px) {
     #formulario-section {
         padding: 2em 1em;
+        padding-top:5em
     }
 
     #formulario-section h2 {
