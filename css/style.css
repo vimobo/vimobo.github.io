@@ -345,6 +345,7 @@ nav ul#nav-list li ul li a:hover {
     //*border-top: 2px groove rgb(214, 195, 171); borde*/ 
 }
 
+#section1 h1,
 #section1 h2,
 #faq-section h2 {
     color: var(--color-home-green-text);
@@ -486,6 +487,7 @@ nav ul#nav-list li ul li a:hover {
     padding-right: 10vw;
 }
 
+#section1 h1,
 #section1 h2 {
     padding-left: 5%;
     padding-right: 5%;
@@ -1282,6 +1284,7 @@ nav ul#nav-list li ul li a:hover {
 
 /* 2. CONFIGURACIÓN PARA MÓVIL (Menú lateral y Acordeón) */
 @media (max-width: 900px) {
+    #section1 h1,
     #section1 h2 {
         color: #5d6532;
         margin-bottom: 1em;
