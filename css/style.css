@@ -335,7 +335,7 @@ nav ul#nav-list li ul li a:hover {
 #section1 {
     margin-top: 100vh;
     /* Para que el video fijo se vea primero */
-    background-color: var(--color-home-green-bg);
+    background-color: var(--color-home-green-text);
 }
 
 #section2,
@@ -348,7 +348,7 @@ nav ul#nav-list li ul li a:hover {
 #section1 h1,
 #section1 h2,
 #faq-section h2 {
-    color: var(--color-home-green-text);
+    color: var(--color-bg-green-soft);
     margin-bottom: 1em;
     font-size: 2.2rem;
     line-height: 1.1;
@@ -515,11 +515,11 @@ nav ul#nav-list li ul li a:hover {
     justify-content: center;
     width: 100%;
     max-width: 500px;
-    padding: 2rem;
+    padding: 2.5rem;
     min-height: 120px;
-    background-color: var(--color-text-green-strong);
+    background-color: var(--color-bg-green-soft);
     color: var(--color-text-white);
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bold;
     letter-spacing: 0.15em;
     border: none;
@@ -1286,9 +1286,10 @@ nav ul#nav-list li ul li a:hover {
 @media (max-width: 900px) {
     #section1 h1,
     #section1 h2 {
-        color: #5d6532;
+        color: var(--color-bg-green-soft);
         margin-bottom: 1em;
         font-size: 1.7rem;
+        line-height: 1.1;
     }
 
     #section2 h2 {
@@ -1831,7 +1832,7 @@ nav ul#nav-list li ul li a:hover {
 }
 
 #talleres-section h2 {
-    color: var(--color-brand-rose);
+    color: var(--color-text-white);
     margin-bottom: 2em;
     font-size: 4rem;
     font-family: 'MiFuente2';
@@ -2083,9 +2084,9 @@ nav ul#nav-list li ul li a:hover {
     }
 
     .cta-button {
-        font-size: 1.3rem;
+        font-size: 2rem;
         min-height: 80px;
-        padding: 1rem;
+        padding: 2rem;
         letter-spacing: 0.1em;
     }
 }
@@ -2381,6 +2382,7 @@ nav ul#nav-list li ul li a:hover {
 .participacion-opcion {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
+
     gap: 1em;
     align-items: center;
     padding: 0.1em 0.8em;
@@ -2389,6 +2391,12 @@ nav ul#nav-list li ul li a:hover {
     border: 1px solid var(--color-text-green-strong);
 }
 
+.participacion-opcion  p{
+    margin: 0.5em;
+
+}
+
+
 .opcion-nombre {
     color: var(--color-text-green-strong);
     font-size: 0.95rem;
@@ -2396,7 +2404,10 @@ nav ul#nav-list li ul li a:hover {
     margin: 0;
     padding: 0;
     text-align: left;
-    line-height: 1;
+    line-height: 1;    
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .opcion-fecha {
@@ -2410,9 +2421,9 @@ nav ul#nav-list li ul li a:hover {
     white-space: nowrap;
 }
 
-.opcion-precio {
+#opcion-precio {
     color: var(--color-text-green-strong);
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
     margin: 0;
     padding: 0;
@@ -2453,11 +2464,17 @@ nav ul#nav-list li ul li a:hover {
         text-align: center;
     }
 
-    .opcion-precio {
+    #opcion-precio {
         margin-left: 0;
         width: 100%;
         text-align: center;
     }
+}
+
+#h3-formulario {
+    margin-top: 1em;
+    font-size: 1.8rem;
+    color: var(--color-text-white);
 }
 
 .form-group {
