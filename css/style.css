@@ -2750,6 +2750,7 @@ nav ul#nav-list li ul li a:hover {
     position: absolute;
     width: 180px;
     height: 220px;
+    aspect-ratio: 4 / 5;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
@@ -2793,6 +2794,10 @@ nav ul#nav-list li ul li a:hover {
     font-size: 0.8rem;
     font-weight: bold;
     line-height: 1.2;
+}
+
+.team-photo-4 .photo-name {
+    font-size: 0.7rem;
 }
 
 .photo-role {
@@ -3195,12 +3200,11 @@ nav ul#nav-list li ul li a:hover {
 
     .team-photo {
         width: 95px;
-        height: 115px;
     }
 
     .team-photo-1 {
         top: 8%;
-        left: 3%;
+        left:10%;
     }
 
     .team-photo-2 {
@@ -3224,7 +3228,7 @@ nav ul#nav-list li ul li a:hover {
     }
 
     .team-photo-6 {
-        top: 50%;
+        top: 40%;
         left: 60%;
     }
 
