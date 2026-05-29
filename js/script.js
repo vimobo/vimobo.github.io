@@ -479,6 +479,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 esValido = false;
             }
 
+            // Validar compañía
+            const compania = document.getElementById('compania');
+            if (!compania.value.trim()) {
+                mostrarError(compania, 'Por favor, cuéntanos con quién vienes');
+                esValido = false;
+            }
+
+            // Validar procedencia
+            const procedencia = document.getElementById('procedencia');
+            if (!procedencia.value.trim()) {
+                mostrarError(procedencia, 'Por favor, cuéntanos desde dónde vienes');
+                esValido = false;
+            }
+
             return esValido;
         };
 

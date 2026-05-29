@@ -134,32 +134,32 @@ Debido al aforo reducido, la reserva se mantendrá durante 48 horas desde el env
                 <form id="formulario-landlight">
                     <!-- Campo: Nombre -->
                     <div class="form-group fade-in">
-                        <label for="nombre">Nombre</label>
+                        <label for="nombre">Nombre <span class="required">*</span></label>
                         <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre o apodo" required minlength="3" maxlength="100">
                     </div>
 
                     <!-- Campo: Email -->
                     <div class="form-group fade-in">
-                        <label for="email">Email</label>
+                        <label for="email">Email <span class="required">*</span></label>
                         <input type="email" id="email" name="email" placeholder="tu@email.com" required>
                     </div>
 
                     <!-- Campo: Teléfono de contacto -->
                     <div class="form-group fade-in">
-                        <label for="telefono">Teléfono de contacto</label>
+                        <label for="telefono">Teléfono de contacto <span class="required">*</span></label>
                         <p class="form-note">Las comunicaciones del festival se harán a través de Telegram.</p>
                         <input type="tel" id="telefono" name="telefono" placeholder="+34 XXX XXX XXX" required minlength="7">
                     </div>
 
                     <!-- Campo: ¿Cómo nos has conocido? -->
                     <div class="form-group fade-in">
-                        <label for="como-conociste">¿Cómo nos has conocido?</label>
+                        <label for="como-conociste">¿Cómo nos has conocido? <span class="required">*</span></label>
                         <input type="text" id="como-conociste" name="como-conociste" placeholder="Por favor, cuéntanos..." required maxlength="200">
                     </div>
 
                     <!-- Campo: Práctica e intereses -->
                     <div class="form-group fade-in">
-                        <label for="practica">Explica brevemente tu práctica e intereses</label>
+                        <label for="practica">Explica brevemente tu práctica e intereses <span class="required">*</span></label>
                         <p class="form-note">Con la intención de conocer mejor a cada participante, queremos saber las inquietudes artísticas de cada unx. Esta información nos ayudará a tener una idea más clara de la comunidad que formaremos y las necesidades técnicas.</p>
                         <textarea id="practica" name="practica" required minlength="10" maxlength="500"
                             placeholder="Cuéntanos sobre tu práctica artística e intereses..."></textarea>
@@ -167,14 +167,14 @@ Debido al aforo reducido, la reserva se mantendrá durante 48 horas desde el env
 
                     <!-- Campo: Motivación para participar -->
                     <div class="form-group fade-in">
-                        <label for="motivacion">Cuéntanos en unas pocas líneas qué te motiva a participar en Land Light</label>
+                        <label for="motivacion">Cuéntanos en unas pocas líneas qué te motiva a participar en Land Light <span class="required">*</span></label>
                         <textarea id="motivacion" name="motivacion" required minlength="10" maxlength="500"
                             placeholder="¿Qué te motiva a participar?..."></textarea>
                     </div>
 
                     <!-- Campo: Tipo de hospedaje -->
                     <div class="form-group fade-in">
-                        <label for="hospedaje">¿Qué tipo de hospedaje prefieres?</label>
+                        <label for="hospedaje">¿Qué tipo de hospedaje prefieres? <span class="required">*</span></label>
                         <div class="form-radio-group">
                             <label class="radio-label">
                                 <input type="radio" name="hospedaje" value="casa-rural" required> Casa rural
@@ -190,7 +190,7 @@ Debido al aforo reducido, la reserva se mantendrá durante 48 horas desde el env
 
                     <!-- Campo: Cuándo llegarás -->
                     <div class="form-group fade-in">
-                        <label for="llegada">¿Cuándo llegarás al encuentro?</label>
+                        <label for="llegada">¿Cuándo llegarás al encuentro? <span class="required">*</span></label>
                         <p class="form-note">Ten en cuenta que el festival comienza el lunes 3 de agosto a las 17h, y habrán actividades diversas hasta el domingo. Aconsejamos aprovechar al máximo toda la estancia y llegar a la apertura el lunes. Recuerda que el precio de la entrada es único, sin importar cuándo vienes. Pero en el caso de que sepas con antelación que llegarás más tarde, por favor indícalo.</p>
                         <select id="llegada" name="llegada" required>
                             <option value="">-- Selecciona una opción --</option>
@@ -210,22 +210,22 @@ Debido al aforo reducido, la reserva se mantendrá durante 48 horas desde el env
 
                     <!-- Campo: ¿Vienes con alguien? -->
                     <div class="form-group fade-in">
-                        <label for="compania">¿Vienes con alguien?</label>
+                        <label for="compania">¿Vienes con alguien? <span class="required">*</span></label>
                         <p class="form-note">Cada persona tiene que rellenar individualmente este formulario, pero utilizaremos esta información para asignar camas, habitaciones y espacio de acampada.</p>
-                        <input type="text" id="compania" name="compania" placeholder="Nombres de las personas con las que vienes (opcional)" maxlength="300">
+                        <input type="text" id="compania" name="compania" placeholder="Nombres de las personas con las que vienes" required maxlength="300">
                     </div>
 
                     <!-- Campo: De dónde vienes -->
                     <div class="form-group fade-in">
-                        <label for="procedencia">¿Desde dónde vienes?</label>
+                        <label for="procedencia">¿Desde dónde vienes? <span class="required">*</span></label>
                         <p class="form-note">Aquí puedes comentar, si te apetece, de dónde eres y principalmente, desde dónde crees que saldrás para llegar al encuentro. Esto nos ayudará a gestionar el transporte colaborativo.</p>
-                        <textarea id="procedencia" name="procedencia" maxlength="300"
+                        <textarea id="procedencia" name="procedencia" required maxlength="300"
                             placeholder="De dónde eres y desde dónde vienes..."></textarea>
                     </div>
 
                     <!-- Campo: ¿Dispones de vehículo? -->
                     <div class="form-group fade-in">
-                        <label>¿Dispones de vehículo para llegar al festival?</label>
+                        <label>¿Dispones de vehículo para llegar al festival? <span class="required">*</span></label>
                         <div class="form-radio-group">
                             <label class="radio-label">
                                 <input type="radio" name="vehiculo" value="si" required> Sí

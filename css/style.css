@@ -577,9 +577,17 @@ nav ul#nav-list li ul li a:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
+.carousel-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
 .carousel-slide {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    width: 100%;
 }
 
 /* ==================== CARRUSEL LUGAR ==================== */
@@ -2498,6 +2506,11 @@ nav ul#nav-list li ul li a:hover {
     font-weight: bold;
     font-size: 1.1rem;
     margin-bottom: 12px;
+}
+
+.form-group label .required {
+    color: #dc3545;
+    font-weight: bold;
 }
 
 .form-group input[type="text"],
