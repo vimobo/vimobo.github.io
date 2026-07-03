@@ -7,6 +7,8 @@
 }
 
 :root {
+    --color-bg-green-actividades: #59652a;
+    --color-bg-purple-actividades: #682e67;
     --color-bg-green-soft: #adc437;
     --color-bg-pink-soft: #8b5cf6;
     --color-text-green-strong: #5d6532;
@@ -1820,7 +1822,7 @@ nav ul#nav-list li ul li a:hover {
 #talleres-section {
     position: relative;
     z-index: 5;
-    background: var(--color-bg-pink-soft);
+    background: var(--color-bg-purple-actividades);
     /*background: linear-gradient(180deg, var(--color-surface-pink) 0%, var(--color-surface-green) 100%);*/
     /*background-image: url(../src/geographic\ lines.jpg);*/
     background-repeat: round;
@@ -1830,6 +1832,35 @@ nav ul#nav-list li ul li a:hover {
     width: 100%;
     display: block;
     text-align: center;
+}
+
+#talleres-section-green {
+    position: relative;
+    z-index: 5;
+    background: var(--color-bg-green-actividades);
+    background-repeat: round;
+    border-top: none;
+    padding: 4em 2em;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.actividad-container {
+    width: 100%;
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.actividad-container img {
+    margin: 0;
+    padding-bottom: 0;
+    width: min(100%, 760px);
+    height: auto;
+    display: block;
 }
 
 .talleres-surface {
@@ -1846,11 +1877,22 @@ nav ul#nav-list li ul li a:hover {
     font-family: 'MiFuente2';
 }
 
+#talleres-section-green h2 {
+    color: var(--color-text-white);
+    margin-bottom: 2em;
+    font-size: 4rem;
+    font-family: 'MiFuente2';
+}
+
 /* Contenedor de talleres */
 .talleres-container {
     max-width: 900px;
     margin: 0 auto;
     text-align: left;
+}
+
+.actividad-container img {
+    border-radius: 20px;
 }
 
 /* Cada taller (acordeón) */
@@ -2043,6 +2085,10 @@ nav ul#nav-list li ul li a:hover {
         padding: 2em 1em;
     }
 
+    #talleres-section-green {
+        padding: 2em 1em;
+    }
+
     .talleres-surface {
         padding: 2rem 1rem;
         border-radius: 24px;
@@ -2051,6 +2097,15 @@ nav ul#nav-list li ul li a:hover {
     #talleres-section h2 {
         font-size: 1.8rem;
         margin-bottom: 1.5em;
+    }
+
+    #talleres-section-green h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5em;
+    }
+
+    .actividad-container img {
+        width: 100%;
     }
 
     .taller-header {
