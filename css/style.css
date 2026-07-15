@@ -2435,6 +2435,21 @@ nav ul#nav-list li ul li a:hover {
     opacity: 0.75;
 }
 
+
+
+.voluntariado-completo {
+    color: white;
+    justify-content: center;
+    text-align: center;
+    background-color: #dc3545;
+    padding: 1em;
+    width: 60%;
+    align-items: center;
+    margin: auto;
+    margin-top: 3em;
+    border-radius: 10px;
+}
+
 .participacion-opciones {
     display: flex;
     flex-direction: column;
