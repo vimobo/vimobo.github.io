@@ -597,7 +597,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 plazas_disponibles: vehiculoSeleccionado && vehiculoSeleccionado.value === 'si' && document.getElementById('plazas').value ? document.getElementById('plazas').value : '',
                 enlace: document.getElementById('enlace').value.trim(),
                 comentarios_adicionales: document.getElementById('comentarios').value.trim(),
-                tipo_formulario: 'inscripcion'
+                tipo_formulario: 'inscripcion',
+                restricciones: document.getElementById('restricciones').value.trim()
             };
 
             try {
