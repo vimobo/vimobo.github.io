@@ -571,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // URL del App Script de Google
-            const apiUrl = 'https://script.google.com/macros/s/AKfycbwvr-jym-BFY63inD4V5so_n8ijhMKxAWTZwe_v871soOxbMEvEpU_LIxLVsDIi2mcW9Q/exec';
+            const apiUrl = 'https://script.google.com/macros/s/AKfycby2IhkvoWA5P8OF5grKghTkhNan1qw6BarejQilEIhse5A0yvQhM860WjlHucFqTjOy2Q/exec';
 
             // Recopilar datos del formulario
             const hospedajeSeleccionado = document.querySelector('input[name="hospedaje"]:checked');
