@@ -1543,6 +1543,87 @@ nav ul#nav-list li ul li a:hover {
 /* ==================== SECCIÓN TALLERES (ACORDEONES) ==================== */
 
 
+.programa-pdf-section {
+    background: var(--color-bg-green-soft);
+    padding: 2rem 2rem 2rem;
+}
+
+.programa-pdf-accordion {
+    max-width: 90vw;
+    margin: 0 auto;
+    border-radius: 24px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(82, 73, 61, 0.16);
+    box-shadow: 0 18px 40px rgba(34, 39, 34, 0.08);
+}
+
+.programa-pdf-accordion summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-green-strong);
+}
+
+.programa-pdf-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.programa-pdf-summary-icon {
+    flex-shrink: 0;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+}
+
+.programa-pdf-accordion[open] .programa-pdf-summary-icon {
+    transform: rotate(225deg);
+}
+
+.programa-pdf-content {
+    padding: 0 1.5rem 1.5rem;
+}
+
+.programa-pdf-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.programa-pdf-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.8rem 1.2rem;
+    border-radius: 999px;
+    background: var(--color-text-green-strong);
+    color: var(--color-text-white);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.programa-pdf-viewer {
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.programa-pdf-viewer img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 .itinerary-container {
     margin-left: auto;
     margin-right: auto;
@@ -1690,6 +1771,44 @@ nav ul#nav-list li ul li a:hover {
 }
 
 @media (max-width: 768px) {
+    .programa-pdf-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .programa-pdf-accordion {
+        max-width: 100%;
+    }
+
+    .programa-pdf-accordion summary {
+        padding: 1rem 1.1rem;
+        font-size: 1rem;
+    }
+
+    .programa-pdf-content {
+        padding: 0 1rem 1rem;
+    }
+
+    .programa-pdf-actions {
+        justify-content: stretch;
+    }
+
+    .programa-pdf-download {
+        width: 100%;
+    }
+
+    .programa-pdf-viewer {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .programa-pdf-viewer img {
+        width: auto;
+        max-width: none;
+        height: 75vh;
+        min-height: 540px;
+    }
+
     .itinerary-container {
         grid-template-columns: 1fr;
         gap: 1rem;
