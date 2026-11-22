@@ -1543,6 +1543,7 @@ nav ul#nav-list li ul li a:hover {
 /* ==================== SECCIÓN TALLERES (ACORDEONES) ==================== */
 
 
+
 .itinerary-container {
     margin-left: auto;
     margin-right: auto;
@@ -1623,6 +1624,8 @@ nav ul#nav-list li ul li a:hover {
     background: var(--color-bg-green-soft);
     padding: 2em;
 }
+
+
 
 .programa-overlay {
     position: fixed;
@@ -1834,6 +1837,29 @@ nav ul#nav-list li ul li a:hover {
     text-align: center;
 }
 
+
+#talleres-section-proximamente {
+    position: relative;
+    z-index: 5;
+    background: var(--color-text-black);
+    /*background: linear-gradient(180deg, var(--color-surface-pink) 0%, var(--color-surface-green) 100%);*/
+    /*background-image: url(../src/geographic\ lines.jpg);*/
+    background-repeat: round;
+
+    border-top: none;
+    padding:4em 2em;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+
+#talleres-section-proximamente h2 {
+    color: var(--color-bg-green-soft);
+    font-size: 4rem;
+    font-family: 'MiFuente2';
+}
+
 #talleres-section-green {
     position: relative;
     z-index: 5;
@@ -1868,6 +1894,14 @@ nav ul#nav-list li ul li a:hover {
     margin: 0 auto;
     padding: 3.25rem 1.5rem;
     border-radius: 34px;
+}
+
+.talleres-surface {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    padding: 3.25rem 1.5rem;
+    border-radius: 34px;
+    background: var(--color-brand-beige);
 }
 
 #talleres-section h2 {
